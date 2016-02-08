@@ -148,13 +148,14 @@ int main(int argc, char **argv) {
 	params.minThreshold = 0;
 	params.maxThreshold = 255;
 	params.filterByArea = true;
-	params.minArea = 500;
+	params.minArea = 100;
 	params.filterByCircularity = false;
 	//params.minCircularity = 0.1;
 	params.filterByConvexity = true;
 	params.minConvexity = 0.0;
 	params.filterByInertia = true;
-	params.minInertiaRatio = 0.01;
+	params.minInertiaRatio = 0.00;
+	params.maxInertiaRatio = 0.7;
 	Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
     vector<KeyPoint> keypoints;
 
