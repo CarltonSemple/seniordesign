@@ -143,37 +143,42 @@ int main(int argc, char **argv) {
 	device.startDepth();
 
 	// Setup SimpleBlobDetector parameters
-	/*SimpleBlobDetector::Params params;
+	SimpleBlobDetector::Params params;
+    params.blobColor = 255;
 	params.minThreshold = 0;
 	params.maxThreshold = 255;
 	params.filterByArea = true;
-	params.minArea = 1500;
-	params.filterByCircularity = true;
-	params.minCircularity = 0.1;
+	params.minArea = 500;
+	params.filterByCircularity = false;
+	//params.minCircularity = 0.1;
 	params.filterByConvexity = true;
-	params.minConvexity = 0.87;
+	params.minConvexity = 0.0;
 	params.filterByInertia = true;
 	params.minInertiaRatio = 0.01;
 	Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
-	// Storage for blobs
-	vector<KeyPoint> keypoints;
-	Mat im_with_keypoints;*/
+    vector<KeyPoint> keypoints;
 
 	while (!die) {
-		// Apply background subtraction
-		pMOG2->apply(rgbMat, fgMaskMOG2);
-
 		device.getVideo(rgbMat);
 		device.getDepth(depthMat);
+        
+        // Apply background subtraction
+		pMOG2->apply(rgbMat, fgMaskMOG2);
 
 		// Detect blobs
 		//detector.detect(fgMaskMOG2, keypoints);
 		//printf("1");
 		//detector->detect(im_with_keypoints, keypoints);	
 		//printf("2");
-		//drawKeypoints(fgMaskMOG2, keypoints, im_with_keypoints, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+        
+        // detect blobs
+        std::vector<KeyPoint> keypoints;
+        detector->detect( fgMaskMOG2, keypoints);
 
-		cv::imshow("background subtraction", fgMaskMOG2);
+        Mat blob_image;
+		drawKeypoints(fgMaskMOG2, keypoints, blob_image, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+
+		cv::imshow("background subtraction", blob_image); //fgMaskMOG2);
 		cv::imshow("rgb", rgbMat);
 		depthMat.convertTo(depthf, CV_8UC1, 255.0/2048.0);
 		cv::imshow("depth",depthf);
