@@ -1,0 +1,2 @@
+# Distance Limiting
+Get rid of everything in the image that is past a specific distance, making use of the Kinect's depth sensor callback.
