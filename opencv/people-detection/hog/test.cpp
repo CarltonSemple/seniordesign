@@ -16,7 +16,7 @@ int main (int argc, const char * argv[])
     HOGDescriptor hog;
     hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
  
-    namedWindow("video capture", CV_WINDOW_AUTOSIZE);
+    namedWindow("video capture", CV_WINDOW_NORMAL);
     while (true)
     {
         cap >> img;
