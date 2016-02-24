@@ -14,6 +14,14 @@
 using namespace cv;
 using namespace std;
 
+#define DEFAULT_MIN_DISTANCE 400
+#define DEFAULT_MAX_DISTANCE 1000
+#define CHANGE_RATE 10
+
+// Global variables
+int minDistance = DEFAULT_MIN_DISTANCE;
+int maxDistance = DEFAULT_MAX_DISTANCE;
+
 struct RGB {
     uchar r;
     uchar g;
@@ -136,12 +144,79 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 		bool m_new_depth_frame;
 };
 
+void displayMinMax() {
+    cout << "minimum distance: " << minDistance << endl;
+    cout << "maximum distance: " << maxDistance << endl;
+}
+
+void displayMenuOptions() {
+    cout << "Scanner Application" << endl;
+    cout << "S: Start scan" << endl;
+    cout << "E: End scan" << endl;
+    cout << "n: Decrease minimum distance" << endl;
+    cout << "N: Increase minimum distance" << endl;
+    cout << "m: Decrease maximum distance" << endl;
+    cout << "M: Increase maximum distance" << endl;
+}
+
+void decreaseMinimum() {
+    if(minDistance - CHANGE_RATE >= 0) {
+        minDistance -= CHANGE_RATE;
+    }
+    displayMinMax();
+}
+
+void increaseMinimum() {
+    if(minDistance + CHANGE_RATE <= maxDistance) {
+        minDistance += CHANGE_RATE;
+    }
+    displayMinMax();
+}
+
+void decreaseMaximum() {
+    if(maxDistance - CHANGE_RATE >= minDistance) {
+        maxDistance -= CHANGE_RATE;
+    }
+    displayMinMax();
+}
+
+void increaseMaximum() {
+    maxDistance += CHANGE_RATE;
+    displayMinMax();
+}
+
+void startScan() {
+    
+}
+
+char menu() {
+    displayMenuOptions();
+    char c = 'z';
+    cin >> c;
+    switch(c)
+    {
+        case 's':
+        case 'S':
+            break;
+        case 'e':
+        case 'E': 
+            break;
+        case 'n': decreaseMinimum(); break;
+        case 'N': increaseMinimum(); break;
+        case 'm': decreaseMaximum(); break;
+        case 'M': increaseMaximum(); break;
+    }
+    return c;
+}
 
 int main(int argc, char **argv) {
+    
+    menu();
+        
 	bool die(false);
 	string filename("snapshot");
 	string suffix(".png");
-	int i_snap(0),iter(0);
+    int i_snap(0), iter(0);
 	
 	Mat depthMat(Size(640,480),CV_16UC1);
 	Mat depthf (Size(640,480),CV_8UC1);
@@ -163,6 +238,10 @@ int main(int argc, char **argv) {
 	device.startDepth();
 	while (!die) {
 		device.getVideo(rgbMat);
+        
+        // save to file
+        imwrite("test.jpg", save_img); // A JPG FILE IS BEING SAVED
+        
 		device.getDepth(depthMat);
 		//cv::imshow("rgb", rgbMat);
 		depthMat.convertTo(depthf, CV_8UC1, 255.0/2048.0);
