@@ -1,0 +1,7 @@
+ARDATATRANSFER_Error.lo: ../gen/Sources/ARDATATRANSFER_Error.c \
+ /usr/include/stdc-predef.h \
+ /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARDataTransfer/Build/../Includes/libARDataTransfer/ARDATATRANSFER_Error.h
+
+/usr/include/stdc-predef.h:
+
+/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARDataTransfer/Build/../Includes/libARDataTransfer/ARDATATRANSFER_Error.h:

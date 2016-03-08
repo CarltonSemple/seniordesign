@@ -1,0 +1,7 @@
+ARSTREAM_Error.lo: ../gen/Sources/ARSTREAM_Error.c \
+ /usr/include/stdc-predef.h \
+ /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARStream/Build/../Includes/libARStream/ARSTREAM_Error.h
+
+/usr/include/stdc-predef.h:
+
+/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARStream/Build/../Includes/libARStream/ARSTREAM_Error.h:

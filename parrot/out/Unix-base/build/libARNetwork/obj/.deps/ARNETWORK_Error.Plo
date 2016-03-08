@@ -1,0 +1,10 @@
+ARNETWORK_Error.lo: ../gen/Sources/ARNETWORK_Error.c \
+ /usr/include/stdc-predef.h \
+ /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARNetwork/autoconf-libARNetwork.h \
+ /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARNetwork/Build/../Includes/libARNetwork/ARNETWORK_Error.h
+
+/usr/include/stdc-predef.h:
+
+/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARNetwork/autoconf-libARNetwork.h:
+
+/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARNetwork/Build/../Includes/libARNetwork/ARNETWORK_Error.h:

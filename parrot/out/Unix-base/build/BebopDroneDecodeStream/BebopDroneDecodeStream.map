@@ -1,0 +1,938 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+                              /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o (__libc_csu_init)
+
+As-needed library included to satisfy reference by file (symbol)
+
+libarsal-3.1.0.so             /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o (ARSAL_Mutex_Destroy)
+libarcommands-3.1.0.so        /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o (ARCOMMANDS_Generator_GenerateCommonCommonCurrentTime)
+libarnetwork-3.1.0.so         /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o (ARNETWORK_Manager_ReceivingThreadRun)
+libarnetworkal-3.1.0.so       /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o (ARNETWORKAL_Error_ToString)
+libardiscovery-3.1.0.so       /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o (ARDISCOVERY_Connection_New)
+libarstream-3.1.0.so          /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o (ARSTREAM_Error_ToString)
+libncurses.so.5               /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o (delwin)
+libtinfo.so.5                 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o (wtimeout)
+libavcodec-ffmpeg.so.56       /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o (avcodec_open2@@LIBAVCODEC_FFMPEG_56)
+libavutil-ffmpeg.so.54        /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o (av_free@@LIBAVUTIL_FFMPEG_54)
+libpthread.so.0               /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o (fork@@GLIBC_2.2.5)
+libc.so.6                     /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o (fopen@@GLIBC_2.2.5)
+
+Allocating common symbols
+Common symbol       size              file
+
+gErrorStr           0x800             /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+
+Discarded input sections
+
+ .rodata.cst4   0x0000000000000000        0x4 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ .data          0x0000000000000000        0x4 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ .gnu_debuglink
+                0x0000000000000000        0xc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .gnu_debuglink
+                0x0000000000000000        0xc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .data          0x0000000000000000        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+ .text.unlikely
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+ .text          0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .data          0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .bss           0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .text.unlikely.ARCODECS_Manager_InitOutputFrame
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .text.unlikely.ARCODECS_Manager_NewFFMPEGDecoder
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .text.unlikely.ARCODECS_Manager_DeleteFFMPEGDecoder
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .text.unlikely.ARCODECS_Manager_Delete
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .text.unlikely.ARCODECS_Manager_New
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .text.unlikely.ARCODECS_Manager_FFMPEGDecode
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .text.unlikely.ARCODECS_Manager_Decode
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .text          0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.onDisconnectNetwork
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.arnetworkCmdCallback
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.readerRun
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.getNextDataCallback
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.flyingStateChangedCallback
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.ARDISCOVERY_Connection_SendJsonCallback
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.ARDISCOVERY_Connection_ReceiveJsonCallback
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.batteryStateChangedCallback
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.customPrintCallback
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.ardiscoveryConnect
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.startNetwork
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.stopNetwork
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.startVideo
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.stopVideo
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendPCMD
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendCameraOrientation
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.looperRun
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendDate
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendAllSettings
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendAllStates
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendBeginStream
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendTakeoff
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendLanding
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.sendEmergency
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.onInputEvent
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.registerARCommandsCallbacks
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.unregisterARCommandsCallbacks
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unregisterARCommandsCallbacks
+                0x0000000000000000       0x1a /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.startDecoder
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.getFreeRawFrame
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.getFrameFromData
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.putRawFrameBackToPool
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.Decode_RunDataThread
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.addFreeRawFrameToFifo
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.flushFifo
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.frameCompleteCallback
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.stopDecoder
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text.unlikely.main
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .text          0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .data          0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .bss           0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .text.unlikely.IHM_InputProcessing
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .text.unlikely.IHM_Delete
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .text.unlikely.IHM_New
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .text.unlikely.IHM_setCustomData
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .text.unlikely.IHM_PrintHeader
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .text.unlikely.IHM_PrintInstruction
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .text.unlikely.IHM_PrintInfo
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .text.unlikely.IHM_PrintBattery
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .data          0x0000000000000000        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+ .bss           0x0000000000000000        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+ .text.unlikely
+                0x0000000000000000        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .gnu_debuglink
+                0x0000000000000000        0xc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/staging/usr/lib/libarsal.so
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/staging/usr/lib/libarcommands.so
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/staging/usr/lib/libarnetwork.so
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/staging/usr/lib/libarnetworkal.so
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/staging/usr/lib/libardiscovery.so
+LOAD /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/staging/usr/lib/libarstream.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libncurses.so
+LOAD /lib/x86_64-linux-gnu/libncurses.so.5
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libtinfo.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libavcodec-ffmpeg.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libavformat-ffmpeg.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libswscale-ffmpeg.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libavutil-ffmpeg.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/librt.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libstdc++.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libm.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libgcc_s.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libpthread.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libpthread.so.0
+LOAD /usr/lib/x86_64-linux-gnu/libpthread_nonshared.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libc.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libc.so.6
+LOAD /usr/lib/x86_64-linux-gnu/libc_nonshared.a
+LOAD /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libgcc_s.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libgcc.a
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__executable_start, 0x400000)
+                0x0000000000400238                . = (0x400000 + SIZEOF_HEADERS)
+
+.interp         0x0000000000400238       0x1c
+ *(.interp)
+ .interp        0x0000000000400238       0x1c /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.note.ABI-tag   0x0000000000400254       0x20
+ .note.ABI-tag  0x0000000000400254       0x20 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.note.gnu.build-id
+                0x0000000000400274       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x0000000000400274       0x24 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x0000000000400298       0x30
+ *(.gnu.hash)
+ .gnu.hash      0x0000000000400298       0x30 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.dynsym         0x00000000004002c8      0xa20
+ *(.dynsym)
+ .dynsym        0x00000000004002c8      0xa20 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.dynstr         0x0000000000400ce8      0xa67
+ *(.dynstr)
+ .dynstr        0x0000000000400ce8      0xa67 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.gnu.version    0x0000000000401750       0xd8
+ *(.gnu.version)
+ .gnu.version   0x0000000000401750       0xd8 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.gnu.version_d  0x0000000000401828        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000401828        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.gnu.version_r  0x0000000000401828       0xa0
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000401828       0xa0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.rela.dyn       0x00000000004018c8       0xa8
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ .rela.text     0x00000000004018c8        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x00000000004018c8       0xa8 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ .rela.bss      0x0000000000401970        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+ *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+ *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+ *(.rela.ifunc)
+
+.rela.plt       0x0000000000401970      0x8b8
+ *(.rela.plt)
+ .rela.plt      0x0000000000401970      0x8b8 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+                [!provide]                        PROVIDE (__rela_iplt_start, .)
+ *(.rela.iplt)
+ .rela.iplt     0x0000000000402228        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+                [!provide]                        PROVIDE (__rela_iplt_end, .)
+
+.init           0x0000000000402228       0x1a
+ *(SORT(.init))
+ .init          0x0000000000402228       0x15 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x0000000000402228                _init
+ .init          0x000000000040223d        0x5 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+
+.plt            0x0000000000402250      0x5e0
+ *(.plt)
+ .plt           0x0000000000402250      0x5e0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+                0x0000000000402260                ARSAL_Thread_Destroy
+                0x0000000000402270                ARNETWORKAL_Manager_Delete
+                0x0000000000402280                ARNETWORK_Manager_New
+                0x0000000000402290                ARNETWORKAL_Manager_Unlock
+                0x00000000004022a0                ARSAL_Time_GetLocalTime
+                0x00000000004022b0                ARCOMMANDS_Generator_GenerateARDrone3MediaStreamingVideoEnable
+                0x00000000004022c0                ARSAL_Print_SetCallback
+                0x00000000004022d0                fork@@GLIBC_2.2.5
+                0x00000000004022e0                execlp@@GLIBC_2.2.5
+                0x00000000004022f0                av_log_set_level@@LIBAVUTIL_FFMPEG_54
+                0x0000000000402300                ARCOMMANDS_Generator_GenerateARDrone3PilotingLanding
+                0x0000000000402310                wclrtoeol
+                0x0000000000402320                ARCOMMANDS_Decoder_DecodeBuffer
+                0x0000000000402330                ARNETWORKAL_Manager_New
+                0x0000000000402340                ARNETWORKAL_Manager_InitWifiNetwork
+                0x0000000000402350                ARSTREAM_Reader_Delete
+                0x0000000000402360                ARCOMMANDS_Generator_GenerateARDrone3CameraOrientation
+                0x0000000000402370                ARCOMMANDS_Generator_GenerateCommonSettingsAllSettings
+                0x0000000000402380                avcodec_alloc_context3@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402390                strncpy@@GLIBC_2.2.5
+                0x00000000004023a0                ARDISCOVERY_Error_ToString
+                0x00000000004023b0                av_free@@LIBAVUTIL_FFMPEG_54
+                0x00000000004023c0                wgetch
+                0x00000000004023d0                __sprintf_chk@@GLIBC_2.3.4
+                0x00000000004023e0                ARSAL_Thread_Create
+                0x00000000004023f0                noecho
+                0x0000000000402400                calloc@@GLIBC_2.2.5
+                0x0000000000402410                ARCOMMANDS_Decoder_SetARDrone3PilotingStateFlyingStateChangedCallback
+                0x0000000000402420                avcodec_decode_video2@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402430                open@@GLIBC_2.2.5
+                0x0000000000402440                ARSTREAM_Error_ToString
+                0x0000000000402450                ARSAL_Mutex_Init
+                0x0000000000402460                strftime@@GLIBC_2.2.5
+                0x0000000000402470                ARNETWORK_Error_ToString
+                0x0000000000402480                __vsnprintf_chk@@GLIBC_2.3.4
+                0x0000000000402490                initscr
+                0x00000000004024a0                ARDISCOVERY_Connection_New
+                0x00000000004024b0                wrefresh
+                0x00000000004024c0                wtimeout
+                0x00000000004024d0                dup2@@GLIBC_2.2.5
+                0x00000000004024e0                ARNETWORK_Manager_ReadDataWithTimeout
+                0x00000000004024f0                fclose@@GLIBC_2.2.5
+                0x0000000000402500                ARSTREAM_Reader_StopReader
+                0x0000000000402510                ARCOMMANDS_Decoder_SetCommonCommonStateBatteryStateChangedCallback
+                0x0000000000402520                avcodec_register_all@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402530                ARNETWORK_Manager_Delete
+                0x0000000000402540                __stack_chk_fail@@GLIBC_2.4
+                0x0000000000402550                fopen@@GLIBC_2.2.5
+                0x0000000000402560                free@@GLIBC_2.2.5
+                0x0000000000402570                ARNETWORKAL_Error_ToString
+                0x0000000000402580                ARDISCOVERY_Connection_Delete
+                0x0000000000402590                ARSAL_Thread_Join
+                0x00000000004025a0                avcodec_close@@LIBAVCODEC_FFMPEG_56
+                0x00000000004025b0                ARCOMMANDS_Generator_GenerateARDrone3PilotingEmergency
+                0x00000000004025c0                keypad
+                0x00000000004025d0                mvprintw
+                0x00000000004025e0                ARSTREAM_Reader_InitStreamAckBuffer
+                0x00000000004025f0                av_init_packet@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402600                malloc@@GLIBC_2.2.5
+                0x0000000000402610                ARCOMMANDS_Generator_GenerateCommonCommonCurrentTime
+                0x0000000000402620                usleep@@GLIBC_2.2.5
+                0x0000000000402630                kill@@GLIBC_2.2.5
+                0x0000000000402640                ARCOMMANDS_Decoder_DescribeBuffer
+                0x0000000000402650                endwin
+                0x0000000000402660                delwin
+                0x0000000000402670                avcodec_alloc_frame@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402680                wmove
+                0x0000000000402690                ARSAL_Mutex_Unlock
+                0x00000000004026a0                ARSAL_Mutex_Destroy
+                0x00000000004026b0                ARSAL_Print_PrintRaw
+                0x00000000004026c0                realloc@@GLIBC_2.2.5
+                0x00000000004026d0                ARCOMMANDS_Generator_GenerateCommonCommonAllStates
+                0x00000000004026e0                avpicture_layout@@LIBAVCODEC_FFMPEG_56
+                0x00000000004026f0                ARNETWORK_Manager_SendData
+                0x0000000000402700                ARDISCOVERY_Connection_ControllerConnection
+                0x0000000000402710                cbreak
+                0x0000000000402720                avcodec_free_frame@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402730                ARSAL_Mutex_Lock
+                0x0000000000402740                avpicture_get_size@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402750                ARNETWORKAL_Manager_CloseWifiNetwork
+                0x0000000000402760                ARCOMMANDS_Generator_GenerateCommonCommonCurrentDate
+                0x0000000000402770                avcodec_open2@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402780                ARSTREAM_Reader_InitStreamDataBuffer
+                0x0000000000402790                avcodec_find_decoder@@LIBAVCODEC_FFMPEG_56
+                0x00000000004027a0                __libc_start_main@@GLIBC_2.2.5
+                0x00000000004027b0                ARCOMMANDS_Generator_GenerateARDrone3PilotingPCMD
+                0x00000000004027c0                ARNETWORK_Manager_Stop
+                0x00000000004027e0                ARCOMMANDS_Generator_GenerateARDrone3PilotingTakeOff
+                0x00000000004027f0                avpicture_fill@@LIBAVCODEC_FFMPEG_56
+                0x0000000000402800                fwrite@@GLIBC_2.2.5
+                0x0000000000402810                close@@GLIBC_2.2.5
+                0x0000000000402820                ARSTREAM_Reader_New
+ *(.iplt)
+ .iplt          0x0000000000402830        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.plt.bnd
+ *(.plt.bnd)
+
+.text           0x0000000000402830     0x45e2
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ .text.startup.main
+                0x0000000000402830      0x8eb /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000402830                main
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ *fill*         0x000000000040311b        0x5 
+ .text          0x0000000000403120       0x2a /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+                0x0000000000403120                _start
+ *fill*         0x000000000040314a        0x6 
+ .text          0x0000000000403150       0xc6 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+ *fill*         0x0000000000403216        0xa 
+ .text.ARCODECS_Manager_InitOutputFrame
+                0x0000000000403220       0x5d /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                0x0000000000403220                ARCODECS_Manager_InitOutputFrame
+ *fill*         0x000000000040327d        0x3 
+ .text.ARCODECS_Manager_NewFFMPEGDecoder
+                0x0000000000403280       0xf9 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                0x0000000000403280                ARCODECS_Manager_NewFFMPEGDecoder
+ *fill*         0x0000000000403379        0x7 
+ .text.ARCODECS_Manager_DeleteFFMPEGDecoder
+                0x0000000000403380       0x84 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                0x0000000000403380                ARCODECS_Manager_DeleteFFMPEGDecoder
+ *fill*         0x0000000000403404        0xc 
+ .text.ARCODECS_Manager_Delete
+                0x0000000000403410       0x61 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                0x0000000000403410                ARCODECS_Manager_Delete
+ *fill*         0x0000000000403471        0xf 
+ .text.ARCODECS_Manager_New
+                0x0000000000403480      0x182 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                0x0000000000403480                ARCODECS_Manager_New
+ *fill*         0x0000000000403602        0xe 
+ .text.ARCODECS_Manager_FFMPEGDecode
+                0x0000000000403610      0x258 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                0x0000000000403610                ARCODECS_Manager_FFMPEGDecode
+ *fill*         0x0000000000403868        0x8 
+ .text.ARCODECS_Manager_Decode
+                0x0000000000403870       0x84 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                0x0000000000403870                ARCODECS_Manager_Decode
+ *fill*         0x00000000004038f4        0xc 
+ .text.onDisconnectNetwork
+                0x0000000000403900       0xbd /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000403900                onDisconnectNetwork
+ *fill*         0x00000000004039bd        0x3 
+ .text.arnetworkCmdCallback
+                0x00000000004039c0       0xc6 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x00000000004039c0                arnetworkCmdCallback
+ *fill*         0x0000000000403a86        0xa 
+ .text.readerRun
+                0x0000000000403a90      0x26c /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000403a90                readerRun
+ *fill*         0x0000000000403cfc        0x4 
+ .text.getNextDataCallback
+                0x0000000000403d00       0x57 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000403d00                getNextDataCallback
+ *fill*         0x0000000000403d57        0x9 
+ .text.flyingStateChangedCallback
+                0x0000000000403d60       0x94 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000403d60                flyingStateChangedCallback
+ *fill*         0x0000000000403df4        0xc 
+ .text.ARDISCOVERY_Connection_SendJsonCallback
+                0x0000000000403e00       0x76 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000403e00                ARDISCOVERY_Connection_SendJsonCallback
+ *fill*         0x0000000000403e76        0xa 
+ .text.ARDISCOVERY_Connection_ReceiveJsonCallback
+                0x0000000000403e80      0x104 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000403e80                ARDISCOVERY_Connection_ReceiveJsonCallback
+ *fill*         0x0000000000403f84        0xc 
+ .text.batteryStateChangedCallback
+                0x0000000000403f90       0x22 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000403f90                batteryStateChangedCallback
+ *fill*         0x0000000000403fb2        0xe 
+ .text.customPrintCallback
+                0x0000000000403fc0       0x59 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000403fc0                customPrintCallback
+ *fill*         0x0000000000404019        0x7 
+ .text.ardiscoveryConnect
+                0x0000000000404020      0x217 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404020                ardiscoveryConnect
+ *fill*         0x0000000000404237        0x9 
+ .text.startNetwork
+                0x0000000000404240      0x3e4 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404240                startNetwork
+ *fill*         0x0000000000404624        0xc 
+ .text.stopNetwork
+                0x0000000000404630      0x12d /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404630                stopNetwork
+ *fill*         0x000000000040475d        0x3 
+ .text.startVideo
+                0x0000000000404760      0x2df /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404760                startVideo
+ *fill*         0x0000000000404a3f        0x1 
+ .text.stopVideo
+                0x0000000000404a40      0x118 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404a40                stopVideo
+ *fill*         0x0000000000404b58        0x8 
+ .text.sendPCMD
+                0x0000000000404b60       0xbd /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404b60                sendPCMD
+ *fill*         0x0000000000404c1d        0x3 
+ .text.sendCameraOrientation
+                0x0000000000404c20       0xa5 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404c20                sendCameraOrientation
+ *fill*         0x0000000000404cc5        0xb 
+ .text.looperRun
+                0x0000000000404cd0       0x43 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404cd0                looperRun
+ *fill*         0x0000000000404d13        0xd 
+ .text.sendDate
+                0x0000000000404d20      0x2aa /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404d20                sendDate
+ *fill*         0x0000000000404fca        0x6 
+ .text.sendAllSettings
+                0x0000000000404fd0      0x1c7 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000404fd0                sendAllSettings
+ *fill*         0x0000000000405197        0x9 
+ .text.sendAllStates
+                0x00000000004051a0      0x1c7 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x00000000004051a0                sendAllStates
+ *fill*         0x0000000000405367        0x9 
+ .text.sendBeginStream
+                0x0000000000405370      0x1cf /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000405370                sendBeginStream
+ *fill*         0x000000000040553f        0x1 
+ .text.sendTakeoff
+                0x0000000000405540      0x1c7 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000405540                sendTakeoff
+ *fill*         0x0000000000405707        0x9 
+ .text.sendLanding
+                0x0000000000405710      0x1c7 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000405710                sendLanding
+ *fill*         0x00000000004058d7        0x9 
+ .text.sendEmergency
+                0x00000000004058e0      0x1c7 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x00000000004058e0                sendEmergency
+ *fill*         0x0000000000405aa7        0x9 
+ .text.onInputEvent
+                0x0000000000405ab0      0x1f8 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000405ab0                onInputEvent
+ *fill*         0x0000000000405ca8        0x8 
+ .text.registerARCommandsCallbacks
+                0x0000000000405cb0       0x23 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000405cb0                registerARCommandsCallbacks
+ *fill*         0x0000000000405cd3        0xd 
+ .text.startDecoder
+                0x0000000000405ce0      0x2a5 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000405ce0                startDecoder
+ *fill*         0x0000000000405f85        0xb 
+ .text.getFreeRawFrame
+                0x0000000000405f90      0x1fe /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000405f90                getFreeRawFrame
+ *fill*         0x000000000040618e        0x2 
+ .text.getFrameFromData
+                0x0000000000406190       0x68 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000406190                getFrameFromData
+ *fill*         0x00000000004061f8        0x8 
+ .text.putRawFrameBackToPool
+                0x0000000000406200       0x24 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000406200                putRawFrameBackToPool
+ *fill*         0x0000000000406224        0xc 
+ .text.Decode_RunDataThread
+                0x0000000000406230      0x201 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000406230                Decode_RunDataThread
+ *fill*         0x0000000000406431        0xf 
+ .text.addFreeRawFrameToFifo
+                0x0000000000406440       0x87 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000406440                addFreeRawFrameToFifo
+ *fill*         0x00000000004064c7        0x9 
+ .text.flushFifo
+                0x00000000004064d0       0x7e /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x00000000004064d0                flushFifo
+ *fill*         0x000000000040654e        0x2 
+ .text.frameCompleteCallback
+                0x0000000000406550       0xc6 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000406550                frameCompleteCallback
+ *fill*         0x0000000000406616        0xa 
+ .text.stopDecoder
+                0x0000000000406620      0x1d1 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x0000000000406620                stopDecoder
+ *fill*         0x00000000004067f1        0xf 
+ .text.IHM_InputProcessing
+                0x0000000000406800      0x2c8 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                0x0000000000406800                IHM_InputProcessing
+ *fill*         0x0000000000406ac8        0x8 
+ .text.IHM_Delete
+                0x0000000000406ad0       0x7a /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                0x0000000000406ad0                IHM_Delete
+ *fill*         0x0000000000406b4a        0x6 
+ .text.IHM_New  0x0000000000406b50       0xef /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                0x0000000000406b50                IHM_New
+ *fill*         0x0000000000406c3f        0x1 
+ .text.IHM_setCustomData
+                0x0000000000406c40        0xb /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                0x0000000000406c40                IHM_setCustomData
+ *fill*         0x0000000000406c4b        0x5 
+ .text.IHM_PrintHeader
+                0x0000000000406c50       0x42 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                0x0000000000406c50                IHM_PrintHeader
+ *fill*         0x0000000000406c92        0xe 
+ .text.IHM_PrintInstruction
+                0x0000000000406ca0       0x4a /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                0x0000000000406ca0                IHM_PrintInstruction
+ *fill*         0x0000000000406cea        0x6 
+ .text.IHM_PrintInfo
+                0x0000000000406cf0       0x4a /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                0x0000000000406cf0                IHM_PrintInfo
+ *fill*         0x0000000000406d3a        0x6 
+ .text.IHM_PrintBattery
+                0x0000000000406d40       0x52 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                0x0000000000406d40                IHM_PrintBattery
+ *fill*         0x0000000000406d92        0xe 
+ .text          0x0000000000406da0       0x72 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+                0x0000000000406da0                __libc_csu_init
+                0x0000000000406e10                __libc_csu_fini
+ *(.gnu.warning)
+
+.fini           0x0000000000406e14        0x9
+ *(SORT(.fini))
+ .fini          0x0000000000406e14        0x4 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x0000000000406e14                _fini
+ .fini          0x0000000000406e18        0x5 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__etext, .)
+                [!provide]                        PROVIDE (_etext, .)
+                [!provide]                        PROVIDE (etext, .)
+
+.rodata         0x0000000000406e20      0xfac
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.1
+                0x0000000000406e20       0x37 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ *fill*         0x0000000000406e57        0x1 
+ .rodata.str1.8
+                0x0000000000406e58       0x3a /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ *fill*         0x0000000000406e92        0xe 
+ .rodata        0x0000000000406ea0       0x35 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .rodata.str1.1
+                0x0000000000406ed5      0x16d /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                                        0x194 (size before relaxing)
+ *fill*         0x0000000000407042        0x6 
+ .rodata.str1.8
+                0x0000000000407048      0xb88 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                                        0xb82 (size before relaxing)
+ *fill*         0x0000000000407bd0       0x10 
+ .rodata        0x0000000000407be0      0x1e0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .rodata.str1.1
+                0x0000000000407dc0        0xc /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000407dcc      0x1c4
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000407dcc      0x1c4 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.eh_frame       0x0000000000407f90     0x1044
+ *(.eh_frame)
+ .eh_frame      0x0000000000407f90       0x30 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ .eh_frame      0x0000000000407fc0       0x40 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ .eh_frame      0x0000000000408000      0x188 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                                        0x190 (size before relaxing)
+ .eh_frame      0x0000000000408188      0xc80 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                                        0xc50 (size before relaxing)
+ .eh_frame      0x0000000000408e08      0x168 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                                        0x160 (size before relaxing)
+ .eh_frame      0x0000000000408f70       0x60 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+                                         0x78 (size before relaxing)
+ .eh_frame      0x0000000000408fd0        0x4 /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+                0x0000000000408fd4                . = (ALIGN (0x200000) - ((0x200000 - .) & 0x1fffff))
+                0x0000000000609d30                . = DATA_SEGMENT_ALIGN (0x200000, 0x1000)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0000000000609d30        0x0
+                [!provide]                        PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end, .)
+
+.init_array     0x0000000000609d30        0x8
+                0x0000000000609d30                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*) SORT(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000609d30        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+                0x0000000000609d38                PROVIDE (__init_array_end, .)
+
+.fini_array     0x0000000000609d38        0x8
+                [!provide]                        PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*) SORT(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000609d38        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+                [!provide]                        PROVIDE (__fini_array_end, .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr            0x0000000000609d40        0x8
+ *(.jcr)
+ .jcr           0x0000000000609d40        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+ .jcr           0x0000000000609d40        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic        0x0000000000609d48      0x280
+ *(.dynamic)
+ .dynamic       0x0000000000609d48      0x280 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+                0x0000000000609d48                _DYNAMIC
+
+.got            0x0000000000609fc8       0x38
+ *(.got)
+ .got           0x0000000000609fc8       0x38 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ *(.igot)
+                0x000000000060afe8                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0x18)?0x18:0x0)
+
+.got.plt        0x000000000060a000      0x300
+ *(.got.plt)
+ .got.plt       0x000000000060a000      0x300 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+                0x000000000060a000                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+ .igot.plt      0x000000000060a300        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+
+.data           0x000000000060a300       0xe0
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x000000000060a300       0xe0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+
+.tm_clone_table
+                0x000000000060a3e0        0x0
+ .tm_clone_table
+                0x000000000060a3e0        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+ .tm_clone_table
+                0x000000000060a3e0        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+
+.data1
+ *(.data1)
+                0x000000000060a3e0                _edata = .
+                [!provide]                        PROVIDE (edata, .)
+                0x000000000060a3e0                . = .
+                0x000000000060a3e0                __bss_start = .
+
+.bss            0x000000000060a3e0      0x820
+ *(.dynbss)
+ .dynbss        0x000000000060a3e0        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x000000000060a3e0        0x1 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+ *fill*         0x000000000060a3e1        0x3 
+ .bss           0x000000000060a3e4        0x4 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x000000000060a3e4                gIHMRun
+ *(COMMON)
+ *fill*         0x000000000060a3e8       0x18 
+ COMMON         0x000000000060a400      0x800 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                0x000000000060a400                gErrorStr
+                0x000000000060ac00                . = ALIGN ((. != 0x0)?0x8:0x1)
+
+.lbss
+ *(.dynlbss)
+ *(.lbss .lbss.* .gnu.linkonce.lb.*)
+ *(LARGE_COMMON)
+                0x000000000060ac00                . = ALIGN (0x8)
+                0x000000000060ac00                . = SEGMENT_START ("ldata-segment", .)
+
+.lrodata
+ *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+
+.ldata          0x0000000000a0ac00        0x0
+ *(.ldata .ldata.* .gnu.linkonce.l.*)
+                0x0000000000a0ac00                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x0000000000a0ac00                . = ALIGN (0x8)
+                0x0000000000a0ac00                _end = .
+                [!provide]                        PROVIDE (end, .)
+                0x0000000000a0ac00                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x52
+ *(.comment)
+ .comment       0x0000000000000000       0x2d /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o
+                                         0x2e (size before relaxing)
+ .comment       0x000000000000002d       0x2e /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .comment       0x000000000000002d       0x2e /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .comment       0x000000000000002d       0x2e /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+ .comment       0x000000000000002d       0x25 /usr/lib/x86_64-linux-gnu/libc_nonshared.a(elf-init.oS)
+                                         0x26 (size before relaxing)
+ .comment       0x0000000000000052       0x2e /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x3a0
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x90 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .debug_aranges
+                0x0000000000000090      0x270 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .debug_aranges
+                0x0000000000000300       0xa0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000     0xfe7a
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000     0x4ba5 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .debug_info    0x0000000000004ba5     0xa644 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .debug_info    0x000000000000f1e9      0xc91 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+
+.debug_abbrev   0x0000000000000000      0xb54
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x394 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .debug_abbrev  0x0000000000000394      0x4ef /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .debug_abbrev  0x0000000000000883      0x2d1 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+
+.debug_line     0x0000000000000000     0x1501
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000      0x41b /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .debug_line    0x000000000000041b      0xe16 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .debug_line    0x0000000000001231      0x2d0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000     0x7f1d
+ *(.debug_str)
+ .debug_str     0x0000000000000000     0x5632 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+                                       0x75fe (size before relaxing)
+ .debug_str     0x0000000000005632     0x2814 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+                                       0x9c10 (size before relaxing)
+ .debug_str     0x0000000000007e46       0xd7 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+                                        0x7c2 (size before relaxing)
+
+.debug_loc      0x0000000000000000     0x4833
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000      0x9d6 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .debug_loc     0x00000000000009d6     0x3884 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .debug_loc     0x000000000000425a      0x5d9 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000      0xcd0
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000       0xd0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/DecoderManager.c.o
+ .debug_ranges  0x00000000000000d0      0xb20 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/BebopDroneDecodeStream.c.o
+ .debug_ranges  0x0000000000000bf0       0xe0 /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/obj/ihm.c.o
+
+.debug_macro
+ *(.debug_macro)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/BebopDroneDecodeStream/BebopDroneDecodeStream elf64-x86-64)
