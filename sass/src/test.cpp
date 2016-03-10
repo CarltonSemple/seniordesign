@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include "test.h"
+#include "backgroundSubtractor.h"
 #include "human.h"
 #include "persondetector.h"
 #include "scanner.h"
@@ -20,7 +21,7 @@ int findAndSaveHumans()
 {
     PersonDetector detector;
     
-    VideoCapture cap(0);//CV_CAP_ANY);
+    VideoCapture cap(1);//CV_CAP_ANY);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);    
     if (!cap.isOpened())
@@ -65,14 +66,23 @@ int findAndSaveHumans()
 
 int Human::idNumber = 0;
 
+int backgroundSubtractionTest()
+{
+    BackgrndSubtractor bs;
+    bs.runIndependently();
+    return 0;
+}
+
 int main(int argc, char *argv[]) 
 {
 	test t;
     //scanner s;
     //s.run();
+      
+    //findAndSaveHumans();
     
-    
-    findAndSaveHumans();
+    // Background Subtraction test
+    backgroundSubtractionTest();
     
 	return 0;
 }

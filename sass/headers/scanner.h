@@ -17,7 +17,7 @@ private:
     //void runCamera();
     void createSliderWindow();
 public:
-    void run();
+    void runIndependently();
 };
 
 #endif

@@ -264,12 +264,6 @@ void runCamera()
 	Mat rgbMat(Size(640,480),CV_8UC3,Scalar(0));
 	Mat ownMat(Size(640,480),CV_8UC3,Scalar(0));
 	
-	// The next two lines must be changed as Freenect::Freenect
-	// isn't a template but the method createDevice:
-	// Freenect::Freenect<MyFreenectDevice> freenect;
-	// MyFreenectDevice& device = freenect.createDevice(0);
-	// by these two lines:
-	
 	Freenect::Freenect freenect;
 	MyFreenectDevice& device = freenect.createDevice<MyFreenectDevice>(0);
 	    
@@ -323,7 +317,7 @@ void scanner::createSliderWindow()
     cvCreateTrackbar("HighS", "Control", &maxDistance, 1500);
 }
 
-void scanner::run()
+void scanner::runIndependently()
 {
     createSliderWindow();
     thread camthread(&runCamera);
