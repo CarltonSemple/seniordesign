@@ -71,7 +71,7 @@ void PersonDetector::keepSimilarHumans(std::vector<Human> & collection, std::vec
     
 }
 
-int PersonDetector::run()
+int PersonDetector::runIndependently()
 {
     VideoCapture cap(1);//CV_CAP_ANY);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);

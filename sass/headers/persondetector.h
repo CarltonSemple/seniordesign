@@ -7,7 +7,7 @@
 
 class PersonDetector
 {
-    int run(); // run independently 
+    int runIndependently(); // run independently 
     
     public:
     PersonDetector();

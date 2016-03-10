@@ -6,15 +6,10 @@
 #include <vector>
 #include "opencv2/core.hpp"
 #include "opencv2/highgui.hpp"
+#include "blob.h"
 
-class Human
+class Human : public Blob
 {
-    std::string name;
-    // coordinate values
-    int x_left;
-    int x_right;
-    int y_top;
-    int y_bottom;
     
     std::tuple<int,int,int> rgb_color; // color for identification
     
@@ -28,14 +23,7 @@ class Human
     Human();
     Human(std::string id, std::pair<int,int> & topLeft, std::pair<int,int> & bottomRight, cv::Mat img);
     
-    std::pair<int,int> getTopLeft(); // return top left coordinate
-    std::pair<int,int> getTopRight(); // return top right coordinate
-    std::pair<int,int> getBottomLeft(); // return bottom left coordinate
-    std::pair<int,int> getBottomRight(); // return bottom right coordinate
     std::tuple<int,int,int> getColor();
-    
-    void setTopLeft(std::pair<int,int> p);
-    void setBottomRight(std::pair<int,int> p);
     
     void saveImage(std::string dir) 
     {
