@@ -21,10 +21,40 @@ BackgrndSubtractor::BackgrndSubtractor()
 	params.maxInertiaRatio = 0.7;
 }
 
+/*
+** Black out the parts of an image that aren't a part of any of the blobs
+*/
+void BackgrndSubtractor::applyBlobFilter(Mat & img, vector<KeyPoint> keypoints)
+{
+    cv::Size s = img.size();
+    
+    for(int y = 0; y < s.height; y++) {
+        for(int x = 0; x < s.width; x++) {
+            RGB & color = img.ptr<RGB>(y)[x];
+            bool in_a_blob = false;
+            for(KeyPoint k : keypoints)
+            {
+                double distanceToBlob = Util::distance(make_pair(x, y), make_pair(k.pt.x,k.pt.y));
+                if(distanceToBlob < k.size) {
+                    in_a_blob = true;
+                    //cout << "x: " << to_string(x) << " y: " << to_string(y) << "distanceTo: " << std::to_string(distanceToBlob) << endl;;
+                    break;
+                }
+            }
+            if(!in_a_blob) 
+            {
+                color.r = 255;
+                color.g = 0;
+                color.b = 0;
+            }
+        }
+    }
+}
+
 void BackgrndSubtractor::runIndependently()
 {
     bool end = false;
-    VideoCapture cap(1);//CV_CAP_ANY);
+    VideoCapture cap(0);//CV_CAP_ANY);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);    
     if (!cap.isOpened())
@@ -56,6 +86,9 @@ void BackgrndSubtractor::runIndependently()
 
         Mat blob_image;
 		drawKeypoints(fgMaskMOG2, keypoints, blob_image, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+        
+        // test
+        applyBlobFilter(rgbMat, keypoints);
 
 		cv::imshow("background subtraction", blob_image); //fgMaskMOG2);
 		cv::imshow("rgb", rgbMat);

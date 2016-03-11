@@ -1,6 +1,7 @@
 #ifndef BACKGROUND_SUBTRACTOR_H
 #define BACKGROUND_SUBTRACTOR_H
 
+#include <vector>
 #include "opencv2/core.hpp"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
@@ -22,7 +23,7 @@ class BackgrndSubtractor
     public:
     BackgrndSubtractor();
     
-    
+    void applyBlobFilter(cv::Mat & img, std::vector<cv::KeyPoint> keypoints);
     
     void runIndependently();
 };
