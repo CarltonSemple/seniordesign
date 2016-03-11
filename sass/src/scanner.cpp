@@ -12,6 +12,7 @@
 #include <thread>
 #include <limits>
 #include "scanner.h"
+#include "util.h"
 //#include <cv.h>
 //#include <cxcore.h>
 //#include <highgui.h>
@@ -37,12 +38,6 @@ int set_number = 0;
 // filenames
 string mediaFolder = "media/";
 string setCountFileName = "setnumber";
-
-struct RGB {
-    uchar r;
-    uchar g;
-    uchar b;  
-};
 
 class myMutex {
 	public:
