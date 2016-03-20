@@ -13,11 +13,11 @@ class Human : public Blob
     
     std::tuple<int,int,int> rgb_color; // color for identification
     
-    // images of just the person
-    std::vector<cv::Mat> images;
-    
-        
     public:
+    
+    // images of just the person
+    std::vector<cv::Mat> images;       
+    
     static int idNumber;
     
     Human();
