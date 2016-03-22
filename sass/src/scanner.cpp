@@ -152,6 +152,15 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 		bool m_new_depth_frame;
 };
 
+int scanner::getLatestSetNumber()
+{
+    int num = 0;
+    ifstream in;
+    in.open(mediaFolder + setCountFileName);
+    in >> num;
+    return num;
+}
+
 /**
 * Reads the latest set number from the media folder, returns the next number and sets the number to the next #.
 **/
@@ -246,6 +255,12 @@ char scanner::menu() {
         case 'Q': quit = true; break;
     }
     return c;
+}
+
+Human & scanner::loadScannedHuman(int setNum)
+{
+    Human * h = new Human(to_string(setNum));
+    
 }
 
 void runCamera()

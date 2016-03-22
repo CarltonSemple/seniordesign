@@ -1,9 +1,12 @@
 #ifndef SCANNER_H
 #define SCANNER_H
 
+#include "human.h"
+
 class scanner 
 {
 private:
+    int getLatestSetNumber();
     int getNextSetNumber();
     void displayMinMax();
     void displayMenuOptions();
@@ -18,6 +21,7 @@ private:
     void createSliderWindow();
 public:
     void runIndependently();
+    Human & loadScannedHuman(int setNum);
 };
 
 #endif
