@@ -17,11 +17,11 @@ test::test()
 	cout << "hello world" << endl;
 }
 
-int findAndSaveHumans()
+int findAndSaveHumans(bool save, bool drawBoxes)
 {
     PersonDetector detector;
     
-    VideoCapture cap(1);//CV_CAP_ANY);
+    VideoCapture cap(0);//CV_CAP_ANY);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);    
     if (!cap.isOpened())
@@ -38,7 +38,7 @@ int findAndSaveHumans()
         if (!img.data)
             continue;
         // look for humans
-        vector<Human> humans = detector.detectHumans(img);
+        vector<Human> humans = detector.detectHumans(img, drawBoxes);
         cumulativeHumans.reserve(cumulativeHumans.size() + humans.size()); 
         cumulativeHumans.insert(cumulativeHumans.end(),humans.begin(),humans.end());
         if(cumulativeHumans.size() > size) {
@@ -56,8 +56,13 @@ int findAndSaveHumans()
                 break;
             }
         }*/
-        if(cumulativeHumans.size() > 0) {
-            Human::saveHumanImagesToFiles(humans, "t");
+        
+        // Save the humans to files if this is desired
+        if(save)
+        {
+            if(cumulativeHumans.size() > 0) {
+                Human::saveHumanImagesToFiles(humans, "t");
+            }
         }
     }
     
@@ -79,7 +84,7 @@ int main(int argc, char *argv[])
     //scanner s;
     //s.run();
       
-    //findAndSaveHumans();
+    //findAndSaveHumans(true, false);
     
     // Background Subtraction test
     backgroundSubtractionTest();
