@@ -9,7 +9,7 @@ PersonDetector::PersonDetector()
     
 }
 
-std::vector<Human> PersonDetector::detectHumans(Mat img) 
+std::vector<Human> PersonDetector::detectHumans(Mat img, bool drawBoxes) 
 {
     vector<Human> humans;
     
@@ -38,7 +38,9 @@ std::vector<Human> PersonDetector::detectHumans(Mat img)
             r.width = cvRound(r.width*0.8);
             r.y += cvRound(r.height*0.06);
             r.height = cvRound(r.height*0.9);
-            rectangle(img, r.tl(), r.br(), cv::Scalar(0,255,0), 2);
+            if(drawBoxes) {
+                rectangle(img, r.tl(), r.br(), cv::Scalar(0,255,0), 2);
+            }
             pair<int,int> topleft = make_pair(r.tl().x, r.tl().y);
             pair<int,int> bottomRight = make_pair(r.br().x, r.br().y);
             Mat humImg(img, r);
