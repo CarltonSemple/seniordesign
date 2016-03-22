@@ -17,6 +17,8 @@ test::test()
 	cout << "hello world" << endl;
 }
 
+// this is a test of cloud 9
+
 int findAndSaveHumans(bool save, bool drawBoxes)
 {
     PersonDetector detector;
