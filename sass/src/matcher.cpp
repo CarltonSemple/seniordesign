@@ -30,7 +30,7 @@ int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
 	rmatcher.setFeatureDetector(detector);
     
     // Check matches between potentialImage and each of the human's images
-    for(Mat img : scannedHuman.images)
+    for(Mat img : scannedHuman.getImages())
     {
         std::vector<cv::DMatch> matches;
         std::vector<cv::KeyPoint> keypoints1, keypoints2;

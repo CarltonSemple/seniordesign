@@ -10,33 +10,26 @@
 
 class Human : public Blob
 {
-    
+    bool scanned;
     std::tuple<int,int,int> rgb_color; // color for identification
+    // images of just the person
+    std::vector<cv::Mat> images;    
     
     public:
-    
-    // images of just the person
-    std::vector<cv::Mat> images;       
-    
+       
     static int idNumber;
     
     Human();
+    Human(std::string scannedSetId);
     Human(std::string id, std::pair<int,int> & topLeft, std::pair<int,int> & bottomRight, cv::Mat img);
     
     std::tuple<int,int,int> getColor();
     
-    void saveImage(std::string dir) 
-    {
-        std::string fn = dir + name;
-        if(images.size() > 0)
-        {
-            for(int i = 0; i < images.size(); i++) 
-            {
-                std::string fn_s = fn + "_" + std::to_string(i) + ".jpg";
-                cv::imwrite(fn_s, images[i]);
-            }
-        } 
-    }  
+    std::vector<cv::Mat> & getImages();
+    
+    void addImage(cv::Mat & newPic);
+    
+    void saveImage(std::string dir); 
     
     static void saveHumanImagesToFiles(std::vector<Human> & collection, std::string directoryName)
     {
@@ -47,7 +40,7 @@ class Human : public Blob
         {
             h.saveImage(dir);
         }
-    }
+    }   
 };
 
 #endif
