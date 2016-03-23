@@ -12,9 +12,19 @@
 using namespace std;
 using namespace cv;
 
+#define CAMERA_WIDTH 320
+#define CAMERA_HEIGHT 240
+
+int cameraNumber = 0;
+
 test::test()
 {
 	cout << "hello world" << endl;
+}
+
+void printHelp()
+{
+    cout << "enter the camera number when running" << endl;
 }
 
 // this is a test of cloud 9
@@ -23,9 +33,9 @@ int findAndSaveHumans(bool save, bool drawBoxes)
 {
     PersonDetector detector;
     
-    VideoCapture cap(0);//CV_CAP_ANY);
-    cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-    cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);    
+    VideoCapture cap(cameraNumber);//CV_CAP_ANY);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);    
     if (!cap.isOpened())
         return -1;
     
@@ -80,16 +90,38 @@ int backgroundSubtractionTest()
     return 0;
 }
 
+/* Run video and use the person detector (HOG) to show humans and
+   print how many surf similarities each "human" has to the scanned person */
+void countSimilaritiesToScannedTarget()
+{
+    VideoCapture cap(cameraNumber);//CV_CAP_ANY);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHTgc);    
+    if (!cap.isOpened())
+        return -1;
+    
+    while(true)
+    {
+        
+    }
+}
+
 int main(int argc, char *argv[]) 
 {
-	test t;
+    if(argc == 2) {
+        cameraNumber = argv[1];
+    } else {
+        printHelp();
+        return -1;
+    }
+    
     //scanner s;
     //s.run();
       
     //findAndSaveHumans(true, false);
     
     // Background Subtraction test
-    backgroundSubtractionTest();
+    //backgroundSubtractionTest();
     
 	return 0;
 }
