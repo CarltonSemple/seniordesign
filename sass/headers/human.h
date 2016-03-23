@@ -27,13 +27,15 @@ class Human : public Blob
     
     std::vector<cv::Mat> & getImages();
     
+    int getImageCount() { return images.size(); }
+    
     void addImage(cv::Mat & newPic);
     
     void saveImage(std::string dir); 
     
     static void saveHumanImagesToFiles(std::vector<Human> & collection, std::string directoryName)
     {
-        std::string dir = "media/" + directoryName + "/";
+        std::string dir = "media/livepeople/" + directoryName + "/";
         //std::string s = "mkdir" + dir;
         //system(s.c_str());
         for(Human h : collection) 

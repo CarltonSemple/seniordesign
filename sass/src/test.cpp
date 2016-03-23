@@ -94,15 +94,31 @@ int backgroundSubtractionTest()
    print how many surf similarities each "human" has to the scanned person */
 void countSimilaritiesToScannedTarget()
 {
+    PersonDetector detector;
     VideoCapture cap(cameraNumber);//CV_CAP_ANY);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHTgc);    
     if (!cap.isOpened())
         return -1;
     
+    Mat img;
     while(true)
     {
+        cap >> img;
+        if (!img.data)
+            continue;
         
+        vector<Human> detectedHumans = detector.detectHumans(img, false);
+        // look at the humans and see the similarities
+        for(Human hu : detectedHumans)
+        {
+            Matcher checker;
+            std::vector<cv::Mat> & hImages = hu.getImages();
+            for(int p = 0; p < hu.getImageCount(); p++) 
+            {
+                checker.surfCount(target, hImages[p]);
+            }
+        }
     }
 }
 

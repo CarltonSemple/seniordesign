@@ -3,7 +3,7 @@
 
 #include "human.h"
 
-class scanner 
+class Scanner 
 {
 private:
     int getLatestSetNumber();

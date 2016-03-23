@@ -36,7 +36,7 @@ int img_frame = 0;
 int set_number = 0;
 
 // filenames
-string mediaFolder = "media/";
+string mediaFolder = "media/scans/";
 string setCountFileName = "setnumber";
 
 class myMutex {
@@ -152,7 +152,7 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 		bool m_new_depth_frame;
 };
 
-int scanner::getLatestSetNumber()
+int Scanner::getLatestSetNumber()
 {
     int num = 0;
     ifstream in;
@@ -164,7 +164,7 @@ int scanner::getLatestSetNumber()
 /**
 * Reads the latest set number from the media folder, returns the next number and sets the number to the next #.
 **/
-int scanner::getNextSetNumber() 
+int Scanner::getNextSetNumber() 
 {
     int num = 0;
     ifstream in;
@@ -178,12 +178,12 @@ int scanner::getNextSetNumber()
     return num;
 }
 
-void scanner::displayMinMax() {
+void Scanner::displayMinMax() {
     cout << "minimum distance: " << minDistance << endl;
     cout << "maximum distance: " << maxDistance << endl;
 }
 
-void scanner::displayMenuOptions() {
+void Scanner::displayMenuOptions() {
     cout << "Scanner Application" << endl << endl;
     cout << "S: Start scan" << endl;
     cout << "E: End scan" << endl;
@@ -195,33 +195,33 @@ void scanner::displayMenuOptions() {
     cout << ": ";
 }
 
-void scanner::decreaseMinimum() {
+void Scanner::decreaseMinimum() {
     if(minDistance - CHANGE_RATE >= 0) {
         minDistance -= CHANGE_RATE;
     }
     displayMinMax();
 }
 
-void scanner::increaseMinimum() {
+void Scanner::increaseMinimum() {
     if(minDistance + CHANGE_RATE <= maxDistance) {
         minDistance += CHANGE_RATE;
     }
     displayMinMax();
 }
 
-void scanner::decreaseMaximum() {
+void Scanner::decreaseMaximum() {
     if(maxDistance - CHANGE_RATE >= minDistance) {
         maxDistance -= CHANGE_RATE;
     }
     displayMinMax();
 }
 
-void scanner::increaseMaximum() {
+void Scanner::increaseMaximum() {
     maxDistance += CHANGE_RATE;
     displayMinMax();
 }
 
-void scanner::startScan() {
+void Scanner::startScan() {
     // start new set
     set_number = getNextSetNumber();
     cout << "recording set "<< set_number << endl << endl;
@@ -229,11 +229,11 @@ void scanner::startScan() {
     img_frame = 0;
 }
 
-void scanner::stopScan() {
+void Scanner::stopScan() {
     camera_saving = false;
 }
 
-char scanner::menu() {
+char Scanner::menu() {
     displayMenuOptions();
     char c = 'z';
     cin >> c;
@@ -257,10 +257,20 @@ char scanner::menu() {
     return c;
 }
 
-Human & scanner::loadScannedHuman(int setNum)
+Human & Scanner::loadScannedHuman(int setNum)
 {
     Human * h = new Human(to_string(setNum));
     
+    // Load all of the images matching this person's set #
+    int i = 0;
+    std::ostringstream imgname;
+    while(true)
+    {
+    	imgname << mediaFolder << "img_set_" << i << "_" << img_frame++ << ".jpg";
+    	Mat newImage = imread(imgname.str(), CV_LOAD_IMAGE_COLOR);
+    	h->addImage(newImage);
+    }
+    return *h;
 }
 
 void runCamera()
@@ -320,14 +330,14 @@ void runCamera()
 	device.stopDepth();
 }
 
-void scanner::createSliderWindow() 
+void Scanner::createSliderWindow() 
 {
     namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
     cvCreateTrackbar("LowS", "Control", &minDistance, 1400); //Saturation (0 - 255)
     cvCreateTrackbar("HighS", "Control", &maxDistance, 1500);
 }
 
-void scanner::runIndependently()
+void Scanner::runIndependently()
 {
     createSliderWindow();
     thread camthread(&runCamera);
