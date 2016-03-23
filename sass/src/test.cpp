@@ -99,7 +99,7 @@ void countSimilaritiesToScannedTarget(Human & target)
     PersonDetector detector;
     VideoCapture cap(cameraNumber);//CV_CAP_ANY);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-    cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHTgc);    
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);    
     if (!cap.isOpened())
         return;
     
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
         return -1;
     }
     
-    scanner s;
+    Scanner s;
     //s.run();
       
     //findAndSaveHumans(true, false);
@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
     //backgroundSubtractionTest();
     
     Human scannedHuman = s.loadScannedHuman(0);
-    countSimilaritiesToScannedTarget(scanned);
+    countSimilaritiesToScannedTarget(scannedHuman);
     
     
 	return 0;
