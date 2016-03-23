@@ -107,6 +107,14 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 			
 			// show modified RGB image 
 			cv::imshow("rgb", rgbMat);
+            
+            // save to file
+            std::ostringstream imgname;
+            if(camera_saving == true && img_frame < std::numeric_limits<int>::max())
+            {
+                imgname << mediaFolder << "img_set_" << set_number << "_" << img_frame++ << ".jpg";
+                imwrite(imgname.str(), rgbMat); // A JPG FILE IS BEING SAVED
+            }
 			
 			//std::cout << "rows: " << depthMat.rows << " cols: " << depthMat.cols << std::endl;
 			//std::cout << depthMat.at<uint16_t>(0,0) << std::endl;
@@ -266,9 +274,20 @@ Human & Scanner::loadScannedHuman(int setNum)
     std::ostringstream imgname;
     while(true)
     {
-    	imgname << mediaFolder << "img_set_" << i << "_" << img_frame++ << ".jpg";
-    	Mat newImage = imread(imgname.str(), CV_LOAD_IMAGE_COLOR);
-    	h->addImage(newImage);
+        try {
+            cout << img_frame << endl;
+            
+            imgname << mediaFolder << "img_set_" << i << "_" << img_frame++ << ".jpg";
+            ifstream f(imgname.str());
+            if(f.good()){
+                Mat newImage = imread(imgname.str(), CV_LOAD_IMAGE_COLOR);
+                h->addImage(newImage);
+            } else {
+                break;
+            }
+        } catch(...) {
+            break;
+        }
     }
     return *h;
 }
@@ -293,32 +312,30 @@ void runCamera()
 	device.startDepth();
 	while (!quit) {
 		device.getVideo(rgbMat);
-                
-        // save to file
-        std::ostringstream imgname;
-        if(camera_saving == true && img_frame < std::numeric_limits<int>::max())
-        {
-            imgname << mediaFolder << "img_set_" << set_number << "_" << img_frame++ << ".jpg";
-            imwrite(imgname.str(), rgbMat); // A JPG FILE IS BEING SAVED
-        }
+        
+        
                 
 		device.getDepth(depthMat);
 		//cv::imshow("rgb", rgbMat);
 		depthMat.convertTo(depthf, CV_8UC1, 255.0/2048.0);
 		cv::imshow("depth",depthf);
 		char k = cvWaitKey(5);
+        
+        
+        
         /*
 		if( k == 27 ){
 			cvDestroyWindow("rgb");
 			cvDestroyWindow("depth");
 			break;
 		}*/
+        /*
 		if( k == 8 ) {
 			std::ostringstream file;
 			file << filename << i_snap << suffix;
 			cv::imwrite(file.str(),rgbMat);
 			i_snap++;
-		}
+		}*/
 		//if(iter >= 1000) break;
 		//iter++;
 	}

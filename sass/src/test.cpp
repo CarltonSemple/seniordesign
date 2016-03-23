@@ -121,7 +121,7 @@ void countSimilaritiesToScannedTarget(Human & target)
             {
                 a += checker.surfCount(target, hImages[p]);
             }
-            a = a / hu.getImageCount();
+            //a = a / hu.getImageCount();
             cout << a << endl;
         }
     }
@@ -137,14 +137,14 @@ int main(int argc, char *argv[])
     }
     
     Scanner s;
-    //s.run();
+    //s.runIndependently();
       
     //findAndSaveHumans(true, false);
     
     // Background Subtraction test
     //backgroundSubtractionTest();
     
-    Human scannedHuman = s.loadScannedHuman(0);
+    Human scannedHuman = s.loadScannedHuman(2);
     countSimilaritiesToScannedTarget(scannedHuman);
     
     
