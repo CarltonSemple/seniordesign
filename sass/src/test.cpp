@@ -114,10 +114,13 @@ void countSimilaritiesToScannedTarget()
         {
             Matcher checker;
             std::vector<cv::Mat> & hImages = hu.getImages();
+            int a = 0;
             for(int p = 0; p < hu.getImageCount(); p++) 
             {
-                checker.surfCount(target, hImages[p]);
+                a += checker.surfCount(target, hImages[p]);
             }
+            a = a / hu.getImageCount();
+            cout << a << endl;
         }
     }
 }
