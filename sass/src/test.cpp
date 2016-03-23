@@ -4,10 +4,12 @@
 #include "backgroundSubtractor.h"
 #include "human.h"
 #include "persondetector.h"
+#include "matcher.h"
 #include "scanner.h"
 #include "opencv2/core.hpp"
 #include "opencv2/highgui.hpp"
 #include <opencv2/imgproc/imgproc.hpp>
+#include <cstdlib>
 
 using namespace std;
 using namespace cv;
@@ -92,14 +94,14 @@ int backgroundSubtractionTest()
 
 /* Run video and use the person detector (HOG) to show humans and
    print how many surf similarities each "human" has to the scanned person */
-void countSimilaritiesToScannedTarget()
+void countSimilaritiesToScannedTarget(Human & target)
 {
     PersonDetector detector;
     VideoCapture cap(cameraNumber);//CV_CAP_ANY);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHTgc);    
     if (!cap.isOpened())
-        return -1;
+        return;
     
     Mat img;
     while(true)
@@ -128,19 +130,23 @@ void countSimilaritiesToScannedTarget()
 int main(int argc, char *argv[]) 
 {
     if(argc == 2) {
-        cameraNumber = argv[1];
+        cameraNumber = atoi(argv[1]);
     } else {
         printHelp();
         return -1;
     }
     
-    //scanner s;
+    scanner s;
     //s.run();
       
     //findAndSaveHumans(true, false);
     
     // Background Subtraction test
     //backgroundSubtractionTest();
+    
+    Human scannedHuman = s.loadScannedHuman(0);
+    countSimilaritiesToScannedTarget(scanned);
+    
     
 	return 0;
 }
