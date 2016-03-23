@@ -1,6 +1,0 @@
-ARSAL_Error.lo: ../gen/Sources/ARSAL_Error.c /usr/include/stdc-predef.h \
- /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARSAL/Build/../Includes/libARSAL/ARSAL_Error.h
-
-/usr/include/stdc-predef.h:
-
-/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARSAL/Build/../Includes/libARSAL/ARSAL_Error.h:

@@ -1,7 +1,0 @@
-ARUPDATER_Error.lo: ../gen/Sources/ARUPDATER_Error.c \
- /usr/include/stdc-predef.h \
- /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARUpdater/Build/../Includes/libARUpdater/ARUPDATER_Error.h
-
-/usr/include/stdc-predef.h:
-
-/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARUpdater/Build/../Includes/libARUpdater/ARUPDATER_Error.h:

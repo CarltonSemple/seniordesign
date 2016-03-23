@@ -1,7 +1,0 @@
-ARMAVLINK_Error.lo: ../gen/Sources/ARMAVLINK_Error.c \
- /usr/include/stdc-predef.h \
- /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARMavlink/Build/../Includes/libARMavlink/ARMAVLINK_Error.h
-
-/usr/include/stdc-predef.h:
-
-/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARMavlink/Build/../Includes/libARMavlink/ARMAVLINK_Error.h:

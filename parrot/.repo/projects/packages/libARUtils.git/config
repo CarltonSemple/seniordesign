@@ -1,7 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-[remote "github"]
-	url = https://github.com/Parrot-Developers/libARUtils
-	projectname = libARUtils
-	fetch = +refs/heads/*:refs/remotes/github/*

@@ -1,6 +1,0 @@
-arstream2_error.lo: ../src/arstream2_error.c /usr/include/stdc-predef.h \
- /home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARStream2/Build/../Includes/libARStream2/arstream2_error.h
-
-/usr/include/stdc-predef.h:
-
-/home/cswiggz/Documents/seniordesign/parrot/out/Unix-base/build/libARStream2/Build/../Includes/libARStream2/arstream2_error.h:

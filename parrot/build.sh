@@ -1,1 +1,0 @@
-products/common/scripts/build.sh
