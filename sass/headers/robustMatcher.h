@@ -153,7 +153,7 @@ class RobustMatcher {
 	  cv::Mat ransacTest(const std::vector<cv::DMatch>& matches,
 		                 const std::vector<cv::KeyPoint>& keypoints1, 
 						 const std::vector<cv::KeyPoint>& keypoints2,
-					     std::vector<cv::DMatch>& outMatches) {
+					     std::vector<cv::DMatch>& outMatches, bool output) {
 
 		// Convert keypoints into Point2f	
 		std::vector<cv::Point2f> points1, points2;	
@@ -191,7 +191,9 @@ class RobustMatcher {
 			}
 		}
 
-		std::cout << "Number of matched points (after cleaning): " << outMatches.size() << std::endl;
+        if(output) {
+		  std::cout << "Number of matched points (after cleaning): " << outMatches.size() << std::endl;
+        }
 
 		if (refineF) {
 		// The F matrix will be recomputed with all accepted matches
@@ -226,22 +228,24 @@ class RobustMatcher {
 	  // returns fundemental matrix
 	  cv::Mat match(cv::Mat& image1, cv::Mat& image2, // input images 
 		  std::vector<cv::DMatch>& matches, // output matches and keypoints
-		  std::vector<cv::KeyPoint>& keypoints1, std::vector<cv::KeyPoint>& keypoints2) {
+		  std::vector<cv::KeyPoint>& keypoints1, std::vector<cv::KeyPoint>& keypoints2, bool output) {
 
 		// 1a. Detection of the SURF features
 		detector->detect(image1,keypoints1);
 		detector->detect(image2,keypoints2);
 
-		std::cout << "Number of SURF points (1): " << keypoints1.size() << std::endl;
-		std::cout << "Number of SURF points (2): " << keypoints2.size() << std::endl;
-
+        if(output) {
+		  std::cout << "Number of SURF points (1): " << keypoints1.size() << std::endl;
+		  std::cout << "Number of SURF points (2): " << keypoints2.size() << std::endl;
+        }
 		// 1b. Extraction of the SURF descriptors
 		cv::Mat descriptors1, descriptors2;
 		detector->compute(image1,keypoints1,descriptors1);
 		detector->compute(image2,keypoints2,descriptors2);
 
-		std::cout << "descriptor matrix size: " << descriptors1.rows << " by " << descriptors1.cols << std::endl;
-
+        if(output) {
+		  std::cout << "descriptor matrix size: " << descriptors1.rows << " by " << descriptors1.cols << std::endl;
+        }
 		// 2. Match the two image descriptors
 
 		// Construction of the matcher 
@@ -261,26 +265,33 @@ class RobustMatcher {
 			matches2, // vector of matches (up to 2 per entry) 
 			2);		  // return 2 nearest neighbours
 
-		std::cout << "Number of matched points 1->2: " << matches1.size() << std::endl;
-		std::cout << "Number of matched points 2->1: " << matches2.size() << std::endl;
-
+        if(output) {
+		  std::cout << "Number of matched points 1->2: " << matches1.size() << std::endl;
+		  std::cout << "Number of matched points 2->1: " << matches2.size() << std::endl;
+        }
 		// 3. Remove matches for which NN ratio is > than threshold
 
 		// clean image 1 -> image 2 matches
 		int removed= ratioTest(matches1);
-		std::cout << "Number of matched points 1->2 (ratio test) : " << matches1.size()-removed << std::endl;
+        if(output) {
+		  std::cout << "Number of matched points 1->2 (ratio test) : " << matches1.size()-removed << std::endl;
+        }
 		// clean image 2 -> image 1 matches
 		removed= ratioTest(matches2);
-		std::cout << "Number of matched points 1->2 (ratio test) : " << matches2.size()-removed << std::endl;
+        if(output) {
+		  std::cout << "Number of matched points 1->2 (ratio test) : " << matches2.size()-removed << std::endl;
+        }
 
 		// 4. Remove non-symmetrical matches
 	    std::vector<cv::DMatch> symMatches;
 		symmetryTest(matches1,matches2,symMatches);
-
-		std::cout << "Number of matched points (symmetry test): " << symMatches.size() << std::endl;
+        
+        if(output) {
+		  std::cout << "Number of matched points (symmetry test): " << symMatches.size() << std::endl;
+        }
 
 		// 5. Validate matches using RANSAC
-		cv::Mat fundemental= ransacTest(symMatches, keypoints1, keypoints2, matches);
+		cv::Mat fundemental= ransacTest(symMatches, keypoints1, keypoints2, matches, output);
 
 		// return the found fundemental matrix
 		return fundemental;
