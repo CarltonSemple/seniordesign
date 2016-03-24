@@ -98,7 +98,7 @@ void countSimilaritiesToScannedTarget(Human & target)
 {
     PersonDetector detector;
     VideoCapture cap(cameraNumber);//CV_CAP_ANY);
-    cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);    
     if (!cap.isOpened())
         return;
@@ -109,22 +109,45 @@ void countSimilaritiesToScannedTarget(Human & target)
         cap >> img;
         if (!img.data)
             continue;
-        
+            
+        namedWindow("video capture", CV_WINDOW_NORMAL);
+                
         vector<Human> detectedHumans = detector.detectHumans(img, false);
         // look at the humans and see the similarities
+        
         for(Human hu : detectedHumans)
         {
-            Matcher checker;
+            Matcher matcher;
             std::vector<cv::Mat> & hImages = hu.getImages();
             int a = 0;
             for(int p = 0; p < hu.getImageCount(); p++) 
             {
-                a += checker.surfCount(target, hImages[p]);
+                //cout << "p = " << p << endl;
+                a += matcher.surfCount(target, hImages[p]);
             }
             //a = a / hu.getImageCount();
-            cout << a << endl;
+            cout << "a = " << a << endl;
         }
+        
+        imshow("video capture", img);
+        /*
+        // display loaded images
+        vector<cv::Mat> & selfies = target.getImages();
+        //cout << selfies.size() << " selfies" << endl;
+        for(int i = 0; i < selfies.size(); i++)
+        {
+            //cout << "image: " << i << endl;
+            imshow("video capture", selfies[i]);//img);
+            waitKey(10);
+        }*/
+        char key = waitKey(1);
     }
+}
+
+void printInitialMenu()
+{
+    cout << "s: scan new human" << endl;
+    cout << "l: load previous scan" << endl;
 }
 
 int main(int argc, char *argv[]) 
@@ -145,6 +168,7 @@ int main(int argc, char *argv[])
     //backgroundSubtractionTest();
     
     Human scannedHuman = s.loadScannedHuman(2);
+    cout << "loaded " << scannedHuman.getImageCount() << " pictures" << endl;
     countSimilaritiesToScannedTarget(scannedHuman);
     
     
