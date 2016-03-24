@@ -1,7 +1,9 @@
 #include "matcher.h"
+#include <string>
 #include "opencv2/features2d.hpp"
 #include "opencv2/xfeatures2d.hpp"
 
+using namespace std;
 using namespace cv;
 using namespace cv::xfeatures2d;
 
@@ -29,14 +31,34 @@ int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
 	cv::Ptr<cv::FeatureDetector> detector = cv::xfeatures2d::SURF::create(minHessian);//new cv::SurfFeatureDetector(10); 
 	rmatcher.setFeatureDetector(detector);
     
+    cv::namedWindow("Matches", 0);
+    cv::resizeWindow("Matches", 1199, 900);
+    
     // Check matches between potentialImage and each of the human's images
     for(Mat img : scannedHuman.getImages())
     {
         std::vector<cv::DMatch> matches;
         std::vector<cv::KeyPoint> keypoints1, keypoints2;
         // get matches 
-        rmatcher.match(img,potentialImage,matches, keypoints1, keypoints2);
+        rmatcher.match(img,potentialImage,matches, keypoints1, keypoints2, false);
         totalMatches += matches.size();
+        
+        /*
+        // draw the matches
+        cv::Mat imageMatches;
+        cv::drawMatches(img,keypoints1,  // 1st image and its keypoints
+                        potentialImage,keypoints2,  // 2nd image and its keypoints
+                        matches,			// the matches
+                        imageMatches,		// the image produced
+                        cv::Scalar(255,255,255)); // color of the lines
+        */
+        //cv::imshow("Matches",imageMatches);
+        
+        
+        //cv::waitKey();
+        // close the window
+        //cvDestroyWindow("Matches");
+        //cvReleaseImage(&imageMatches);
     }
     
     return totalMatches;
