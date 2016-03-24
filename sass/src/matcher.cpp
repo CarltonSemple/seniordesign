@@ -31,16 +31,19 @@ int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
 	cv::Ptr<cv::FeatureDetector> detector = cv::xfeatures2d::SURF::create(minHessian);//new cv::SurfFeatureDetector(10); 
 	rmatcher.setFeatureDetector(detector);
     
-    cv::namedWindow("Matches", 0);
-    cv::resizeWindow("Matches", 1199, 900);
+    //cv::namedWindow("Matches", 0);
+    //cv::resizeWindow("Matches", 1199, 900);
     
     // Check matches between potentialImage and each of the human's images
-    for(Mat img : scannedHuman.getImages())
+    vector<cv::Mat> & scannedImages = scannedHuman.getImages();
+    //for(Mat img : scannedHuman.getImages())
+    for(int i = 0; i < 1; i++) //i < scannedImages.size(); i++)
     {
+        Mat & img = scannedImages[i];
         std::vector<cv::DMatch> matches;
         std::vector<cv::KeyPoint> keypoints1, keypoints2;
         // get matches 
-        rmatcher.match(img,potentialImage,matches, keypoints1, keypoints2, false);
+        rmatcher.match(img,potentialImage,matches, keypoints1, keypoints2, true);
         totalMatches += matches.size();
         
         /*

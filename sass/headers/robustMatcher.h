@@ -238,6 +238,12 @@ class RobustMatcher {
 		  std::cout << "Number of SURF points (1): " << keypoints1.size() << std::endl;
 		  std::cout << "Number of SURF points (2): " << keypoints2.size() << std::endl;
         }
+        
+        if(keypoints1.size() == 0 || keypoints2.size() == 0) {
+            cv::Mat empty;
+            return empty;
+        }
+        
 		// 1b. Extraction of the SURF descriptors
 		cv::Mat descriptors1, descriptors2;
 		detector->compute(image1,keypoints1,descriptors1);
