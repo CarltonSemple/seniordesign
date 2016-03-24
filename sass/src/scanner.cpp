@@ -1,12 +1,8 @@
 #include "libfreenect.hpp"
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <cmath>
 #include <pthread.h>
-#include "opencv2/core.hpp"
-#include "opencv2/highgui.hpp"
-#include <opencv2/imgproc/imgproc.hpp>
 #include <sstream>
 #include <string>
 #include <thread>
@@ -269,25 +265,29 @@ Human & Scanner::loadScannedHuman(int setNum)
 {
     Human * h = new Human(to_string(setNum));
     
+    int picNum = 0;
+    
     // Load all of the images matching this person's set #
-    int i = 0;
     std::ostringstream imgname;
     while(true)
     {
-        try {
-            cout << img_frame << endl;
-            
-            imgname << mediaFolder << "img_set_" << i << "_" << img_frame++ << ".jpg";
-            ifstream f(imgname.str());
+        //try {            
+            imgname << mediaFolder << "img_set_" << setNum << "_" << picNum++ << ".jpg";
+            ifstream f(imgname.str());       
             if(f.good()){
                 Mat newImage = imread(imgname.str(), CV_LOAD_IMAGE_COLOR);
                 h->addImage(newImage);
             } else {
+                //cout << imgname.str() << endl;
+                //cout << "picNum: " << picNum << endl;
+                //cout << "ending image load" << endl;
                 break;
             }
-        } catch(...) {
-            break;
-        }
+            imgname.clear();
+            imgname.str("");
+        //} catch(...) {
+        //    break;
+        //}
     }
     return *h;
 }
