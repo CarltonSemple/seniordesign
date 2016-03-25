@@ -1,0 +1,687 @@
+
+As-needed library included to satisfy reference by file (symbol)
+
+libarsal.so                   /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o (ARSAL_Socket_Create)
+libpthread.so.0               /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o (write@@GLIBC_2.2.5)
+libc.so.6                     /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o (fflush@@GLIBC_2.2.5)
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .gnu_debuglink
+                0x0000000000000000        0xc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .text.unlikely
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_InitWifiNetwork
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_CancelWifiNetwork
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_CloseWifiNetwork
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_InitBLENetwork
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_CancelBLENetwork
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_CloseBLENetwork
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_Delete
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_New
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_Unlock
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_GetBandwidth
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_BandwidthThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_SetOnDisconnectCallback
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_SetSendBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_SetRecvBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_GetSendBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_GetRecvBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_EnableDataDump
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text.unlikely.ARNETWORKAL_Manager_DumpData
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_IsTooLongWithoutReceive
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_New
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_Signal
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_GetBandwidth
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_BandwidthThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_Cancel
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_Delete
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_Connect
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_Bind
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_PushFrame
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_PopFrame
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_Send
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_Receive
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_SetOnDisconnectCallback
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_GetSendBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_SetSendBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_GetRecvBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text.unlikely.ARNETWORKAL_WifiNetwork_SetRecvBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+ .text.unlikely.ARNETWORKAL_Error_ToString
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .gnu_debuglink
+                0x0000000000000000        0xc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/staging/usr/lib/libarsal.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/librt.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libstdc++.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libm.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libgcc_s.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libpthread.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libpthread.so.0
+LOAD /usr/lib/x86_64-linux-gnu/libpthread_nonshared.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libc.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libc.so.6
+LOAD /usr/lib/x86_64-linux-gnu/libc_nonshared.a
+LOAD /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libgcc_s.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+                0x00000000000001c8                . = (0x0 + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+                0x00000000000001c8       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x00000000000001c8       0x24 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00000000000001f0      0x15c
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000001f0      0x15c /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.dynsym         0x0000000000000350      0x888
+ *(.dynsym)
+ .dynsym        0x0000000000000350      0x888 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.dynstr         0x0000000000000bd8      0x82a
+ *(.dynstr)
+ .dynstr        0x0000000000000bd8      0x82a /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.gnu.version    0x0000000000001402       0xb6
+ *(.gnu.version)
+ .gnu.version   0x0000000000001402       0xb6 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.gnu.version_d  0x00000000000014b8        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00000000000014b8        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.gnu.version_r  0x00000000000014b8       0x80
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x00000000000014b8       0x80 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.rela.dyn       0x0000000000001538      0x1e0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ .rela.text     0x0000000000001538        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000001538       0x18 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000001550      0x198 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+ *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+ *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x00000000000016e8        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .rela.fini_array
+                0x00000000000016e8       0x18 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .rela.init_array
+                0x0000000000001700       0x18 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.rela.plt       0x0000000000001718      0x510
+ *(.rela.plt)
+ .rela.plt      0x0000000000001718      0x510 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000001c28       0x1a
+ *(SORT(.init))
+ .init          0x0000000000001c28       0x15 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x0000000000001c28                _init
+ .init          0x0000000000001c3d        0x5 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+
+.plt            0x0000000000001c50      0x370
+ *(.plt)
+ .plt           0x0000000000001c50      0x370 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.iplt)
+
+.plt.bnd
+ *(.plt.bnd)
+
+.text           0x0000000000001fc0     0x27e8
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000001fc0      0x100 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .text.ARNETWORKAL_Manager_InitWifiNetwork
+                0x00000000000020c0      0x126 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x00000000000020c0                ARNETWORKAL_Manager_InitWifiNetwork
+ *fill*         0x00000000000021e6        0xa 
+ .text.ARNETWORKAL_Manager_CancelWifiNetwork
+                0x00000000000021f0       0x16 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x00000000000021f0                ARNETWORKAL_Manager_CancelWifiNetwork
+ *fill*         0x0000000000002206        0xa 
+ .text.ARNETWORKAL_Manager_CloseWifiNetwork
+                0x0000000000002210       0x16 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002210                ARNETWORKAL_Manager_CloseWifiNetwork
+ *fill*         0x0000000000002226        0xa 
+ .text.ARNETWORKAL_Manager_InitBLENetwork
+                0x0000000000002230        0x6 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002230                ARNETWORKAL_Manager_InitBLENetwork
+ *fill*         0x0000000000002236        0xa 
+ .text.ARNETWORKAL_Manager_CancelBLENetwork
+                0x0000000000002240        0x6 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002240                ARNETWORKAL_Manager_CancelBLENetwork
+ *fill*         0x0000000000002246        0xa 
+ .text.ARNETWORKAL_Manager_CloseBLENetwork
+                0x0000000000002250        0x6 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002250                ARNETWORKAL_Manager_CloseBLENetwork
+ *fill*         0x0000000000002256        0xa 
+ .text.ARNETWORKAL_Manager_Delete
+                0x0000000000002260       0x53 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002260                ARNETWORKAL_Manager_Delete
+ *fill*         0x00000000000022b3        0xd 
+ .text.ARNETWORKAL_Manager_New
+                0x00000000000022c0      0x10e /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x00000000000022c0                ARNETWORKAL_Manager_New
+ *fill*         0x00000000000023ce        0x2 
+ .text.ARNETWORKAL_Manager_Unlock
+                0x00000000000023d0       0x1c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x00000000000023d0                ARNETWORKAL_Manager_Unlock
+ *fill*         0x00000000000023ec        0x4 
+ .text.ARNETWORKAL_Manager_GetBandwidth
+                0x00000000000023f0       0x1c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x00000000000023f0                ARNETWORKAL_Manager_GetBandwidth
+ *fill*         0x000000000000240c        0x4 
+ .text.ARNETWORKAL_Manager_BandwidthThread
+                0x0000000000002410       0x13 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002410                ARNETWORKAL_Manager_BandwidthThread
+ *fill*         0x0000000000002423        0xd 
+ .text.ARNETWORKAL_Manager_SetOnDisconnectCallback
+                0x0000000000002430       0x1c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002430                ARNETWORKAL_Manager_SetOnDisconnectCallback
+ *fill*         0x000000000000244c        0x4 
+ .text.ARNETWORKAL_Manager_SetSendBufferSize
+                0x0000000000002450       0x1c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002450                ARNETWORKAL_Manager_SetSendBufferSize
+ *fill*         0x000000000000246c        0x4 
+ .text.ARNETWORKAL_Manager_SetRecvBufferSize
+                0x0000000000002470       0x1c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002470                ARNETWORKAL_Manager_SetRecvBufferSize
+ *fill*         0x000000000000248c        0x4 
+ .text.ARNETWORKAL_Manager_GetSendBufferSize
+                0x0000000000002490       0x1c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002490                ARNETWORKAL_Manager_GetSendBufferSize
+ *fill*         0x00000000000024ac        0x4 
+ .text.ARNETWORKAL_Manager_GetRecvBufferSize
+                0x00000000000024b0       0x1c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x00000000000024b0                ARNETWORKAL_Manager_GetRecvBufferSize
+ *fill*         0x00000000000024cc        0x4 
+ .text.ARNETWORKAL_Manager_EnableDataDump
+                0x00000000000024d0      0x2b2 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x00000000000024d0                ARNETWORKAL_Manager_EnableDataDump
+ *fill*         0x0000000000002782        0xe 
+ .text.ARNETWORKAL_Manager_DumpData
+                0x0000000000002790       0x36 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                0x0000000000002790                ARNETWORKAL_Manager_DumpData
+ *fill*         0x00000000000027c6        0xa 
+ .text.ARNETWORKAL_WifiNetwork_IsTooLongWithoutReceive
+                0x00000000000027d0      0x111 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ *fill*         0x00000000000028e1        0xf 
+ .text.ARNETWORKAL_WifiNetwork_New
+                0x00000000000028f0      0x1c6 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x00000000000028f0                ARNETWORKAL_WifiNetwork_New
+ *fill*         0x0000000000002ab6        0xa 
+ .text.ARNETWORKAL_WifiNetwork_Signal
+                0x0000000000002ac0       0x63 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000002ac0                ARNETWORKAL_WifiNetwork_Signal
+ *fill*         0x0000000000002b23        0xd 
+ .text.ARNETWORKAL_WifiNetwork_GetBandwidth
+                0x0000000000002b30       0x89 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000002b30                ARNETWORKAL_WifiNetwork_GetBandwidth
+ *fill*         0x0000000000002bb9        0x7 
+ .text.ARNETWORKAL_WifiNetwork_BandwidthThread
+                0x0000000000002bc0      0x169 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000002bc0                ARNETWORKAL_WifiNetwork_BandwidthThread
+ *fill*         0x0000000000002d29        0x7 
+ .text.ARNETWORKAL_WifiNetwork_Cancel
+                0x0000000000002d30        0xc /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000002d30                ARNETWORKAL_WifiNetwork_Cancel
+ *fill*         0x0000000000002d3c        0x4 
+ .text.ARNETWORKAL_WifiNetwork_Delete
+                0x0000000000002d40      0x11a /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000002d40                ARNETWORKAL_WifiNetwork_Delete
+ *fill*         0x0000000000002e5a        0x6 
+ .text.ARNETWORKAL_WifiNetwork_Connect
+                0x0000000000002e60      0x204 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000002e60                ARNETWORKAL_WifiNetwork_Connect
+ *fill*         0x0000000000003064        0xc 
+ .text.ARNETWORKAL_WifiNetwork_Bind
+                0x0000000000003070      0x203 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000003070                ARNETWORKAL_WifiNetwork_Bind
+ *fill*         0x0000000000003273        0xd 
+ .text.ARNETWORKAL_WifiNetwork_PushFrame
+                0x0000000000003280      0x32b /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000003280                ARNETWORKAL_WifiNetwork_PushFrame
+ *fill*         0x00000000000035ab        0x5 
+ .text.ARNETWORKAL_WifiNetwork_PopFrame
+                0x00000000000035b0       0xfb /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x00000000000035b0                ARNETWORKAL_WifiNetwork_PopFrame
+ *fill*         0x00000000000036ab        0x5 
+ .text.ARNETWORKAL_WifiNetwork_Send
+                0x00000000000036b0      0x239 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x00000000000036b0                ARNETWORKAL_WifiNetwork_Send
+ *fill*         0x00000000000038e9        0x7 
+ .text.ARNETWORKAL_WifiNetwork_Receive
+                0x00000000000038f0      0x731 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x00000000000038f0                ARNETWORKAL_WifiNetwork_Receive
+ *fill*         0x0000000000004021        0xf 
+ .text.ARNETWORKAL_WifiNetwork_SetOnDisconnectCallback
+                0x0000000000004030       0x3e /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000004030                ARNETWORKAL_WifiNetwork_SetOnDisconnectCallback
+ *fill*         0x000000000000406e        0x2 
+ .text.ARNETWORKAL_WifiNetwork_GetSendBufferSize
+                0x0000000000004070       0x84 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000004070                ARNETWORKAL_WifiNetwork_GetSendBufferSize
+ *fill*         0x00000000000040f4        0xc 
+ .text.ARNETWORKAL_WifiNetwork_SetSendBufferSize
+                0x0000000000004100      0x21c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000004100                ARNETWORKAL_WifiNetwork_SetSendBufferSize
+ *fill*         0x000000000000431c        0x4 
+ .text.ARNETWORKAL_WifiNetwork_GetRecvBufferSize
+                0x0000000000004320       0x84 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x0000000000004320                ARNETWORKAL_WifiNetwork_GetRecvBufferSize
+ *fill*         0x00000000000043a4        0xc 
+ .text.ARNETWORKAL_WifiNetwork_SetRecvBufferSize
+                0x00000000000043b0      0x21c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                0x00000000000043b0                ARNETWORKAL_WifiNetwork_SetRecvBufferSize
+ *fill*         0x00000000000045cc        0x4 
+ .text.ARNETWORKAL_Error_ToString
+                0x00000000000045d0      0x1d8 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+                0x00000000000045d0                ARNETWORKAL_Error_ToString
+ *(.gnu.warning)
+
+.fini           0x00000000000047a8        0x9
+ *(SORT(.fini))
+ .fini          0x00000000000047a8        0x4 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x00000000000047a8                _fini
+ .fini          0x00000000000047ac        0x5 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__etext, .)
+                [!provide]                        PROVIDE (_etext, .)
+                [!provide]                        PROVIDE (etext, .)
+
+.rodata         0x00000000000047c0      0xb10
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.1
+                0x00000000000047c0       0x36 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ *fill*         0x00000000000047f6        0x2 
+ .rodata.str1.8
+                0x00000000000047f8       0xe2 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ *fill*         0x00000000000048da        0x6 
+ .rodata        0x00000000000048e0       0x48 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .rodata.str1.1
+                0x0000000000004928       0x1a /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                                         0x23 (size before relaxing)
+ *fill*         0x0000000000004942        0x6 
+ .rodata.str1.8
+                0x0000000000004948      0x4ec /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ *fill*         0x0000000000004e34        0xc 
+ .rodata        0x0000000000004e40      0x1c0 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .rodata.str1.1
+                0x0000000000005000      0x14f /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+ *fill*         0x000000000000514f        0x1 
+ .rodata.str1.8
+                0x0000000000005150      0x180 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+                                        0x17d (size before relaxing)
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x00000000000052d0      0x13c
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x00000000000052d0      0x13c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+
+.eh_frame       0x0000000000005410      0x87c
+ *(.eh_frame)
+ .eh_frame      0x0000000000005410       0x40 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .eh_frame      0x0000000000005450      0x2a8 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                                        0x280 (size before relaxing)
+ .eh_frame      0x00000000000056f8      0x578 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                                        0x560 (size before relaxing)
+ .eh_frame      0x0000000000005c70       0x18 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+                                         0x30 (size before relaxing)
+ .eh_frame      0x0000000000005c88        0x4 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+                0x0000000000005c8c                . = (ALIGN (0x200000) - ((0x200000 - .) & 0x1fffff))
+                0x0000000000205d70                . = DATA_SEGMENT_ALIGN (0x200000, 0x1000)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000205d70        0x8
+ *(SORT(.init_array.*) SORT(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000205d70        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+
+.fini_array     0x0000000000205d78        0x8
+ *(SORT(.fini_array.*) SORT(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000205d78        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr            0x0000000000205d80        0x8
+ *(.jcr)
+ .jcr           0x0000000000205d80        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .jcr           0x0000000000205d80        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic        0x0000000000205d88      0x1f0
+ *(.dynamic)
+ .dynamic       0x0000000000205d88      0x1f0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x0000000000205d88                _DYNAMIC
+
+.got            0x0000000000205f78       0x88
+ *(.got)
+ .got           0x0000000000205f78       0x88 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.igot)
+                0x0000000000206fe8                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0x18)?0x18:0x0)
+
+.got.plt        0x0000000000206000      0x1c8
+ *(.got.plt)
+ .got.plt       0x0000000000206000      0x1c8 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x0000000000206000                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+
+.data           0x00000000002061c8        0x8
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data.rel.local
+                0x00000000002061c8        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+                0x00000000002061c8                __dso_handle
+
+.tm_clone_table
+                0x00000000002061d0        0x0
+ .tm_clone_table
+                0x00000000002061d0        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .tm_clone_table
+                0x00000000002061d0        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+
+.data1
+ *(.data1)
+                0x00000000002061d0                _edata = .
+                [!provide]                        PROVIDE (edata, .)
+                0x00000000002061d0                . = .
+                0x00000000002061d0                __bss_start = .
+
+.bss            0x00000000002061d0        0x8
+ *(.dynbss)
+ .dynbss        0x00000000002061d0        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00000000002061d0        0x1 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ *(COMMON)
+                0x00000000002061d8                . = ALIGN ((. != 0x0)?0x8:0x1)
+ *fill*         0x00000000002061d1        0x7 
+
+.lbss
+ *(.dynlbss)
+ *(.lbss .lbss.* .gnu.linkonce.lb.*)
+ *(LARGE_COMMON)
+                0x00000000002061d8                . = ALIGN (0x8)
+                0x00000000002061d8                . = SEGMENT_START ("ldata-segment", .)
+
+.lrodata
+ *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+
+.ldata          0x00000000006061d8        0x0
+ *(.ldata .ldata.* .gnu.linkonce.l.*)
+                0x00000000006061d8                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x00000000006061d8                . = ALIGN (0x8)
+                0x00000000006061d8                _end = .
+                [!provide]                        PROVIDE (end, .)
+                0x00000000006061d8                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x2d
+ *(.comment)
+ .comment       0x0000000000000000       0x2d /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+                                         0x2e (size before relaxing)
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+ .comment       0x000000000000002d       0x2e /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x2a0
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000      0x130 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .debug_aranges
+                0x0000000000000130      0x140 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .debug_aranges
+                0x0000000000000270       0x30 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000     0x4fea
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000     0x170e /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .debug_info    0x000000000000170e     0x37be /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .debug_info    0x0000000000004ecc      0x11e /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+
+.debug_abbrev   0x0000000000000000      0x81a
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000      0x37a /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .debug_abbrev  0x000000000000037a      0x414 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .debug_abbrev  0x000000000000078e       0x8c /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+
+.debug_line     0x0000000000000000      0xf46
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000      0x4c3 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .debug_line    0x00000000000004c3      0x916 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .debug_line    0x0000000000000dd9      0x16d /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000     0x19bb
+ *(.debug_str)
+ .debug_str     0x0000000000000000     0x1066 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+                                       0x1100 (size before relaxing)
+ .debug_str     0x0000000000001066      0x91d /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+                                       0x159e (size before relaxing)
+ .debug_str     0x0000000000001983       0x38 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+                                        0x409 (size before relaxing)
+
+.debug_loc      0x0000000000000000     0x3606
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000     0x1037 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .debug_loc     0x0000000000001037     0x25cf /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000      0x8c0
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000      0x190 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/ARNETWORKAL_Manager.c.o
+ .debug_ranges  0x0000000000000190      0x710 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/Sources/Wifi/ARNETWORKAL_WifiNetwork.c.o
+ .debug_ranges  0x00000000000008a0       0x20 /home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/obj/gen/Sources/ARNETWORKAL_Error.c.o
+
+.debug_macro
+ *(.debug_macro)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(/home/jake/Documents/parrot/out/Unix-base/build/libARNetworkAL/libarnetworkal.so elf64-x86-64)

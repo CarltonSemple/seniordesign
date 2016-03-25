@@ -1,0 +1,15 @@
+diff --git a/lib/Makefile.am b/lib/Makefile.am
+index 6dffbd9..00ba65a 100644
+--- a/lib/Makefile.am
++++ b/lib/Makefile.am
+@@ -110,9 +110,7 @@ libcurl_la_CPPFLAGS_EXTRA =
+ libcurl_la_LDFLAGS_EXTRA =
+ libcurl_la_CFLAGS_EXTRA =
+ 
+-if CURL_LT_SHLIB_USE_VERSION_INFO
+-libcurl_la_LDFLAGS_EXTRA += $(VERSIONINFO)
+-endif
++libcurl_la_LDFLAGS_EXTRA += -avoid-version
+ 
+ if CURL_LT_SHLIB_USE_NO_UNDEFINED
+ libcurl_la_LDFLAGS_EXTRA += -no-undefined

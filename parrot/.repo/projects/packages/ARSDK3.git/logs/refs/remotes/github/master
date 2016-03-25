@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 43234277154eb570941120816480f981e864417a Jake Soccorso <jpsoccor@syr.edu> 1457467012 -0500	fetch --progress github --tags +refs/heads/*:refs/remotes/github/* +refs/heads/master:refs/remotes/github/master: storing head

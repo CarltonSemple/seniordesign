@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index ba897d9..adc8f2c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -20,7 +20,7 @@ libjsoninclude_HEADERS = \
+         json_object_private.h \
+ 	json_tokener.h
+ 
+-libjson_la_LDFLAGS = -version-info 0:1:0
++libjson_la_LDFLAGS = -avoid-version
+ 
+ libjson_la_SOURCES = \
+ 	arraylist.c \

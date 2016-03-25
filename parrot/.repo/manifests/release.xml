@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="https://github.com/Parrot-Developers/" name="github"/>
+  
+  <default remote="github" revision="master" sync-j="4"/>
+  
+  <project name="ARSDKBuildUtils" path="packages/ARSDKBuildUtils" revision="7eccafa4dbdad69166e91b2a9bd639e80cc7dc57"/>
+  <project name="ARSDKTools" path="packages/ARSDKTools" revision="72968c8e1486d54592ca2a219d3ee53d9037fdff"/>
+  <project name="Samples" path="packages/Samples" revision="280dcb12db57e783cfa8c6ed905fbdab5697c688"/>
+  <project name="alchemy" path="build/alchemy" revision="fa2e95ef92b5354ee99dd9b7438af23997d00c81"/>
+  <project name="arsdk_products" path="products" revision="696e9d6639d8f5bdd930d590b3d5365e71b27cbe">
+    <linkfile dest="build.sh" src="common/scripts/build.sh"/>
+  </project>
+  <project name="libARCommands" path="packages/libARCommands" revision="5898658a925245555153459ea4684aa87f220e07"/>
+  <project name="libARController" path="packages/libARController" revision="a7725a9957529bf2ae5564bc08e868f1e35f8a97"/>
+  <project name="libARDataTransfer" path="packages/libARDataTransfer" revision="9abe9bf2718b2d2a8ac48730d4ffcef61ec05f5b"/>
+  <project name="libARDiscovery" path="packages/libARDiscovery" revision="928581a32daf0e5d63ec93bcddd16e8f7b329791"/>
+  <project name="libARMavlink" path="packages/libARMavlink" revision="d34ac70485c5f113132e148e82d1ae06ae3892dc"/>
+  <project name="libARMedia" path="packages/libARMedia" revision="2f2c8965b8c72f8d12e1dba21e3c85cf1568d10c"/>
+  <project name="libARNetwork" path="packages/libARNetwork" revision="a4f5e4911318f2e1531c88275d2df9f5e15909fb"/>
+  <project name="libARNetworkAL" path="packages/libARNetworkAL" revision="34fc0223642e985a3b270f2a3e76f3255af5555e"/>
+  <project name="libARSAL" path="packages/libARSAL" revision="5ef3f47632fa00004cd8eebee19f8f1cd6ed1e76"/>
+  <project name="libARStream" path="packages/libARStream" revision="616a9ec640d674b05d9925d83ae99d2bbd0d70f3"/>
+  <project name="libARStream2" path="packages/libARStream2" revision="ee14f6c68c7f64f6ec3e51be7f919b5e9de7031d"/>
+  <project name="libARUpdater" path="packages/libARUpdater" revision="1e6361007492437abb4671f3d151c9f977e1b68a"/>
+  <project name="libARUtils" path="packages/libARUtils" revision="2d81cf236feca7f769b5e0213fb8378f71e96f8e"/>
+</manifest>
