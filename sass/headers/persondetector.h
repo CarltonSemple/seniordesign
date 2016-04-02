@@ -12,7 +12,7 @@ class PersonDetector
     public:
     PersonDetector();
             
-    std::vector<Human> detectHumans(cv::Mat img, bool drawBoxes);
+    std::vector<Human> detectHumans(cv::Mat img);//, bool drawBoxes);
     
     /* Match new humans with the current stored humans */
     void keepSimilarHumans(std::vector<Human> & collection, std::vector<Human> & newHumans);
