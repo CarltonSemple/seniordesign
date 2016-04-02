@@ -11,10 +11,22 @@ std::pair<int,int> Blob::getTopLeft()
     return c;
 }
 
+cv::Point Blob::getTopLeftPoint()
+{
+    auto pa = getTopLeft();
+    return cv::Point(pa.first, pa.second);
+}
+
 std::pair<int,int> Blob::getTopRight()
 {
     std::pair<int,int> c(x_right,y_top);
     return c;
+}
+
+cv::Point Blob::getTopRightPoint()
+{
+    auto pa = getTopRight();
+    return cv::Point(pa.first, pa.second);
 }
 
 std::pair<int,int> Blob::getBottomLeft()
@@ -23,10 +35,22 @@ std::pair<int,int> Blob::getBottomLeft()
     return c;
 }
 
+cv::Point Blob::getBottomLeftPoint()
+{
+    auto pa = getBottomLeft();
+    return cv::Point(pa.first, pa.second);
+}
+
 std::pair<int,int> Blob::getBottomRight()
 {
     std::pair<int,int> c(x_right, y_bottom);
     return c;
+}
+
+cv::Point Blob::getBottomRightPoint()
+{
+    auto pa = getBottomRight();
+    return cv::Point(pa.first, pa.second);
 }
 
 void Blob::setTopLeft(std::pair<int,int> p)
