@@ -24,10 +24,14 @@ class Blob
     Blob();
     
     std::pair<int,int> getTopLeft(); // return top left coordinate
+    cv::Point getTopLeftPoint();
     std::pair<int,int> getTopRight(); // return top right coordinate
+    cv::Point getTopRightPoint();
     std::pair<int,int> getBottomLeft(); // return bottom left coordinate
+    cv::Point getBottomLeftPoint();
     std::pair<int,int> getBottomRight(); // return bottom right coordinate
-    
+    cv::Point getBottomRightPoint();
+        
     void setTopLeft(std::pair<int,int> p);
     void setBottomRight(std::pair<int,int> p);
 };
