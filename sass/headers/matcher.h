@@ -29,6 +29,8 @@ class Matcher
     //
     //
     int surfCount(Human & scannedHuman, cv::Mat & potentialImage);
+    
+    
 };
 
 #endif

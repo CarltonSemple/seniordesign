@@ -2,6 +2,7 @@
 #include <string>
 #include "opencv2/features2d.hpp"
 #include "opencv2/xfeatures2d.hpp"
+#include <thread>
 
 using namespace std;
 using namespace cv;
@@ -17,10 +18,19 @@ Matcher::Matcher(float AccuracyRatio)
     ratio = AccuracyRatio;
 }
 
+int totalMatches = 0;
+
+void getMatches(RobustMatcher & rmatcher, cv::Mat & scannedImg, cv::Mat & potentialImage)
+{
+    std::vector<cv::DMatch> matches;
+    std::vector<cv::KeyPoint> keypoints1, keypoints2;
+    // get matches 
+    rmatcher.match(scannedImg,potentialImage,matches, keypoints1, keypoints2, false);
+    totalMatches += matches.size();
+}
+
 int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
 {
-    int totalMatches = 0;
-    
     // Prepare the matcher
     int minHessian = 400; // 10;
 	RobustMatcher rmatcher;
@@ -36,15 +46,24 @@ int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
     
     // Check matches between potentialImage and each of the human's images
     vector<cv::Mat> & scannedImages = scannedHuman.getImages();
-    //for(Mat img : scannedHuman.getImages())
-    for(int i = 0; i < 1; i++) //i < scannedImages.size(); i++)
+    
+    vector<thread> threads;
+    
+    // TODO
+    //
+    //
+    // should probably limit the number of scanned images..
+    for(Mat img : scannedHuman.getImages())
     {
-        Mat & img = scannedImages[i];
+        /*
         std::vector<cv::DMatch> matches;
         std::vector<cv::KeyPoint> keypoints1, keypoints2;
         // get matches 
-        rmatcher.match(img,potentialImage,matches, keypoints1, keypoints2, true);
+        rmatcher.match(img,potentialImage,matches, keypoints1, keypoints2, false);
         totalMatches += matches.size();
+        */
+        //thread mt(getMatches, std::ref(rmatcher), std::ref(img), std::ref(potentialImage));
+        threads.push_back(thread(getMatches, std::ref(rmatcher), std::ref(img), std::ref(potentialImage)));
         
         /*
         // draw the matches
@@ -62,6 +81,10 @@ int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
         // close the window
         //cvDestroyWindow("Matches");
         //cvReleaseImage(&imageMatches);
+    }
+    
+    for(thread & tt : threads) {
+        tt.join();
     }
     
     return totalMatches;
