@@ -1,0 +1,6 @@
+# pack-refs with: peeled fully-peeled 
+f4a3dfee305862374fe17aad7649a890a7ea2071 refs/remotes/origin/master
+12c4a898e786411fb218b0e9eac72cde72800afe refs/tags/ARSDK3_version_3_8
+b3412177d0bd457c97001503af328d3cf3385861 refs/tags/ARSDK3_version_3_8_1
+812840064ca8e65a387aebfffdc4bd7d3bb1acfb refs/tags/ARSDK3_version_3_8_2
+2930cc7f7a79173d51c1fc167475fa9fa6650def refs/tags/ARSDK3_version_3_8_3

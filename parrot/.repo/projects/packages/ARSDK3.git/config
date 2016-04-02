@@ -1,0 +1,7 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/Parrot-Developers/ARSDK3
+	projectname = ARSDK3
+	fetch = +refs/heads/*:refs/remotes/github/*

@@ -1,0 +1,7 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/Parrot-Developers/Samples
+	projectname = Samples
+	fetch = +refs/heads/*:refs/remotes/github/*

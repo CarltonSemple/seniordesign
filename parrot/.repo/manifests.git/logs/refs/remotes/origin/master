@@ -1,0 +1,1 @@
+0000000000000000000000000000000000000000 f4a3dfee305862374fe17aad7649a890a7ea2071 Jake Soccorso <jpsoccor@syr.edu> 1457466988 -0500	fetch --progress origin --tags +refs/heads/*:refs/remotes/origin/* +refs/heads/master:refs/remotes/origin/master: storing head

@@ -1,0 +1,7 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/Parrot-Developers/libARStream2
+	projectname = libARStream2
+	fetch = +refs/heads/*:refs/remotes/github/*

@@ -1,0 +1,1127 @@
+
+As-needed library included to satisfy reference by file (symbol)
+
+libarsal.so                   /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o (ARSAL_Mutex_Destroy)
+libm.so.6                     /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o (log@@GLIBC_2.2.5)
+libpthread.so.0               /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o (__errno_location@@GLIBC_2.2.5)
+libc.so.6                     /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o (fopen@@GLIBC_2.2.5)
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .gnu_debuglink
+                0x0000000000000000        0xc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .text.unlikely
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .text.unlikely.ARSTREAM2_Error_ToString
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_resetCurrentAu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_enqueueCurrentAu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_RtpReceiverNaluCallback
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_GetSpsPps
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_RunFilterThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_Start
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_Pause
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_Stop
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_Init
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.unlikely.ARSTREAM2_H264Filter_Free
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.readBits
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParseFillerData
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_StartcodeMatch_file.isra.5
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParseAud
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParseScalingList
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.readBits_expGolomb_ue.constprop.7
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParseSei
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParseHrdParams
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.readBits_expGolomb_se.constprop.6
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParsePps
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParseSps
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParseSlice
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ParseNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ReadNextNalu_file
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_ReadNextNalu_buffer
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_SetupNalu_buffer
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_GetLastNaluType
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_GetSliceInfo
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_GetUserDataSeiCount
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_GetUserDataSei
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_GetSpsPpsContext
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_GetSliceContext
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_Init
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.unlikely.ARSTREAM2_H264Parser_Free
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .text.unlikely.ARSTREAM2_H264Sei_SerializeUserDataParrotStreamingV1
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .text.unlikely.ARSTREAM2_H264Sei_DeserializeUserDataParrotStreamingV1
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .text.unlikely.ARSTREAM2_H264Sei_IsUserDataParrotStreamingV1
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.writeBits
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.writeBits_expGolomb_ue.constprop.7
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.writeBits_expGolomb_se.constprop.6
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.ARSTREAM2_H264Writer_WriteSliceHeader
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.ARSTREAM2_H264Writer_WriteSeiNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.ARSTREAM2_H264Writer_WriteSkippedPSliceNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.ARSTREAM2_H264Writer_WriteGrayISliceNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.ARSTREAM2_H264Writer_SetSpsPpsContext
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.ARSTREAM2_H264Writer_Init
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text.unlikely.ARSTREAM2_H264Writer_Free
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_CheckBufferSize
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_ResendNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_OutputNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_RtpResender_NaluCallback
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_New
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_InvalidateNaluBuffer
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_Stop
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_Delete
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_RunStreamThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_RunControlThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_GetNaluCallbackUserPtr
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_GetMonitoring
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_RtpResender_New
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_RtpResender_Stop
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_RtpResender_Delete
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_RtpResender_RunStreamThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text.unlikely.ARSTREAM2_RtpReceiver_RtpResender_RunControlThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_UpdateMonitoring
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_DequeueNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_SendData
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_FlushNaluFifo.part.0
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_New
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_Stop
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_Delete
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_SendNewNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_SendNNewNalu
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_FlushNaluQueue
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_RunStreamThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_RunControlThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_GetAuCallbackUserPtr
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_GetNaluCallbackUserPtr
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text.unlikely.ARSTREAM2_RtpSender_GetMonitoring
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .text          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .data          0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .bss           0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_Init
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_Free
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_RunFilterThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_RunStreamThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_RunControlThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_StartFilter
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_PauseFilter
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_Stop
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_GetSpsPps
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_InitResender
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_FreeResender
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_RunResenderStreamThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_RunResenderControlThread
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text.unlikely.ARSTREAM2_StreamReceiver_StopResender
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+ .gnu_debuglink
+                0x0000000000000000        0xc /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+LOAD /home/jake/Documents/parrot/out/Unix-base/staging/usr/lib/libarsal.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/librt.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libstdc++.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libm.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libgcc_s.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libpthread.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libpthread.so.0
+LOAD /usr/lib/x86_64-linux-gnu/libpthread_nonshared.a
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/libc.so
+START GROUP
+LOAD /lib/x86_64-linux-gnu/libc.so.6
+LOAD /usr/lib/x86_64-linux-gnu/libc_nonshared.a
+LOAD /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+END GROUP
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/libgcc_s.so
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+LOAD /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+                0x00000000000001c8                . = (0x0 + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+                0x00000000000001c8       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x00000000000001c8       0x24 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00000000000001f0      0x274
+ *(.gnu.hash)
+ .gnu.hash      0x00000000000001f0      0x274 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.dynsym         0x0000000000000468      0xc30
+ *(.dynsym)
+ .dynsym        0x0000000000000468      0xc30 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.dynstr         0x0000000000001098      0xd2a
+ *(.dynstr)
+ .dynstr        0x0000000000001098      0xd2a /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.gnu.version    0x0000000000001dc2      0x104
+ *(.gnu.version)
+ .gnu.version   0x0000000000001dc2      0x104 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.gnu.version_d  0x0000000000001ec8        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x0000000000001ec8        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.gnu.version_r  0x0000000000001ec8       0x90
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x0000000000001ec8       0x90 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.rela.dyn       0x0000000000001f58      0x570
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ .rela.text     0x0000000000001f58        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ .rela.data.rel.local
+                0x0000000000001f58       0x18 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .rela.data.rel.ro.local
+                0x0000000000001f70      0x498 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ .rela.got      0x0000000000002408       0x90 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rela.ldata .rela.ldata.* .rela.gnu.linkonce.l.*)
+ *(.rela.lbss .rela.lbss.* .rela.gnu.linkonce.lb.*)
+ *(.rela.lrodata .rela.lrodata.* .rela.gnu.linkonce.lr.*)
+ *(.rela.ifunc)
+ .rela.ifunc    0x0000000000002498        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .rela.fini_array
+                0x0000000000002498       0x18 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .rela.init_array
+                0x00000000000024b0       0x18 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+
+.rela.plt       0x00000000000024c8      0x8d0
+ *(.rela.plt)
+ .rela.plt      0x00000000000024c8      0x8d0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.rela.iplt)
+
+.init           0x0000000000002d98       0x1a
+ *(SORT(.init))
+ .init          0x0000000000002d98       0x15 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x0000000000002d98                _init
+ .init          0x0000000000002dad        0x5 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+
+.plt            0x0000000000002dc0      0x5f0
+ *(.plt)
+ .plt           0x0000000000002dc0      0x5f0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.iplt)
+
+.plt.bnd
+ *(.plt.bnd)
+
+.text           0x00000000000033b0    0x27900
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00000000000033b0      0x100 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .text.ARSTREAM2_Error_ToString
+                0x00000000000034b0       0xd8 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+                0x00000000000034b0                ARSTREAM2_Error_ToString
+ *fill*         0x0000000000003588        0x8 
+ .text.ARSTREAM2_H264Filter_resetCurrentAu
+                0x0000000000003590       0x90 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .text.ARSTREAM2_H264Filter_enqueueCurrentAu
+                0x0000000000003620      0x4b7 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ *fill*         0x0000000000003ad7        0x9 
+ .text.ARSTREAM2_H264Filter_RtpReceiverNaluCallback
+                0x0000000000003ae0     0x2e3b /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                0x0000000000003ae0                ARSTREAM2_H264Filter_RtpReceiverNaluCallback
+ *fill*         0x000000000000691b        0x5 
+ .text.ARSTREAM2_H264Filter_GetSpsPps
+                0x0000000000006920      0x11b /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                0x0000000000006920                ARSTREAM2_H264Filter_GetSpsPps
+ *fill*         0x0000000000006a3b        0x5 
+ .text.ARSTREAM2_H264Filter_RunFilterThread
+                0x0000000000006a40      0x172 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                0x0000000000006a40                ARSTREAM2_H264Filter_RunFilterThread
+ *fill*         0x0000000000006bb2        0xe 
+ .text.ARSTREAM2_H264Filter_Start
+                0x0000000000006bc0      0x254 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                0x0000000000006bc0                ARSTREAM2_H264Filter_Start
+ *fill*         0x0000000000006e14        0xc 
+ .text.ARSTREAM2_H264Filter_Pause
+                0x0000000000006e20      0x154 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                0x0000000000006e20                ARSTREAM2_H264Filter_Pause
+ *fill*         0x0000000000006f74        0xc 
+ .text.ARSTREAM2_H264Filter_Stop
+                0x0000000000006f80       0xfc /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                0x0000000000006f80                ARSTREAM2_H264Filter_Stop
+ *fill*         0x000000000000707c        0x4 
+ .text.ARSTREAM2_H264Filter_Init
+                0x0000000000007080      0xa93 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                0x0000000000007080                ARSTREAM2_H264Filter_Init
+ *fill*         0x0000000000007b13        0xd 
+ .text.ARSTREAM2_H264Filter_Free
+                0x0000000000007b20      0x23f /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                0x0000000000007b20                ARSTREAM2_H264Filter_Free
+ *fill*         0x0000000000007d5f        0x1 
+ .text.readBits
+                0x0000000000007d60      0x1c8 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x0000000000007f28        0x8 
+ .text.ARSTREAM2_H264Parser_ParseFillerData
+                0x0000000000007f30       0xb9 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x0000000000007fe9        0x7 
+ .text.ARSTREAM2_H264Parser_StartcodeMatch_file.isra.5
+                0x0000000000007ff0      0x17c /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x000000000000816c        0x4 
+ .text.ARSTREAM2_H264Parser_ParseAud
+                0x0000000000008170      0x484 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x00000000000085f4        0xc 
+ .text.ARSTREAM2_H264Parser_ParseScalingList
+                0x0000000000008600      0x540 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.readBits_expGolomb_ue.constprop.7
+                0x0000000000008b40      0x350 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .text.ARSTREAM2_H264Parser_ParseSei
+                0x0000000000008e90     0x1b71 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x000000000000aa01        0xf 
+ .text.ARSTREAM2_H264Parser_ParseHrdParams
+                0x000000000000aa10     0x1566 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x000000000000bf76        0xa 
+ .text.readBits_expGolomb_se.constprop.6
+                0x000000000000bf80      0x375 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x000000000000c2f5        0xb 
+ .text.ARSTREAM2_H264Parser_ParsePps
+                0x000000000000c300     0x2467 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x000000000000e767        0x9 
+ .text.ARSTREAM2_H264Parser_ParseSps
+                0x000000000000e770     0x515e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x00000000000138ce        0x2 
+ .text.ARSTREAM2_H264Parser_ParseSlice
+                0x00000000000138d0     0x4593 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x0000000000017e63        0xd 
+ .text.ARSTREAM2_H264Parser_ParseNalu
+                0x0000000000017e70      0x440 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x0000000000017e70                ARSTREAM2_H264Parser_ParseNalu
+ .text.ARSTREAM2_H264Parser_ReadNextNalu_file
+                0x00000000000182b0      0x616 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x00000000000182b0                ARSTREAM2_H264Parser_ReadNextNalu_file
+ *fill*         0x00000000000188c6        0xa 
+ .text.ARSTREAM2_H264Parser_ReadNextNalu_buffer
+                0x00000000000188d0      0x464 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x00000000000188d0                ARSTREAM2_H264Parser_ReadNextNalu_buffer
+ *fill*         0x0000000000018d34        0xc 
+ .text.ARSTREAM2_H264Parser_SetupNalu_buffer
+                0x0000000000018d40      0x185 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x0000000000018d40                ARSTREAM2_H264Parser_SetupNalu_buffer
+ *fill*         0x0000000000018ec5        0xb 
+ .text.ARSTREAM2_H264Parser_GetLastNaluType
+                0x0000000000018ed0       0xc9 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x0000000000018ed0                ARSTREAM2_H264Parser_GetLastNaluType
+ *fill*         0x0000000000018f99        0x7 
+ .text.ARSTREAM2_H264Parser_GetSliceInfo
+                0x0000000000018fa0      0x1b2 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x0000000000018fa0                ARSTREAM2_H264Parser_GetSliceInfo
+ *fill*         0x0000000000019152        0xe 
+ .text.ARSTREAM2_H264Parser_GetUserDataSeiCount
+                0x0000000000019160       0xcf /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x0000000000019160                ARSTREAM2_H264Parser_GetUserDataSeiCount
+ *fill*         0x000000000001922f        0x1 
+ .text.ARSTREAM2_H264Parser_GetUserDataSei
+                0x0000000000019230      0x1b5 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x0000000000019230                ARSTREAM2_H264Parser_GetUserDataSei
+ *fill*         0x00000000000193e5        0xb 
+ .text.ARSTREAM2_H264Parser_GetSpsPpsContext
+                0x00000000000193f0      0x16b /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x00000000000193f0                ARSTREAM2_H264Parser_GetSpsPpsContext
+ *fill*         0x000000000001955b        0x5 
+ .text.ARSTREAM2_H264Parser_GetSliceContext
+                0x0000000000019560      0x162 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x0000000000019560                ARSTREAM2_H264Parser_GetSliceContext
+ *fill*         0x00000000000196c2        0xe 
+ .text.ARSTREAM2_H264Parser_Init
+                0x00000000000196d0      0x198 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x00000000000196d0                ARSTREAM2_H264Parser_Init
+ *fill*         0x0000000000019868        0x8 
+ .text.ARSTREAM2_H264Parser_Free
+                0x0000000000019870       0x65 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                0x0000000000019870                ARSTREAM2_H264Parser_Free
+ *fill*         0x00000000000198d5        0xb 
+ .text.ARSTREAM2_H264Sei_SerializeUserDataParrotStreamingV1
+                0x00000000000198e0       0xa7 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+                0x00000000000198e0                ARSTREAM2_H264Sei_SerializeUserDataParrotStreamingV1
+ *fill*         0x0000000000019987        0x9 
+ .text.ARSTREAM2_H264Sei_DeserializeUserDataParrotStreamingV1
+                0x0000000000019990       0xb6 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+                0x0000000000019990                ARSTREAM2_H264Sei_DeserializeUserDataParrotStreamingV1
+ *fill*         0x0000000000019a46        0xa 
+ .text.ARSTREAM2_H264Sei_IsUserDataParrotStreamingV1
+                0x0000000000019a50       0x56 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+                0x0000000000019a50                ARSTREAM2_H264Sei_IsUserDataParrotStreamingV1
+ *fill*         0x0000000000019aa6        0xa 
+ .text.writeBits
+                0x0000000000019ab0       0xf6 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ *fill*         0x0000000000019ba6        0xa 
+ .text.writeBits_expGolomb_ue.constprop.7
+                0x0000000000019bb0      0x37e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ *fill*         0x0000000000019f2e        0x2 
+ .text.writeBits_expGolomb_se.constprop.6
+                0x0000000000019f30      0x579 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ *fill*         0x000000000001a4a9        0x7 
+ .text.ARSTREAM2_H264Writer_WriteSliceHeader
+                0x000000000001a4b0     0x3267 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ *fill*         0x000000000001d717        0x9 
+ .text.ARSTREAM2_H264Writer_WriteSeiNalu
+                0x000000000001d720     0x1647 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+                0x000000000001d720                ARSTREAM2_H264Writer_WriteSeiNalu
+ *fill*         0x000000000001ed67        0x9 
+ .text.ARSTREAM2_H264Writer_WriteSkippedPSliceNalu
+                0x000000000001ed70      0x895 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+                0x000000000001ed70                ARSTREAM2_H264Writer_WriteSkippedPSliceNalu
+ *fill*         0x000000000001f605        0xb 
+ .text.ARSTREAM2_H264Writer_WriteGrayISliceNalu
+                0x000000000001f610      0xa83 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+                0x000000000001f610                ARSTREAM2_H264Writer_WriteGrayISliceNalu
+ *fill*         0x0000000000020093        0xd 
+ .text.ARSTREAM2_H264Writer_SetSpsPpsContext
+                0x00000000000200a0       0xae /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+                0x00000000000200a0                ARSTREAM2_H264Writer_SetSpsPpsContext
+ *fill*         0x000000000002014e        0x2 
+ .text.ARSTREAM2_H264Writer_Init
+                0x0000000000020150       0x57 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+                0x0000000000020150                ARSTREAM2_H264Writer_Init
+ *fill*         0x00000000000201a7        0x9 
+ .text.ARSTREAM2_H264Writer_Free
+                0x00000000000201b0       0x1e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+                0x00000000000201b0                ARSTREAM2_H264Writer_Free
+ *fill*         0x00000000000201ce        0x2 
+ .text.ARSTREAM2_RtpReceiver_CheckBufferSize
+                0x00000000000201d0       0xe9 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ *fill*         0x00000000000202b9        0x7 
+ .text.ARSTREAM2_RtpReceiver_ResendNalu
+                0x00000000000202c0      0x5dc /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ *fill*         0x000000000002089c        0x4 
+ .text.ARSTREAM2_RtpReceiver_OutputNalu
+                0x00000000000208a0       0xa6 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ *fill*         0x0000000000020946        0xa 
+ .text.ARSTREAM2_RtpReceiver_RtpResender_NaluCallback
+                0x0000000000020950       0x42 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ *fill*         0x0000000000020992        0xe 
+ .text.ARSTREAM2_RtpReceiver_New
+                0x00000000000209a0      0x779 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x00000000000209a0                ARSTREAM2_RtpReceiver_New
+ *fill*         0x0000000000021119        0x7 
+ .text.ARSTREAM2_RtpReceiver_InvalidateNaluBuffer
+                0x0000000000021120      0x17e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x0000000000021120                ARSTREAM2_RtpReceiver_InvalidateNaluBuffer
+ *fill*         0x000000000002129e        0x2 
+ .text.ARSTREAM2_RtpReceiver_Stop
+                0x00000000000212a0      0x149 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x00000000000212a0                ARSTREAM2_RtpReceiver_Stop
+ *fill*         0x00000000000213e9        0x7 
+ .text.ARSTREAM2_RtpReceiver_Delete
+                0x00000000000213f0      0x440 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x00000000000213f0                ARSTREAM2_RtpReceiver_Delete
+ .text.ARSTREAM2_RtpReceiver_RunStreamThread
+                0x0000000000021830     0x1d85 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x0000000000021830                ARSTREAM2_RtpReceiver_RunStreamThread
+ *fill*         0x00000000000235b5        0xb 
+ .text.ARSTREAM2_RtpReceiver_RunControlThread
+                0x00000000000235c0      0xcc0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x00000000000235c0                ARSTREAM2_RtpReceiver_RunControlThread
+ .text.ARSTREAM2_RtpReceiver_GetNaluCallbackUserPtr
+                0x0000000000024280       0x13 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x0000000000024280                ARSTREAM2_RtpReceiver_GetNaluCallbackUserPtr
+ *fill*         0x0000000000024293        0xd 
+ .text.ARSTREAM2_RtpReceiver_GetMonitoring
+                0x00000000000242a0      0x4f7 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x00000000000242a0                ARSTREAM2_RtpReceiver_GetMonitoring
+ *fill*         0x0000000000024797        0x9 
+ .text.ARSTREAM2_RtpReceiver_RtpResender_New
+                0x00000000000247a0      0x1dd /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x00000000000247a0                ARSTREAM2_RtpReceiver_RtpResender_New
+ *fill*         0x000000000002497d        0x3 
+ .text.ARSTREAM2_RtpReceiver_RtpResender_Stop
+                0x0000000000024980       0x42 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x0000000000024980                ARSTREAM2_RtpReceiver_RtpResender_Stop
+ *fill*         0x00000000000249c2        0xe 
+ .text.ARSTREAM2_RtpReceiver_RtpResender_Delete
+                0x00000000000249d0      0x37f /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x00000000000249d0                ARSTREAM2_RtpReceiver_RtpResender_Delete
+ *fill*         0x0000000000024d4f        0x1 
+ .text.ARSTREAM2_RtpReceiver_RtpResender_RunStreamThread
+                0x0000000000024d50       0x13 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x0000000000024d50                ARSTREAM2_RtpReceiver_RtpResender_RunStreamThread
+ *fill*         0x0000000000024d63        0xd 
+ .text.ARSTREAM2_RtpReceiver_RtpResender_RunControlThread
+                0x0000000000024d70       0x13 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                0x0000000000024d70                ARSTREAM2_RtpReceiver_RtpResender_RunControlThread
+ *fill*         0x0000000000024d83        0xd 
+ .text.ARSTREAM2_RtpSender_UpdateMonitoring
+                0x0000000000024d90      0x19a /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ *fill*         0x0000000000024f2a        0x6 
+ .text.ARSTREAM2_RtpSender_DequeueNalu
+                0x0000000000024f30      0x12f /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ *fill*         0x000000000002505f        0x1 
+ .text.ARSTREAM2_RtpSender_SendData
+                0x0000000000025060      0xd22 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ *fill*         0x0000000000025d82        0xe 
+ .text.ARSTREAM2_RtpSender_FlushNaluFifo.part.0
+                0x0000000000025d90       0xd2 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ *fill*         0x0000000000025e62        0xe 
+ .text.ARSTREAM2_RtpSender_New
+                0x0000000000025e70      0x76c /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000025e70                ARSTREAM2_RtpSender_New
+ *fill*         0x00000000000265dc        0x4 
+ .text.ARSTREAM2_RtpSender_Stop
+                0x00000000000265e0       0x42 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x00000000000265e0                ARSTREAM2_RtpSender_Stop
+ *fill*         0x0000000000026622        0xe 
+ .text.ARSTREAM2_RtpSender_Delete
+                0x0000000000026630      0x1f4 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000026630                ARSTREAM2_RtpSender_Delete
+ *fill*         0x0000000000026824        0xc 
+ .text.ARSTREAM2_RtpSender_SendNewNalu
+                0x0000000000026830      0x1fe /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000026830                ARSTREAM2_RtpSender_SendNewNalu
+ *fill*         0x0000000000026a2e        0x2 
+ .text.ARSTREAM2_RtpSender_SendNNewNalu
+                0x0000000000026a30      0x2a9 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000026a30                ARSTREAM2_RtpSender_SendNNewNalu
+ *fill*         0x0000000000026cd9        0x7 
+ .text.ARSTREAM2_RtpSender_FlushNaluQueue
+                0x0000000000026ce0       0x26 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000026ce0                ARSTREAM2_RtpSender_FlushNaluQueue
+ *fill*         0x0000000000026d06        0xa 
+ .text.ARSTREAM2_RtpSender_RunStreamThread
+                0x0000000000026d10     0x1a82 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000026d10                ARSTREAM2_RtpSender_RunStreamThread
+ *fill*         0x0000000000028792        0xe 
+ .text.ARSTREAM2_RtpSender_RunControlThread
+                0x00000000000287a0      0xba9 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x00000000000287a0                ARSTREAM2_RtpSender_RunControlThread
+ *fill*         0x0000000000029349        0x7 
+ .text.ARSTREAM2_RtpSender_GetAuCallbackUserPtr
+                0x0000000000029350       0x13 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000029350                ARSTREAM2_RtpSender_GetAuCallbackUserPtr
+ *fill*         0x0000000000029363        0xd 
+ .text.ARSTREAM2_RtpSender_GetNaluCallbackUserPtr
+                0x0000000000029370       0x13 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000029370                ARSTREAM2_RtpSender_GetNaluCallbackUserPtr
+ *fill*         0x0000000000029383        0xd 
+ .text.ARSTREAM2_RtpSender_GetMonitoring
+                0x0000000000029390      0x6a1 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                0x0000000000029390                ARSTREAM2_RtpSender_GetMonitoring
+ *fill*         0x0000000000029a31        0xf 
+ .text.ARSTREAM2_StreamReceiver_Init
+                0x0000000000029a40      0x4a4 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x0000000000029a40                ARSTREAM2_StreamReceiver_Init
+ *fill*         0x0000000000029ee4        0xc 
+ .text.ARSTREAM2_StreamReceiver_Free
+                0x0000000000029ef0      0x202 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x0000000000029ef0                ARSTREAM2_StreamReceiver_Free
+ *fill*         0x000000000002a0f2        0xe 
+ .text.ARSTREAM2_StreamReceiver_RunFilterThread
+                0x000000000002a100       0xca /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002a100                ARSTREAM2_StreamReceiver_RunFilterThread
+ *fill*         0x000000000002a1ca        0x6 
+ .text.ARSTREAM2_StreamReceiver_RunStreamThread
+                0x000000000002a1d0       0xca /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002a1d0                ARSTREAM2_StreamReceiver_RunStreamThread
+ *fill*         0x000000000002a29a        0x6 
+ .text.ARSTREAM2_StreamReceiver_RunControlThread
+                0x000000000002a2a0       0xca /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002a2a0                ARSTREAM2_StreamReceiver_RunControlThread
+ *fill*         0x000000000002a36a        0x6 
+ .text.ARSTREAM2_StreamReceiver_StartFilter
+                0x000000000002a370      0x176 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002a370                ARSTREAM2_StreamReceiver_StartFilter
+ *fill*         0x000000000002a4e6        0xa 
+ .text.ARSTREAM2_StreamReceiver_PauseFilter
+                0x000000000002a4f0      0x179 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002a4f0                ARSTREAM2_StreamReceiver_PauseFilter
+ *fill*         0x000000000002a669        0x7 
+ .text.ARSTREAM2_StreamReceiver_Stop
+                0x000000000002a670      0x172 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002a670                ARSTREAM2_StreamReceiver_Stop
+ *fill*         0x000000000002a7e2        0xe 
+ .text.ARSTREAM2_StreamReceiver_GetSpsPps
+                0x000000000002a7f0       0xcb /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002a7f0                ARSTREAM2_StreamReceiver_GetSpsPps
+ *fill*         0x000000000002a8bb        0x5 
+ .text.ARSTREAM2_StreamReceiver_InitResender
+                0x000000000002a8c0      0x2e5 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002a8c0                ARSTREAM2_StreamReceiver_InitResender
+ *fill*         0x000000000002aba5        0xb 
+ .text.ARSTREAM2_StreamReceiver_FreeResender
+                0x000000000002abb0       0xcc /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002abb0                ARSTREAM2_StreamReceiver_FreeResender
+ *fill*         0x000000000002ac7c        0x4 
+ .text.ARSTREAM2_StreamReceiver_RunResenderStreamThread
+                0x000000000002ac80        0x5 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002ac80                ARSTREAM2_StreamReceiver_RunResenderStreamThread
+ *fill*         0x000000000002ac85        0xb 
+ .text.ARSTREAM2_StreamReceiver_RunResenderControlThread
+                0x000000000002ac90        0x5 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002ac90                ARSTREAM2_StreamReceiver_RunResenderControlThread
+ *fill*         0x000000000002ac95        0xb 
+ .text.ARSTREAM2_StreamReceiver_StopResender
+                0x000000000002aca0       0x10 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                0x000000000002aca0                ARSTREAM2_StreamReceiver_StopResender
+ *(.gnu.warning)
+
+.fini           0x000000000002acb0        0x9
+ *(SORT(.fini))
+ .fini          0x000000000002acb0        0x4 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x000000000002acb0                _fini
+ .fini          0x000000000002acb4        0x5 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o
+                [!provide]                        PROVIDE (__etext, .)
+                [!provide]                        PROVIDE (_etext, .)
+                [!provide]                        PROVIDE (etext, .)
+
+.rodata         0x000000000002acc0     0x698e
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.1
+                0x000000000002acc0       0xc1 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ *fill*         0x000000000002ad81        0x7 
+ .rodata.str1.8
+                0x000000000002ad88       0x2a /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ *fill*         0x000000000002adb2        0x2 
+ .rodata        0x000000000002adb4       0x2c /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .rodata.str1.1
+                0x000000000002ade0       0x66 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                                         0x6d (size before relaxing)
+ *fill*         0x000000000002ae46        0x2 
+ .rodata.str1.8
+                0x000000000002ae48     0x108f /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ *fill*         0x000000000002bed7        0x9 
+ .rodata        0x000000000002bee0      0x2ad /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .rodata.str1.1
+                0x000000000002c18d      0x154 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                                        0x177 (size before relaxing)
+ *fill*         0x000000000002c2e1        0x7 
+ .rodata.str1.8
+                0x000000000002c2e8     0x2d23 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                                       0x2db3 (size before relaxing)
+ *fill*         0x000000000002f00b       0x15 
+ .rodata        0x000000000002f020      0x52f /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *fill*         0x000000000002f54f        0x1 
+ .rodata.cst8   0x000000000002f550        0x8 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .rodata.cst8   0x000000000002f558        0x8 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .rodata.str1.1
+                0x000000000002f558       0x74 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                                         0x7f (size before relaxing)
+ *fill*         0x000000000002f5cc        0x4 
+ .rodata.str1.8
+                0x000000000002f5d0      0xe94 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ *fill*         0x0000000000030464       0x1c 
+ .rodata        0x0000000000030480      0x2aa /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .rodata.str1.1
+                0x000000000003072a       0x3c /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                                         0x7b (size before relaxing)
+ *fill*         0x0000000000030766        0x2 
+ .rodata.str1.8
+                0x0000000000030768      0x899 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                                        0xd01 (size before relaxing)
+ *fill*         0x0000000000031001       0x1f 
+ .rodata        0x0000000000031020      0x188 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .rodata.cst8   0x00000000000311a8        0x8 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .rodata.str1.1
+                0x00000000000311b0       0x19 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                                         0x22 (size before relaxing)
+ *fill*         0x00000000000311c9        0x7 
+ .rodata.str1.8
+                0x00000000000311d0      0x228 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                                        0x2de (size before relaxing)
+ *fill*         0x00000000000313f8        0x8 
+ .rodata        0x0000000000031400      0x24e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+
+.rodata1
+ *(.rodata1)
+
+.eh_frame_hdr   0x0000000000031650      0x304
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x0000000000031650      0x304 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+
+.eh_frame       0x0000000000031958     0x3a94
+ *(.eh_frame)
+ .eh_frame      0x0000000000031958       0x40 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ .eh_frame      0x0000000000031998       0x18 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+                                         0x30 (size before relaxing)
+ .eh_frame      0x00000000000319b0      0x808 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                                        0x810 (size before relaxing)
+ .eh_frame      0x00000000000321b8     0x1bf8 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                                       0x1bf0 (size before relaxing)
+ .eh_frame      0x0000000000033db0       0x48 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+                                         0x58 (size before relaxing)
+ .eh_frame      0x0000000000033df8      0x1f8 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+                                        0x1f0 (size before relaxing)
+ .eh_frame      0x0000000000033ff0      0x8f0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                                        0x8d8 (size before relaxing)
+ .eh_frame      0x00000000000348e0      0x6f0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                                        0x6e0 (size before relaxing)
+ .eh_frame      0x0000000000034fd0      0x418 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                                        0x408 (size before relaxing)
+ .eh_frame      0x00000000000353e8        0x4 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+                0x00000000000353ec                . = (ALIGN (0x200000) - ((0x200000 - .) & 0x1fffff))
+                0x0000000000235b48                . = DATA_SEGMENT_ALIGN (0x200000, 0x1000)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array     0x0000000000235b48        0x8
+ *(SORT(.init_array.*) SORT(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0000000000235b48        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+
+.fini_array     0x0000000000235b50        0x8
+ *(SORT(.fini_array.*) SORT(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x0000000000235b50        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr            0x0000000000235b58        0x8
+ *(.jcr)
+ .jcr           0x0000000000235b58        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .jcr           0x0000000000235b58        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+
+.data.rel.ro    0x0000000000235b60      0x260
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ .data.rel.ro.local
+                0x0000000000235b60      0x260 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic        0x0000000000235dc0      0x200
+ *(.dynamic)
+ .dynamic       0x0000000000235dc0      0x200 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x0000000000235dc0                _DYNAMIC
+
+.got            0x0000000000235fc0       0x30
+ *(.got)
+ .got           0x0000000000235fc0       0x30 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.igot)
+                0x0000000000236fe8                . = DATA_SEGMENT_RELRO_END (., (SIZEOF (.got.plt) >= 0x18)?0x18:0x0)
+
+.got.plt        0x0000000000236000      0x308
+ *(.got.plt)
+ .got.plt       0x0000000000236000      0x308 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+                0x0000000000236000                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+
+.data           0x0000000000236308        0x8
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data.rel.local
+                0x0000000000236308        0x8 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+                0x0000000000236308                __dso_handle
+
+.tm_clone_table
+                0x0000000000236310        0x0
+ .tm_clone_table
+                0x0000000000236310        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ .tm_clone_table
+                0x0000000000236310        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+
+.data1
+ *(.data1)
+                0x0000000000236310                _edata = .
+                [!provide]                        PROVIDE (edata, .)
+                0x0000000000236310                . = .
+                0x0000000000236310                __bss_start = .
+
+.bss            0x0000000000236310        0x8
+ *(.dynbss)
+ .dynbss        0x0000000000236310        0x0 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000000236310        0x1 /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+ *(COMMON)
+                0x0000000000236318                . = ALIGN ((. != 0x0)?0x8:0x1)
+ *fill*         0x0000000000236311        0x7 
+
+.lbss
+ *(.dynlbss)
+ *(.lbss .lbss.* .gnu.linkonce.lb.*)
+ *(LARGE_COMMON)
+                0x0000000000236318                . = ALIGN (0x8)
+                0x0000000000236318                . = SEGMENT_START ("ldata-segment", .)
+
+.lrodata
+ *(.lrodata .lrodata.* .gnu.linkonce.lr.*)
+
+.ldata          0x0000000000636318        0x0
+ *(.ldata .ldata.* .gnu.linkonce.l.*)
+                0x0000000000636318                . = ALIGN ((. != 0x0)?0x8:0x1)
+                0x0000000000636318                . = ALIGN (0x8)
+                0x0000000000636318                _end = .
+                [!provide]                        PROVIDE (end, .)
+                0x0000000000636318                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x2d
+ *(.comment)
+ .comment       0x0000000000000000       0x2d /usr/lib/gcc/x86_64-linux-gnu/5/crtbeginS.o
+                                         0x2e (size before relaxing)
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .comment       0x000000000000002d       0x2e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+ .comment       0x000000000000002d       0x2e /usr/lib/gcc/x86_64-linux-gnu/5/crtendS.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x6e0
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x30 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .debug_aranges
+                0x0000000000000030       0xc0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .debug_aranges
+                0x00000000000000f0      0x1a0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .debug_aranges
+                0x0000000000000290       0x50 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .debug_aranges
+                0x00000000000002e0       0xc0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .debug_aranges
+                0x00000000000003a0      0x130 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .debug_aranges
+                0x00000000000004d0      0x110 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .debug_aranges
+                0x00000000000005e0      0x100 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000    0x3247d
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000       0xc9 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .debug_info    0x00000000000000c9     0x7060 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .debug_info    0x0000000000007129    0x16a8d /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .debug_info    0x000000000001dbb6      0x845 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .debug_info    0x000000000001e3fb     0x4638 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .debug_info    0x0000000000022a33     0x7086 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .debug_info    0x0000000000029ab9     0x6324 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .debug_info    0x000000000002fddd     0x26a0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+
+.debug_abbrev   0x0000000000000000     0x194e
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000       0x8c /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .debug_abbrev  0x000000000000008c      0x3cd /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .debug_abbrev  0x0000000000000459      0x40d /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .debug_abbrev  0x0000000000000866      0x1da /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .debug_abbrev  0x0000000000000a40      0x351 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .debug_abbrev  0x0000000000000d91      0x4c0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .debug_abbrev  0x0000000000001251      0x429 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .debug_abbrev  0x000000000000167a      0x2d4 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+
+.debug_line     0x0000000000000000     0x78a7
+ *(.debug_line .debug_line.* .debug_line_end)
+ .debug_line    0x0000000000000000       0xb5 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .debug_line    0x00000000000000b5      0xcb1 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .debug_line    0x0000000000000d66     0x286a /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .debug_line    0x00000000000035d0      0x202 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .debug_line    0x00000000000037d2     0x1da6 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .debug_line    0x0000000000005578      0xf56 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .debug_line    0x00000000000064ce      0xf35 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .debug_line    0x0000000000007403      0x4a4 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x0000000000000000     0x4905
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x237 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+                                        0x242 (size before relaxing)
+ .debug_str     0x0000000000000237     0x1d93 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+                                       0x2065 (size before relaxing)
+ .debug_str     0x0000000000001fca      0x7b5 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+                                       0x16a2 (size before relaxing)
+ .debug_str     0x000000000000277f       0xeb /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+                                        0x5f7 (size before relaxing)
+ .debug_str     0x000000000000286a      0x37a /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+                                       0x10ba (size before relaxing)
+ .debug_str     0x0000000000002be4     0x131d /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+                                       0x1cd5 (size before relaxing)
+ .debug_str     0x0000000000003f01      0x68e /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+                                       0x17c4 (size before relaxing)
+ .debug_str     0x000000000000458f      0x376 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+                                       0x1160 (size before relaxing)
+
+.debug_loc      0x0000000000000000    0x47369
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000       0x39 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .debug_loc     0x0000000000000039     0x62f8 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .debug_loc     0x0000000000006331    0x15bc3 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .debug_loc     0x000000000001bef4      0xb0b /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .debug_loc     0x000000000001c9ff    0x19327 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .debug_loc     0x0000000000035d26     0x82a1 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .debug_loc     0x000000000003dfc7     0x7f7f /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .debug_loc     0x0000000000045f46     0x1423 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x0000000000000000     0x9690
+ *(.debug_ranges)
+ .debug_ranges  0x0000000000000000       0x20 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_error.c.o
+ .debug_ranges  0x0000000000000020     0x10b0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_filter.c.o
+ .debug_ranges  0x00000000000010d0     0x29d0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_parser.c.o
+ .debug_ranges  0x0000000000003aa0      0x210 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_sei.c.o
+ .debug_ranges  0x0000000000003cb0     0x3290 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_h264_writer.c.o
+ .debug_ranges  0x0000000000006f40     0x1430 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_receiver.c.o
+ .debug_ranges  0x0000000000008370     0x11d0 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_rtp_sender.c.o
+ .debug_ranges  0x0000000000009540      0x150 /home/jake/Documents/parrot/out/Unix-base/build/libARStream2/obj/src/arstream2_stream_receiver.c.o
+
+.debug_macro
+ *(.debug_macro)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(/home/jake/Documents/parrot/out/Unix-base/build/libARStream2/libarstream2.so elf64-x86-64)

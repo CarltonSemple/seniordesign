@@ -1,0 +1,7 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+[remote "github"]
+	url = https://github.com/Parrot-Developers/ARSDKBuildUtils
+	projectname = ARSDKBuildUtils
+	fetch = +refs/heads/*:refs/remotes/github/*
