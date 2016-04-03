@@ -6,8 +6,11 @@
 #include "persondetector.h"
 #include "matcher.h"
 #include "scanner.h"
+#include "util.h"
+#include <opencv2/opencv.hpp>
 #include "opencv2/core.hpp"
 #include "opencv2/highgui.hpp"
+#include "opencv2/imgcodecs.hpp"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <cstdlib>
 
@@ -52,7 +55,7 @@ int findAndSaveHumans(bool save, bool drawBoxes)
         if (!img.data)
             continue;
         // look for humans
-        vector<Human> humans = detector.detectHumans(img, drawBoxes);
+        vector<Human> humans = detector.detectHumans(img);//, drawBoxes);
         cumulativeHumans.reserve(cumulativeHumans.size() + humans.size()); 
         cumulativeHumans.insert(cumulativeHumans.end(),humans.begin(),humans.end());
         if(cumulativeHumans.size() > size) {
@@ -112,9 +115,8 @@ void countSimilaritiesToScannedTarget(Human & target)
             
         namedWindow("video capture", CV_WINDOW_NORMAL);
                 
-        vector<Human> detectedHumans = detector.detectHumans(img, false);
+        vector<Human> detectedHumans = detector.detectHumans(img);//, true);
         // look at the humans and see the similarities
-        
         for(Human hu : detectedHumans)
         {
             Matcher matcher;
@@ -125,8 +127,15 @@ void countSimilaritiesToScannedTarget(Human & target)
                 //cout << "p = " << p << endl;
                 a += matcher.surfCount(target, hImages[p]);
             }
-            //a = a / hu.getImageCount();
+            a = a / target.getImageCount(); //hu.getImageCount();
             cout << "a = " << a << endl;
+            
+            // create rectangle around the person, with the color based
+            // off of the # of matches
+            
+            int colorIntensity = 20 * a;
+            
+            cv::rectangle(img, hu.getTopLeftPoint(), hu.getBottomRightPoint(), cv::Scalar(0,a,0), 2);
         }
         
         imshow("video capture", img);
@@ -150,6 +159,29 @@ void printInitialMenu()
     cout << "l: load previous scan" << endl;
 }
 
+void testCrop()
+{
+    VideoCapture cap(cameraNumber);//CV_CAP_ANY);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);    
+    if (!cap.isOpened())
+        return;
+    Mat img;
+    while(true)
+    {
+        cap >> img;
+        if (!img.data)
+            continue;
+            
+        namedWindow("original", CV_WINDOW_NORMAL);
+        namedWindow("crop test", CV_WINDOW_NORMAL);
+        Mat cropped = Util::cropImage(img);
+        imshow("original", img);
+        imshow("crop test", cropped);
+        char key = waitKey(1);
+    }
+}
+
 int main(int argc, char *argv[]) 
 {
     if(argc == 2) {
@@ -167,10 +199,19 @@ int main(int argc, char *argv[])
     // Background Subtraction test
     //backgroundSubtractionTest();
     
-    Human scannedHuman = s.loadScannedHuman(2);
-    cout << "loaded " << scannedHuman.getImageCount() << " pictures" << endl;
-    countSimilaritiesToScannedTarget(scannedHuman);
+    // Matching person test
+    //Human scannedHuman = s.loadScannedHuman(2);
+    //cout << "loaded " << scannedHuman.getImageCount() << " pictures" << endl;
+    //countSimilaritiesToScannedTarget(scannedHuman);
     
+    // Test matching with template matching
+    Mat srcImg = imread("s2.jpg", CV_LOAD_IMAGE_COLOR);
+    Mat templImg = imread("t2.jpg", CV_LOAD_IMAGE_COLOR);
+    Matcher matcher;
+    matcher.templateMatching(templImg, srcImg);
+    
+    // Test cropping of image
+    //testCrop();
     
 	return 0;
 }
