@@ -32,6 +32,7 @@ class Matcher
     //
     int surfCount(Human & scannedHuman, cv::Mat & potentialImage);
     
+    void templateMatchingWithoutCallBack(cv::Mat & templateImg, cv::Mat & sourceImg, int methodNum);
     void templateMatching(cv::Mat & templateImg, cv::Mat & sourceImg);
     
     private:

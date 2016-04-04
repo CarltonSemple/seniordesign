@@ -53,6 +53,7 @@ int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
     //
     //
     // should probably limit the number of scanned images..
+    int i = 0;
     for(Mat img : scannedHuman.getImages())
     {
         /*
@@ -62,8 +63,17 @@ int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
         rmatcher.match(img,potentialImage,matches, keypoints1, keypoints2, false);
         totalMatches += matches.size();
         */
-        //thread mt(getMatches, std::ref(rmatcher), std::ref(img), std::ref(potentialImage));
-        threads.push_back(thread(getMatches, std::ref(rmatcher), std::ref(img), std::ref(potentialImage)));
+        
+        getMatches(std::ref(rmatcher), std::ref(img), std::ref(potentialImage));
+        
+//        threads.push_back(thread(getMatches, std::ref(rmatcher), std::ref(img), std::ref(potentialImage)));
+        
+        // don't loop through
+        //
+        //
+        // save time with only one image for now................
+        if(i > 2)
+            break;
         
         /*
         // draw the matches
@@ -95,7 +105,41 @@ const char* image_window = "Source Image";
 const char* result_window = "Result window";
 int match_method;
 int max_Trackbar = 5;
-void MatchingMethod(int, void*);
+
+void MatchingMethodCallBack(int, void*);
+
+void Matcher::templateMatchingWithoutCallBack(cv::Mat & templateImg, cv::Mat & sourceImg, int methodNum)
+{
+    Mat resultt2;
+    namedWindow( image_window, WINDOW_AUTOSIZE );
+    namedWindow( result_window, WINDOW_AUTOSIZE );
+    Mat img_display;
+    sourceImg.copyTo( img_display );
+    int result_cols =  abs(sourceImg.cols - templateImg.cols + 1);
+    int result_rows = abs(sourceImg.rows - templateImg.rows + 1);
+    //cout << "r cols: " << result_cols << endl;
+    //cout << "r rows: " << result_rows << endl;
+    resultt2.create( result_rows, result_cols, CV_32FC1 );
+    matchTemplate( sourceImg, templateImg, resultt2, methodNum );
+    normalize( resultt2, resultt2, 0, 1, NORM_MINMAX, -1, Mat() );
+    
+    double minVal, maxVal; 
+    Point minLoc, maxLoc, matchLoc;
+    
+    minMaxLoc( resultt2, &minVal, &maxVal, &minLoc, &maxLoc, Mat() );
+    
+    if( methodNum  == TM_SQDIFF || methodNum == TM_SQDIFF_NORMED )
+    { matchLoc = minLoc; }
+    else
+    { matchLoc = maxLoc; }
+    
+    rectangle( img_display, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+    rectangle( resultt2, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+    
+    imshow( image_window, img_display );
+    imshow( result_window, resultt2 );
+    waitKey(1);
+}
 
 void Matcher::templateMatching(cv::Mat & templateImg, cv::Mat & sourceImg)
 {
@@ -104,13 +148,14 @@ void Matcher::templateMatching(cv::Mat & templateImg, cv::Mat & sourceImg)
     namedWindow( image_window, WINDOW_AUTOSIZE );
     namedWindow( result_window, WINDOW_AUTOSIZE );
     const char* trackbar_label = "Method: \n 0: SQDIFF \n 1: SQDIFF NORMED \n 2: TM CCORR \n 3: TM CCORR NORMED \n 4: TM COEFF \n 5: TM COEFF NORMED";
-    createTrackbar( trackbar_label, image_window, &match_method, max_Trackbar, MatchingMethod );
-    MatchingMethod(0, 0);
+    createTrackbar( trackbar_label, image_window, &match_method, max_Trackbar, MatchingMethodCallBack );
+    MatchingMethodCallBack(0, 0);
     waitKey(0);
 }
 
-void MatchingMethod(int, void*)
+void MatchingMethodCallBack(int, void*)
 {
+    //cout << "match method: " << match_method << endl;
     Mat img_display;
     mmimg.copyTo( img_display );
     
@@ -122,8 +167,8 @@ void MatchingMethod(int, void*)
     matchTemplate( mmimg, templ, result, match_method );
     normalize( result, result, 0, 1, NORM_MINMAX, -1, Mat() );
     
-    double minVal; double maxVal; Point minLoc; Point maxLoc;
-    Point matchLoc;
+    double minVal, maxVal; 
+    Point minLoc, maxLoc, matchLoc;
     
     minMaxLoc( result, &minVal, &maxVal, &minLoc, &maxLoc, Mat() );
     
