@@ -19,9 +19,9 @@ class Util
     static cv::Mat cropImage(cv::Mat source)
     {
         int wDivisor = 3;
-        float wsRatio = 1.0/wDivisor, weRatio = 2.0/wDivisor;
+        float wsRatio = 1.0/wDivisor, weRatio = 1.8/wDivisor;
         int hDivisor = 10;
-        float hsRatio = 1.0/hDivisor, heRatio = 9.0/hDivisor;
+        float hsRatio = 0.5/hDivisor, heRatio = 8.8/hDivisor;
         int width = source.size().width, height = source.size().height;
         int startX = width * wsRatio, startY = height * hsRatio;
         int endX = (width * weRatio), endY = (height * heRatio);
@@ -29,6 +29,11 @@ class Util
         cv::Rect rectti(startX, startY, endX, endY); //10, 10, 310, 100);
         cv::Mat ree(source, rectti);
         return ree;
+    }
+    
+    static void saveImage(std::string pathName, cv::Mat image)
+    {
+        cv::imwrite(pathName, image);
     }
 };
 
