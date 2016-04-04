@@ -13,12 +13,14 @@
 #include "opencv2/imgcodecs.hpp"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <cstdlib>
+#include <unistd.h>
+#include <thread>
 
 using namespace std;
 using namespace cv;
 
-#define CAMERA_WIDTH 320
-#define CAMERA_HEIGHT 240
+#define CAMERA_WIDTH 640
+#define CAMERA_HEIGHT 480
 
 int cameraNumber = 0;
 
@@ -55,7 +57,7 @@ int findAndSaveHumans(bool save, bool drawBoxes)
         if (!img.data)
             continue;
         // look for humans
-        vector<Human> humans = detector.detectHumans(img);//, drawBoxes);
+        vector<Human> humans = detector.detectHumans(img, drawBoxes);
         cumulativeHumans.reserve(cumulativeHumans.size() + humans.size()); 
         cumulativeHumans.insert(cumulativeHumans.end(),humans.begin(),humans.end());
         if(cumulativeHumans.size() > size) {
@@ -115,7 +117,7 @@ void countSimilaritiesToScannedTarget(Human & target)
             
         namedWindow("video capture", CV_WINDOW_NORMAL);
                 
-        vector<Human> detectedHumans = detector.detectHumans(img);//, true);
+        vector<Human> detectedHumans = detector.detectHumans(img, false);
         // look at the humans and see the similarities
         for(Human hu : detectedHumans)
         {
@@ -127,7 +129,8 @@ void countSimilaritiesToScannedTarget(Human & target)
                 //cout << "p = " << p << endl;
                 a += matcher.surfCount(target, hImages[p]);
             }
-            a = a / target.getImageCount(); //hu.getImageCount();
+            
+            //a = a / target.getImageCount(); //hu.getImageCount();
             cout << "a = " << a << endl;
             
             // create rectangle around the person, with the color based
@@ -135,7 +138,7 @@ void countSimilaritiesToScannedTarget(Human & target)
             
             int colorIntensity = 20 * a;
             
-            cv::rectangle(img, hu.getTopLeftPoint(), hu.getBottomRightPoint(), cv::Scalar(0,a,0), 2);
+            cv::rectangle(img, hu.getTopLeftPoint(), hu.getBottomRightPoint(), cv::Scalar(colorIntensity,colorIntensity,colorIntensity), 2);
         }
         
         imshow("video capture", img);
@@ -182,16 +185,100 @@ void testCrop()
     }
 }
 
+void testTemplateMatchingVideo()
+{
+    VideoCapture cap(cameraNumber);//CV_CAP_ANY);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);    
+    if (!cap.isOpened())
+        return;
+        
+    Mat img;
+    Mat templImg = imread("t3.jpg", CV_LOAD_IMAGE_COLOR);
+    Matcher matcher;
+    
+    while(true)
+    {
+        cap >> img;
+        if (!img.data)
+            continue;
+        
+        matcher.templateMatchingWithoutCallBack(templImg, img, 1);
+    }
+}
+
+void displayScan()
+{
+    Scanner s;
+    int scanNum = 0;
+    cout << "Enter scan number: ";
+    cin >> scanNum;
+    Human scannedHuman = s.loadScannedHuman(scanNum);
+    scannedHuman.displayImages(true);
+}
+
+/*
+Mat publicImage;
+bool run = true;
+
+void publicImageLoop()
+{
+    VideoCapture cap(cameraNumber);//CV_CAP_ANY);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);    
+    if (!cap.isOpened())
+        return;
+    
+    namedWindow("preview", CV_WINDOW_NORMAL);
+    while(true)
+    {
+        if(!run)
+            break;
+        cap >> publicImage;
+        if(!publicImage.data)
+            continue;
+        imshow("preview", publicImage);
+        waitKey(1);
+    }
+}
+
+void cameraApp(string filename)
+{
+    thread pp(publicImageLoop);
+    cout << "Enter any character to take a picture" << endl;
+    char c;
+    cin >> c;
+    
+    int seconds = 4;
+    int microseconds = 1000000;
+    usleep(microseconds);
+    for(int i = seconds; i > 0; i--)
+    {
+        cout << i << "... ";
+    }
+    cout << endl << "snap!" << endl;
+    Util::saveImage(filename, publicImage);
+    run = false;
+}*/
+
 int main(int argc, char *argv[]) 
 {
+    //string fiii;
+    //if(argc == 3) {
+    //  fiii = argv[2];
+    //} else 
     if(argc == 2) {
         cameraNumber = atoi(argv[1]);
     } else {
-        printHelp();
-        return -1;
+        //printHelp();
+        //cout << "Enter the filename of the picture as the second argument" << endl;
+        //return -1;
     }
     
-    Scanner s;
+    //cameraApp(fiii);
+    
+    // Run Scanner
+    //Scanner s;
     //s.runIndependently();
       
     //findAndSaveHumans(true, false);
@@ -200,18 +287,24 @@ int main(int argc, char *argv[])
     //backgroundSubtractionTest();
     
     // Matching person test
-    //Human scannedHuman = s.loadScannedHuman(2);
+    //Human scannedHuman = s.loadScannedHuman(5);
     //cout << "loaded " << scannedHuman.getImageCount() << " pictures" << endl;
     //countSimilaritiesToScannedTarget(scannedHuman);
     
     // Test matching with template matching
-    Mat srcImg = imread("s2.jpg", CV_LOAD_IMAGE_COLOR);
-    Mat templImg = imread("t2.jpg", CV_LOAD_IMAGE_COLOR);
-    Matcher matcher;
-    matcher.templateMatching(templImg, srcImg);
+    //Mat srcImg = imread("s2.jpg", CV_LOAD_IMAGE_COLOR);
+    //Mat templImg = imread("t2.jpg", CV_LOAD_IMAGE_COLOR);
+    //Matcher matcher;
+    //matcher.templateMatching(templImg, srcImg);
+    
+    // Test matching in video with template matching
+    //testTemplateMatchingVideo();
     
     // Test cropping of image
     //testCrop();
+    
+    // Display Loaded Human
+    displayScan();
     
 	return 0;
 }
