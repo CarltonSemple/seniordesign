@@ -1,5 +1,7 @@
 #include "human.h"
 
+using namespace cv;
+
 /* Getters */
 
 Human::Human()
@@ -53,3 +55,38 @@ void Human::saveImage(std::string dir)
         }
     } 
 } 
+
+void Human::displayImages(bool loop)
+{
+    cv::namedWindow(name, CV_WINDOW_NORMAL); //CV_WINDOW_AUTOSIZE);
+    cv::resizeWindow(name, 800, 800);
+    displayImages(name, loop);
+}
+
+void Human::displayImages(std::string windowName, bool loop)
+{
+    // display loaded images
+    if(loop)
+    {
+        while(true)
+        {
+            for(cv::Mat imggg : images)
+            {
+                cv::imshow(windowName, imggg);
+                //waitKey(30);
+                if (waitKey(30) == 27) { // wait for escape button press
+                    //std::cout << "escape" << std::endl;
+                    return;
+                } 
+            }
+            
+        }
+    } else {
+        for(cv::Mat imggg : images)
+        {
+            cv::imshow(windowName, imggg);
+            waitKey(30);
+        }
+    }
+    
+}

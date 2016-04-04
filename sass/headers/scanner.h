@@ -15,10 +15,6 @@ private:
     int getNextSetNumber();
     void displayMinMax();
     void displayMenuOptions();
-    void decreaseMinimum();
-    void increaseMinimum();
-    void decreaseMaximum();
-    void increaseMaximum();
     void startScan();
     void stopScan();
     char menu();
@@ -31,7 +27,7 @@ public:
     static void displayScan(int scanNumber)
     {
         Scanner s;
-        Human scannedHuman = s.loadScannedHuman(2);
+        Human scannedHuman = s.loadScannedHuman(scanNumber);
         std::cout << "loaded " << scannedHuman.getImageCount() << " pictures" << std::endl;
             
         std::vector<cv::Mat> & selfies = scannedHuman.getImages();

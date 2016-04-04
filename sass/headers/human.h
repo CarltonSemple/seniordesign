@@ -1,6 +1,7 @@
 #ifndef HUMAN_H
 #define HUMAN_H
 
+#include <iostream>
 #include <string>
 #include <tuple>
 #include <vector>
@@ -43,6 +44,12 @@ class Human : public Blob
             h.saveImage(dir);
         }
     }   
+    
+    // Open a new OpenCV window and display the human's images
+    void displayImages(bool loop);
+    
+    // Display the human's images in an existing OpenCV window
+    void displayImages(std::string windowName, bool loop);
 };
 
 #endif
