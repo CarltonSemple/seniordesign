@@ -101,15 +101,16 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 			}
 			//std::cout << "end" << std::endl;
 			
-			// show modified RGB image 
-			cv::imshow("rgb", rgbMat);
+			// show modified RGB image
+            Mat cropped = Util::cropImage(rgbMat); 
+			cv::imshow("rgb", cropped);
             
             // save to file
             std::ostringstream imgname;
             if(camera_saving == true && img_frame < std::numeric_limits<int>::max())
             {
                 imgname << mediaFolder << "img_set_" << set_number << "_" << img_frame++ << ".jpg";
-                imwrite(imgname.str(), rgbMat); // A JPG FILE IS BEING SAVED
+                imwrite(imgname.str(), cropped); // A JPG FILE IS BEING SAVED
             }
 			
 			//std::cout << "rows: " << depthMat.rows << " cols: " << depthMat.cols << std::endl;
@@ -190,39 +191,10 @@ void Scanner::displayMinMax() {
 void Scanner::displayMenuOptions() {
     cout << "Scanner Application" << endl << endl;
     cout << "S: Start scan" << endl;
+    cout << "D: Display Scan" << endl;
     cout << "E: End scan" << endl;
-    cout << "n: Decrease minimum distance" << endl;
-    cout << "N: Increase minimum distance" << endl;
-    cout << "m: Decrease maximum distance" << endl;
-    cout << "M: Increase maximum distance" << endl;
     cout << "q: Quit" << endl;
     cout << ": ";
-}
-
-void Scanner::decreaseMinimum() {
-    if(minDistance - CHANGE_RATE >= 0) {
-        minDistance -= CHANGE_RATE;
-    }
-    displayMinMax();
-}
-
-void Scanner::increaseMinimum() {
-    if(minDistance + CHANGE_RATE <= maxDistance) {
-        minDistance += CHANGE_RATE;
-    }
-    displayMinMax();
-}
-
-void Scanner::decreaseMaximum() {
-    if(maxDistance - CHANGE_RATE >= minDistance) {
-        maxDistance -= CHANGE_RATE;
-    }
-    displayMinMax();
-}
-
-void Scanner::increaseMaximum() {
-    maxDistance += CHANGE_RATE;
-    displayMinMax();
 }
 
 void Scanner::startScan() {
@@ -251,10 +223,13 @@ char Scanner::menu() {
         case 'E': 
             stopScan();
             break;
-        case 'v': decreaseMinimum(); break;
-        case 'b': increaseMinimum(); break;
-        case 'n': decreaseMaximum(); break;
-        case 'm': increaseMaximum(); break;
+        case 'd':
+        case 'D':
+            cout << "Enter scan number: ";
+            int scNu;
+            cin >> scNu;
+            displayScan(scNu);
+            break;
         case 'q':
         case 'Q': quit = true; break;
     }
