@@ -72,12 +72,12 @@ int iHighS = 255;
 int iLowV = 0;
 int iHighV = 255;
 
-void setHueRangeCounts(Mat & image) 
+void setHueRangeCounts(Mat & imageHSV) 
 {
     for(int i = 0; i < ranges.size(); i++) 
     {
         Mat imgThresholded;
-        inRange(image, Scalar(ranges[i].low, iLowS, iLowV), Scalar(ranges[i].high, iHighS, iHighV), imgThresholded); //Threshold the image
+        inRange(imageHSV, Scalar(ranges[i].low, iLowS, iLowV), Scalar(ranges[i].high, iHighS, iHighV), imgThresholded); //Threshold the image
         
         //morphological opening (remove small objects from the foreground)
         erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
@@ -108,14 +108,15 @@ void setHueRangeCounts(Mat & image)
     initializeColorRanges();
 
     //Create trackbars in "Control" window
-    //cvCreateTrackbar("LowH", "Control", &iLowH, 179); //Hue (0 - 179)
-   // cvCreateTrackbar("HighH", "Control", &iHighH, 179);
+    cvCreateTrackbar("LowHue", "Control", &iLowH, 179); //Hue (0 - 179)
+    cvCreateTrackbar("HighHue", "Control", &iHighH, 179);
 
-    cvCreateTrackbar("LowS", "Control", &iLowS, 255); //Saturation (0 - 255)
-    cvCreateTrackbar("HighS", "Control", &iHighS, 255);
+    cvCreateTrackbar("LowSat", "Control", &iLowS, 255); //Saturation (0 - 255)
+    cvCreateTrackbar("HighSat", "Control", &iHighS, 255);
 
-    cvCreateTrackbar("LowV", "Control", &iLowV, 255); //Value (0 - 255)
-    cvCreateTrackbar("HighV", "Control", &iHighV, 255);
+    // not as necessary
+    //cvCreateTrackbar("LowV", "Control", &iLowV, 255); //Value (0 - 255)
+    //cvCreateTrackbar("HighV", "Control", &iHighV, 255);
 
     while (true)
     {
@@ -134,18 +135,19 @@ void setHueRangeCounts(Mat & image)
         cvtColor(imgOriginal, imgHSV, COLOR_BGR2HSV); //Convert the captured frame from BGR to HSV
 
         setHueRangeCounts(imgHSV);
-        //Mat imgThresholded;
-        //inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
-
-        //morphological opening (remove small objects from the foreground)
-        //erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
-        //dilate( imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) ); 
-
-        //morphological closing (fill small holes in the foreground)
-        //dilate( imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) ); 
-        //erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
         
+        /*
+        Mat imgThresholded;
+        inRange(imgHSV, Scalar(iLowH, iLowS, iLowV), Scalar(iHighH, iHighS, iHighV), imgThresholded); //Threshold the image
+        //morphological opening (remove small objects from the foreground)
+        erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
+        dilate( imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) ); 
+        //morphological closing (fill small holes in the foreground)
+        dilate( imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) ); 
+        erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
         //setHueRangeCounts(imgThresholded);
+        */
+        
         cout << "size: " << ranges.size() << endl;
         for(int i = 0; i < ranges.size(); i++) {
             cout << ranges[i].count << ", ";
@@ -154,6 +156,7 @@ void setHueRangeCounts(Mat & image)
 
         //imshow("Thresholded Image", imgThresholded); //show the thresholded image
         imshow("Original", imgOriginal); //show the original image
+        imshow("HSV", imgHSV);
         
         
 
