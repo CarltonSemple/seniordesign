@@ -13,7 +13,7 @@ int main()
 {
 	// Read input images
 	cv::Mat image1= cv::imread("../sampleimages/iba/3cropped.jpg",0);
-	cv::Mat image2= cv::imread("../sampleimages/iba/7small.jpg",0);
+	cv::Mat image2= cv::imread("../sampleimages/iba/1cropped.jpg",0);
 	if (!image1.data || !image2.data)
 		return 0; 
 
@@ -28,14 +28,17 @@ int main()
 	RobustMatcher rmatcher;
 	rmatcher.setConfidenceLevel(0.98);
 	rmatcher.setMinDistanceToEpipolar(1.0);
-	rmatcher.setRatio(0.65f);
+	rmatcher.setRatio(0.98f); //(0.65f);
 	cv::Ptr<cv::FeatureDetector> pfd = cv::xfeatures2d::SURF::create(10);//new cv::SurfFeatureDetector(10); 
 	rmatcher.setFeatureDetector(pfd);
 
 	// Match the two images
 	std::vector<cv::DMatch> matches;
+    
 	std::vector<cv::KeyPoint> keypoints1, keypoints2;
 	cv::Mat fundemental= rmatcher.match(image1,image2,matches, keypoints1, keypoints2);
+
+    cout << "matchesssss count: " << matches.size() << endl;
 
 	// draw the matches
 	cv::Mat imageMatches;
