@@ -9,7 +9,7 @@ PersonDetector::PersonDetector()
     
 }
 
-std::vector<Human> PersonDetector::detectHumans(Mat img, bool drawBoxes) 
+std::vector<Human> PersonDetector::detectHumans(Mat sourceImg, bool drawBoxes) 
 {
     vector<Human> humans;
     
@@ -18,6 +18,11 @@ std::vector<Human> PersonDetector::detectHumans(Mat img, bool drawBoxes)
  
     //namedWindow("video capture", CV_WINDOW_NORMAL);
 
+    // make a copy of the image
+    Mat img = sourceImg;
+    // jkkkkk
+    //sourceImg.copyTo(img);
+    
     if (!img.data)
         return humans;
 

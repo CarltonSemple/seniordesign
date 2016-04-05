@@ -12,6 +12,7 @@
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgcodecs.hpp"
 #include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/ocl.hpp> // opencl
 #include <cstdlib>
 #include <unistd.h>
 #include <thread>
@@ -23,6 +24,7 @@ using namespace cv;
 #define CAMERA_HEIGHT 480
 
 int cameraNumber = 0;
+int templatematchingmethod = 4; // 4 and 1 are best
 
 test::test()
 {
@@ -185,8 +187,21 @@ void testCrop()
     }
 }
 
+void tmm(Mat & templImg, Mat & img)
+{
+    Matcher matcher;
+    matcher.templateMatchingWithoutCallBack(templImg, img, 1);
+}
+
+void hogg(Mat & img)
+{
+    PersonDetector pd;
+    pd.detectHumans(img, true);
+}
+
 void testTemplateMatchingVideo()
 {
+    //cv::setNumThreads(4);
     VideoCapture cap(cameraNumber);//CV_CAP_ANY);
     cap.set(CV_CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT);    
@@ -194,16 +209,38 @@ void testTemplateMatchingVideo()
         return;
         
     Mat img;
-    Mat templImg = imread("t3.jpg", CV_LOAD_IMAGE_COLOR);
-    Matcher matcher;
+    Mat templImg = imread("template.jpg", CV_LOAD_IMAGE_COLOR);
+    //Matcher matcher;
+    
+    int i = 0;
     
     while(true)
     {
         cap >> img;
         if (!img.data)
             continue;
+            
+        namedWindow("hog", WINDOW_AUTOSIZE);
+        if(i == 2) {
+            i = 0;
+            imshow("hog", img);
+            continue;
+        }
+        i++;
+            
+        UMat original;
+        img.copyTo(original);
         
-        matcher.templateMatchingWithoutCallBack(templImg, img, 1);
+        
+        //thread hh(std::ref(hogg), std::ref(img));
+        hogg(std::ref(img));
+        
+        //Matcher matcher;
+        //matcher.templateMatchingWithoutCallBack(templImg, original, templatematchingmethod);
+        
+        //hh.join();
+        imshow("hog", img);
+        waitKey(1);
     }
 }
 
@@ -263,22 +300,28 @@ void cameraApp(string filename)
 
 int main(int argc, char *argv[]) 
 {
+    cv::ocl::setUseOpenCL(true); // enable OpenCL in the processing of UMat
     //string fiii;
     //if(argc == 3) {
     //  fiii = argv[2];
     //} else 
-    if(argc == 2) {
+    if(argc == 3) {
+        // meant for templatematching program - choose the method
+        templatematchingmethod = atoi(argv[2]);
+    //} else 
+    //if(argc == 2) {
         cameraNumber = atoi(argv[1]);
     } else {
-        //printHelp();
+        printHelp();
         //cout << "Enter the filename of the picture as the second argument" << endl;
-        //return -1;
+        //cout << "Enter the method number (0-5) for the template matching" << endl;
+        return -1;
     }
     
     //cameraApp(fiii);
     
     // Run Scanner
-    //Scanner s;
+    Scanner s;
     //s.runIndependently();
       
     //findAndSaveHumans(true, false);
@@ -298,13 +341,14 @@ int main(int argc, char *argv[])
     //matcher.templateMatching(templImg, srcImg);
     
     // Test matching in video with template matching
-    //testTemplateMatchingVideo();
+    // and HOG
+    testTemplateMatchingVideo();    
     
     // Test cropping of image
     //testCrop();
-    
+
     // Display Loaded Human
-    displayScan();
+    //displayScan();
     
 	return 0;
 }

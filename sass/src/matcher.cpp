@@ -101,8 +101,8 @@ int Matcher::surfCount(Human & scannedHuman, cv::Mat & potentialImage)
 }
 
 Mat mmimg; Mat templ; Mat result;
-const char* image_window = "Source Image";
-const char* result_window = "Result window";
+const char* image_window = "templateMatch - Source Image";
+const char* result_window = "templateMatch - Result window";
 int match_method;
 int max_Trackbar = 5;
 

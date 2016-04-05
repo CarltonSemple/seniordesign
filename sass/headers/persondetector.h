@@ -14,7 +14,7 @@ class PersonDetector
             
     // Create humans from the locations of detected humans, 
     // and optionally draw generic black boxes around the humans
-    std::vector<Human> detectHumans(cv::Mat img, bool drawBoxes);
+    std::vector<Human> detectHumans(cv::Mat sourceImg, bool drawBoxes);
     
     /* Match new humans with the current stored humans */
     void keepSimilarHumans(std::vector<Human> & collection, std::vector<Human> & newHumans);
