@@ -43,6 +43,12 @@
 #include <stdlib.h>
 #include <curses.h>
 #include <string.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/types.h> 
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 #include <libARSAL/ARSAL.h>
 
@@ -75,6 +81,12 @@ void *IHM_InputProcessing(void *data);
  *             implementation :
  *
  *****************************************/
+ 
+void error(const char *msg)
+{
+    perror(msg);
+    exit(1);
+}
 
 IHM_t *IHM_New (IHM_onInputEvent_t onInputEventCallback)
 {
@@ -172,50 +184,91 @@ void IHM_setCustomData(IHM_t *ihm, void *customData)
 void *IHM_InputProcessing(void *data)
 {
     IHM_t *ihm = (IHM_t *) data;
-    int key = 0;
+    int key = 0, i;
+    int sockfd, mlen;
+    char buffer[1];
+    struct sockaddr_in serv_addr;
+	int addrsize = sizeof(struct sockaddr_in);
     
     if (ihm != NULL)
     {
+		// Set up client socket
+		sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+		if (sockfd < 0) 
+			error("ERROR opening socket");
+		serv_addr.sin_family = AF_INET;
+		serv_addr.sin_port = htons(32323);
+		unsigned int in_address = 127 << 24 | 0 << 16 | 0 << 8 | 1;
+		serv_addr.sin_addr.s_addr = htonl (in_address);
+			 
         while (ihm->run)
         {
-            key = getch();
+            //key = getch();
+
+			 // Read
+			 buffer[0] = 't';
+			 printf("Sending synchronization message...\n");
+			 if (sendto(sockfd, buffer, strlen(buffer)+1, 0, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr_in)) < 0)
+					error("ERROR with sento()");
+			 printf("...Sent\n");
+			 
+			 bzero(buffer,256);
+			 printf("Waiting...\n");
+			 mlen = recvfrom(sockfd, buffer, 1, 0, (struct sockaddr *) &serv_addr, &addrsize);
+			 printf("Received \"%s\" from client %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+			 key = buffer[0];
+			 
             
-            if ((key == 27) || (key =='q'))
+            if ((key == 27) || (key == 'q'))
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
                     ihm->onInputEventCallback (IHM_INPUT_EVENT_EXIT, ihm->customData);
                 }
             }
-            else if(key == KEY_UP)
+            else if(key == KEY_UP || key == 'w')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
+					for (i=0; i<3000; i++) {
                     ihm->onInputEventCallback (IHM_INPUT_EVENT_FORWARD, ihm->customData);
+                    usleep(10);
+					}
                 }
             }
-            else if(key == KEY_DOWN)
+            else if(key == KEY_DOWN || key == 's')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
+					for (i=0; i<3000; i++) {
                     ihm->onInputEventCallback (IHM_INPUT_EVENT_BACK, ihm->customData);
+                    usleep(10);
+					}
                 }
             }
-            else if(key == KEY_LEFT)
+            else if(key == KEY_LEFT || key == 'a')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
+					// Change angle 40 degrees left
+					for (i=0; i<3000; i++) {
                     ihm->onInputEventCallback (IHM_INPUT_EVENT_LEFT, ihm->customData);
+                    usleep(10);
+					}
                 }
             }
-            else if(key == KEY_RIGHT)
+            else if(key == KEY_RIGHT || key == 'd')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
+					// Change angle 40 degrees right
+					for (i=0; i<3000; i++) {
                     ihm->onInputEventCallback (IHM_INPUT_EVENT_RIGHT, ihm->customData);
+                    usleep(10);
+					}
                 }
             }
-            else if(key == ' ')
+            else if(key == ' ' || key == 'j')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
@@ -232,6 +285,7 @@ void *IHM_InputProcessing(void *data)
             
             usleep(10);
         }
+		close(sockfd);
     }
     
     return NULL;

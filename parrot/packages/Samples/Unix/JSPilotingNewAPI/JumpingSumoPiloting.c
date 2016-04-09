@@ -665,6 +665,25 @@ uint8_t *frameCompleteCallback (eARSTREAM_READER_CAUSE cause, uint8_t *frame, ui
                 fclose(img);
             }
             
+            // Send frame through a socket
+            int sockfd, mlen;
+			struct sockaddr_in serv_addr;
+			int addrsize = sizeof(struct sockaddr_in);
+			sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+			if (sockfd < 0) 
+				perror("ERROR opening socket");
+			serv_addr.sin_family = AF_INET;
+			serv_addr.sin_port = htons(32324);
+			unsigned int in_address = 127 << 24 | 0 << 16 | 0 << 8 | 1;
+			serv_addr.sin_addr.s_addr = htonl (in_address);
+
+			printf("Frame size = %i\n", frameSize);
+			 printf("Sending frame...\n");
+			 if (sendto(sockfd, frame, 500000, 0, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr_in)) < 0)
+					perror("ERROR with sendto()");
+			 printf("...Sent\n");
+			 
+            
             break;
         case ARSTREAM_READER_CAUSE_FRAME_TOO_SMALL:
             /* This case should not happen, as we've allocated a frame pointer to the maximum possible size. */
@@ -956,14 +975,14 @@ void onInputEvent (eIHM_INPUT_EVENT event, void *customData)
             if(jsManager != NULL)
             {
                 jsManager->dataPCMD.flag = 1;
-                jsManager->dataPCMD.speed = 25;//50;
+                jsManager->dataPCMD.speed = 35;//50;
             }
             break;
         case IHM_INPUT_EVENT_BACK:
             if(jsManager != NULL)
             {
                 jsManager->dataPCMD.flag = 1;
-                jsManager->dataPCMD.speed = -25;//-50;
+                jsManager->dataPCMD.speed = -35;//-50;
             }
             break;
         case IHM_INPUT_EVENT_RIGHT:
