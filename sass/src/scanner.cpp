@@ -83,11 +83,20 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 			uint16_t* depth = static_cast<uint16_t*>(_depth);
 			depthMat.data = (uchar*) depth;
 			//std::cout << "start" << std::endl;
+            
+            cvtColor(rgbMat, rgbMat, CV_BGR2RGB);
 			for(int i = 0; i < 480; i++) {
 				for(int c = 0; c < 640; c++) {
 					//std::cout << depthMat.at<uint16_t>(i, c) << " ";
 					uint16_t dist = depthMat.at<uint16_t>(i, c);
 					
+                    // fix color of RGB
+                    //uint16_t & colorHere = rgbMat.ptr<uint16_t>(i)[c];
+                    //colorHere = (colorHere & 0x000000ff) << 16 | (colorHere & 0x0000FF00) | (colorHere & 0x00FF0000) >> 16;
+                    //uchar & temptation = colorHere.r;
+                    //colorHere.r = colorHere.b;
+                    //colorHere.b = temptation;
+                   
 					// change color to black if distance is outside of 
 					// desired range
 					if(dist < minDistance || dist > maxDistance) {
