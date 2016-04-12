@@ -666,7 +666,7 @@ uint8_t *frameCompleteCallback (eARSTREAM_READER_CAUSE cause, uint8_t *frame, ui
             }
             
             // Send frame through a socket
-            int sockfd, mlen;
+            /*int sockfd, mlen;
 			struct sockaddr_in serv_addr;
 			int addrsize = sizeof(struct sockaddr_in);
 			sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
@@ -681,7 +681,7 @@ uint8_t *frameCompleteCallback (eARSTREAM_READER_CAUSE cause, uint8_t *frame, ui
 			 printf("Sending frame...\n");
 			 if (sendto(sockfd, frame, 500000, 0, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr_in)) < 0)
 					perror("ERROR with sendto()");
-			 printf("...Sent\n");
+			 printf("...Sent\n");*/
 			 
             
             break;

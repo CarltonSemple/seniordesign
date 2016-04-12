@@ -69,6 +69,8 @@
 #define BATTERY_X 0
 #define BATTERY_Y 4
 
+#define BUF_SIZE 1024
+
 /*****************************************
  *
  *             private header:
@@ -184,41 +186,97 @@ void IHM_setCustomData(IHM_t *ihm, void *customData)
 void *IHM_InputProcessing(void *data)
 {
     IHM_t *ihm = (IHM_t *) data;
-    int key = 0, i;
+    int key = 0, i, desired_length;
     int sockfd, mlen;
-    char buffer[1];
+    char buffer[BUF_SIZE];
     struct sockaddr_in serv_addr;
 	int addrsize = sizeof(struct sockaddr_in);
     
     if (ihm != NULL)
     {
 		// Set up client socket
-		sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-		if (sockfd < 0) 
+		sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+		if (sockfd < 0)
+		{
 			error("ERROR opening socket");
+		}
 		serv_addr.sin_family = AF_INET;
 		serv_addr.sin_port = htons(32323);
-		unsigned int in_address = 127 << 24 | 0 << 16 | 0 << 8 | 1;
+		unsigned int in_address = 192 << 24 | 168 << 16 | 0 << 8 | 106;//127 << 24 | 0 << 16 | 0 << 8 | 1;
 		serv_addr.sin_addr.s_addr = htonl (in_address);
+			
+		// Connect to the server socket 
+		if (connect (sockfd, (struct sockaddr *) &serv_addr, sizeof (struct sockaddr_in)) == -1)
+		{	
+			perror("Could not connect");
+			exit(-1);
+		} 
+		
+		// Send synchronization message to server socket
+		 bzero(buffer,BUF_SIZE);
+		 buffer[0] = 't';
+		 printf("Sending synchronization message...\n");
+		 i = write(sockfd, buffer, strlen(buffer));
+		 if (i<0)
+		 {
+			 perror("Could not send synchronization message");
+		 }
+		 printf("...Sent\n");
+		 			 
+		 bzero(buffer,BUF_SIZE);
+		 printf("Waiting...\n");
+		 mlen = read(sockfd, buffer, 1);
+		 if (mlen < 0)
+		 {
+			 perror("Could not receive synchronization reply");
+		 }
+		 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
 			 
         while (ihm->run)
         {
             //key = getch();
-
-			 // Read
-			 buffer[0] = 't';
-			 printf("Sending synchronization message...\n");
-			 if (sendto(sockfd, buffer, strlen(buffer)+1, 0, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr_in)) < 0)
-					error("ERROR with sento()");
-			 printf("...Sent\n");
 			 
-			 bzero(buffer,256);
+			 // Obtain first instruction from server
+			 bzero(buffer,BUF_SIZE);
 			 printf("Waiting...\n");
-			 mlen = recvfrom(sockfd, buffer, 1, 0, (struct sockaddr *) &serv_addr, &addrsize);
-			 printf("Received \"%s\" from client %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+			 mlen = read(sockfd, buffer, 1);
+			 if (mlen < 0)
+			 {
+				 perror("Could not receive commands");
+			 }
+			 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
 			 key = buffer[0];
 			 
-            
+			 
+			 if (key != 'q')
+			 {
+				 // Obtain second instruction from server
+				 bzero(buffer,BUF_SIZE);
+				 printf("Waiting...\n");
+				 mlen = read(sockfd, buffer, 1);
+				 if (mlen < 0)
+				 {
+					 perror("Could not receive commands");
+				 }
+				 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+				 key = buffer[0];
+				 
+				 // Obtain third instruction from server
+				 bzero(buffer,BUF_SIZE);
+				 printf("Waiting...\n");
+				 mlen = read(sockfd, buffer, 1);
+				 if (mlen < 0)
+				 {
+					 perror("Could not receive commands");
+				 }
+				 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+				 desired_length = buffer[0] - '0';
+				 desired_length = 4;
+
+			 }
+            for (int j=0; j<desired_length; j++) {
+				if (j+1 == desired_length)
+					key = 'x';
             if ((key == 27) || (key == 'q'))
             {
                 if(ihm->onInputEventCallback != NULL)
@@ -268,13 +326,6 @@ void *IHM_InputProcessing(void *data)
 					}
                 }
             }
-            else if(key == ' ' || key == 'j')
-            {
-                if(ihm->onInputEventCallback != NULL)
-                {
-                    ihm->onInputEventCallback (IHM_INPUT_EVENT_JUMP, ihm->customData);
-                }
-            }
             else
             {
                 if(ihm->onInputEventCallback != NULL)
@@ -284,6 +335,7 @@ void *IHM_InputProcessing(void *data)
             }
             
             usleep(10);
+		}
         }
 		close(sockfd);
     }
