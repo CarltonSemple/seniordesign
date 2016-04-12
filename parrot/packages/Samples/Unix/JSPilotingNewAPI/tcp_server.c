@@ -1,3 +1,12 @@
+/*******************************************************
+ * Copyright (C) 2016-2017 Justin Villani, Carlton Semple, Jake S, Iba ba <{email}>
+ * 
+ * This file is part of SASS.
+ * 
+ * SASS can not be copied and/or distributed without the express
+ * permission of Justin Villani, Carlton Semple, Jake S, Iba ba
+ *******************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
