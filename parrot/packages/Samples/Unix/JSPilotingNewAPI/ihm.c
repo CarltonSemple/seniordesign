@@ -194,7 +194,7 @@ void *IHM_InputProcessing(void *data)
     
     if (ihm != NULL)
     {
-		// Set up client socket
+		// Set up client socket to connect to server
 		sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 		if (sockfd < 0)
 		{
@@ -213,30 +213,32 @@ void *IHM_InputProcessing(void *data)
 		} 
 		
 		// Send synchronization message to server socket
-		 bzero(buffer,BUF_SIZE);
-		 buffer[0] = 't';
-		 printf("Sending synchronization message...\n");
-		 i = write(sockfd, buffer, strlen(buffer));
-		 if (i<0)
-		 {
-			 perror("Could not send synchronization message");
-		 }
-		 printf("...Sent\n");
-		 			 
-		 bzero(buffer,BUF_SIZE);
-		 printf("Waiting...\n");
-		 mlen = read(sockfd, buffer, 1);
-		 if (mlen < 0)
-		 {
-			 perror("Could not receive synchronization reply");
-		 }
-		 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
-			 
+		bzero(buffer,BUF_SIZE);
+		buffer[0] = 't';
+		printf("Sending synchronization message...\n");
+		i = write(sockfd, buffer, strlen(buffer));
+		if (i<0)
+		{
+			perror("Could not send synchronization message");
+		}
+		printf("...Sent\n");
+		// Receive synchronization reply from server socket 
+		bzero(buffer,BUF_SIZE);
+		printf("Waiting...\n");
+		mlen = read(sockfd, buffer, 1);
+		if (mlen < 0)
+		{
+			perror("Could not receive synchronization reply");
+		}
+		printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+			
+		/*
+		 * At this point, the server begins sending movement commands using the WASD movement scheme.
+		 * If we receive an 'X', then we stop moving the drone. If we receive a 'Q', then we quit.
+		 * */ 
         while (ihm->run)
         {
-            //key = getch();
-			 
-			 // Obtain first instruction from server
+			 // Obtain command from server
 			 bzero(buffer,BUF_SIZE);
 			 printf("Waiting...\n");
 			 mlen = read(sockfd, buffer, 1);
@@ -245,84 +247,55 @@ void *IHM_InputProcessing(void *data)
 				 perror("Could not receive commands");
 			 }
 			 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
-			 key = buffer[0];
-			 
-			 
-			 if (key != 'q')
-			 {
-				 // Obtain second instruction from server
-				 bzero(buffer,BUF_SIZE);
-				 printf("Waiting...\n");
-				 mlen = read(sockfd, buffer, 1);
-				 if (mlen < 0)
-				 {
-					 perror("Could not receive commands");
-				 }
-				 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
-				 key = buffer[0];
-				 
-				 // Obtain third instruction from server
-				 bzero(buffer,BUF_SIZE);
-				 printf("Waiting...\n");
-				 mlen = read(sockfd, buffer, 1);
-				 if (mlen < 0)
-				 {
-					 perror("Could not receive commands");
-				 }
-				 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
-				 desired_length = buffer[0] - '0';
-				 desired_length = 4;
-
-			 }
-            for (int j=0; j<desired_length; j++) {
-				if (j+1 == desired_length)
-					key = 'x';
-            if ((key == 27) || (key == 'q'))
+			 key = buffer[0]; // Command character is loaded into key
+            
+            // Perform an action depending on the command received
+            if (key == 'q' || key == 'Q')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
                     ihm->onInputEventCallback (IHM_INPUT_EVENT_EXIT, ihm->customData);
                 }
             }
-            else if(key == KEY_UP || key == 'w')
+            else if (key == 'w' || key == 'W')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
 					for (i=0; i<3000; i++) {
-                    ihm->onInputEventCallback (IHM_INPUT_EVENT_FORWARD, ihm->customData);
-                    usleep(10);
+						ihm->onInputEventCallback (IHM_INPUT_EVENT_FORWARD, ihm->customData);
+						usleep(10);
 					}
                 }
             }
-            else if(key == KEY_DOWN || key == 's')
+            else if (key == 's' || key == 'S')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
 					for (i=0; i<3000; i++) {
-                    ihm->onInputEventCallback (IHM_INPUT_EVENT_BACK, ihm->customData);
-                    usleep(10);
+						ihm->onInputEventCallback (IHM_INPUT_EVENT_BACK, ihm->customData);
+						usleep(10);
 					}
                 }
             }
-            else if(key == KEY_LEFT || key == 'a')
+            else if(key == 'a' || key == 'A')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
 					// Change angle 40 degrees left
 					for (i=0; i<3000; i++) {
-                    ihm->onInputEventCallback (IHM_INPUT_EVENT_LEFT, ihm->customData);
-                    usleep(10);
+						ihm->onInputEventCallback (IHM_INPUT_EVENT_LEFT, ihm->customData);
+						usleep(10);
 					}
                 }
             }
-            else if(key == KEY_RIGHT || key == 'd')
+            else if(key == 'd' || key == 'D')
             {
                 if(ihm->onInputEventCallback != NULL)
                 {
 					// Change angle 40 degrees right
 					for (i=0; i<3000; i++) {
-                    ihm->onInputEventCallback (IHM_INPUT_EVENT_RIGHT, ihm->customData);
-                    usleep(10);
+						ihm->onInputEventCallback (IHM_INPUT_EVENT_RIGHT, ihm->customData);
+						usleep(10);
 					}
                 }
             }
@@ -335,7 +308,6 @@ void *IHM_InputProcessing(void *data)
             }
             
             usleep(10);
-		}
         }
 		close(sockfd);
     }
