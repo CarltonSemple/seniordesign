@@ -59,7 +59,15 @@ int findAndSaveHumans(bool save, bool drawBoxes)
         if (!img.data)
             continue;
         // look for humans
-        vector<Human> humans = detector.detectHumans(img, drawBoxes);
+        
+        
+        
+        // FIX THIS LATER
+        vector<Human> humans;// = detector.detectHumans(img, drawBoxes);
+        
+        
+        
+        
         cumulativeHumans.reserve(cumulativeHumans.size() + humans.size()); 
         cumulativeHumans.insert(cumulativeHumans.end(),humans.begin(),humans.end());
         if(cumulativeHumans.size() > size) {
@@ -110,12 +118,12 @@ void countSimilaritiesToScannedTarget(Human & target)
     if (!cap.isOpened())
         return;
     
-    Mat img;
+    UMat img;
     while(true)
     {
         cap >> img;
-        if (!img.data)
-            continue;
+        //if (!img.data)
+          //  continue;
             
         namedWindow("video capture", CV_WINDOW_NORMAL);
                 
@@ -187,13 +195,13 @@ void testCrop()
     }
 }
 
-void tmm(Mat & templImg, Mat & img)
+void tmm(UMat & templImg, UMat & img)
 {
     Matcher matcher;
     matcher.templateMatchingWithoutCallBack(templImg, img, 1);
 }
 
-void hogg(Mat & img)
+void hogg(UMat & img)
 {
     PersonDetector pd;
     pd.detectHumans(img, true);
@@ -208,8 +216,12 @@ void testTemplateMatchingVideo()
     if (!cap.isOpened())
         return;
         
-    Mat img;
-    Mat templImg = imread("template.jpg", CV_LOAD_IMAGE_COLOR);
+    UMat img;
+    UMat templImgOriginal;
+    imread("template.jpg", CV_LOAD_IMAGE_COLOR).copyTo(templImgOriginal);
+    //UMat templImg;
+    //templImgOriginal.copyTo(templImg);
+    
     //Matcher matcher;
     
     int i = 0;
@@ -217,29 +229,28 @@ void testTemplateMatchingVideo()
     while(true)
     {
         cap >> img;
-        if (!img.data)
-            continue;
+        //if (!img.data)
+          //  continue;
             
         namedWindow("hog", WINDOW_AUTOSIZE);
         if(i == 2) {
             i = 0;
-            imshow("hog", img);
-            continue;
+            //imshow("hog", img);
+            //continue;
         }
         i++;
             
-        UMat original;
-        img.copyTo(original);
+        //UMat original;
+        //img.copyTo(original);
         
-        
-        //thread hh(std::ref(hogg), std::ref(img));
+        // do hog
         hogg(std::ref(img));
         
-        //Matcher matcher;
-        //matcher.templateMatchingWithoutCallBack(templImg, original, templatematchingmethod);
+        Matcher matcher;
+        matcher.templateMatchingWithoutCallBack(std::ref(templImgOriginal), std::ref(img), templatematchingmethod);
         
-        //hh.join();
-        imshow("hog", img);
+        //////////hh.join();
+        //imshow("hog", img);
         waitKey(1);
     }
 }
@@ -254,7 +265,7 @@ void displayScan()
     scannedHuman.displayImages(true);
 }
 
-/*
+
 Mat publicImage;
 bool run = true;
 
@@ -267,6 +278,7 @@ void publicImageLoop()
         return;
     
     namedWindow("preview", CV_WINDOW_NORMAL);
+    cv::resizeWindow("preview", 800, 800);
     while(true)
     {
         if(!run)
@@ -296,21 +308,22 @@ void cameraApp(string filename)
     cout << endl << "snap!" << endl;
     Util::saveImage(filename, publicImage);
     run = false;
-}*/
+}
 
 int main(int argc, char *argv[]) 
 {
     cv::ocl::setUseOpenCL(true); // enable OpenCL in the processing of UMat
-    //string fiii;
+    string fiii;
     //if(argc == 3) {
     //  fiii = argv[2];
     //} else 
     if(argc == 3) {
+        cameraNumber = atoi(argv[1]);
         // meant for templatematching program - choose the method
         templatematchingmethod = atoi(argv[2]);
-    //} else 
-    //if(argc == 2) {
+    } else if(argc == 2) {
         cameraNumber = atoi(argv[1]);
+        //fiii = argv[2];
     } else {
         printHelp();
         //cout << "Enter the filename of the picture as the second argument" << endl;
