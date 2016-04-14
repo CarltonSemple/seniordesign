@@ -23,6 +23,7 @@ class Human : public Blob
     Human();
     Human(std::string scannedSetId);
     Human(std::string id, std::pair<int,int> & topLeft, std::pair<int,int> & bottomRight, cv::Mat img);
+    Human(std::string id, std::pair<int,int> & topLeft, std::pair<int,int> & bottomRight, cv::UMat img);
     
     std::tuple<int,int,int> getColor();
     
