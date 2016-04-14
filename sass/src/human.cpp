@@ -27,6 +27,21 @@ Human::Human(std::string id, std::pair<int,int> & topLeft, std::pair<int,int> & 
     //
 }
 
+Human::Human(std::string id, std::pair<int,int> & topLeft, std::pair<int,int> & bottomRight, cv::UMat img)
+{
+    scanned = false;
+    name = id;
+    
+    //
+    setTopLeft(topLeft);
+    setBottomRight(bottomRight);
+    Mat m;
+    img.copyTo(m);
+    images.push_back(m);
+    //
+    //
+}
+
 std::tuple<int,int,int> Human::getColor()
 {
     std::tuple<int,int,int> c(rgb_color);
