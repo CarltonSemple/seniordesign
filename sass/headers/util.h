@@ -6,6 +6,12 @@
 #include <opencv2/opencv.hpp>
 #include "opencv2/core.hpp"
 
+struct RGB {
+    uchar r;
+    uchar g;
+    uchar b;  
+};
+
 class Util
 {
     public:
@@ -31,16 +37,55 @@ class Util
         return ree;
     }
     
+    /**
+    ** For scanning, crop out the black sides of the image so that the image is just the person
+    ** percentBlank: percentage of a column that can be blank and the column will still be considered a side bar
+    **/
+    static cv::UMat removeSideBars(cv::Mat source, double percentBlank) 
+    {
+        int leftCol = 0, rightCol = source.size().width;
+        bool leftSide = true;
+        int column = 0;
+        //for(column = 0; column < source.size().width / 2; column++)
+        while(true)
+        {
+            // go from the left to the middle, and then from the right to the middle
+            if(leftSide) {
+                if(column >= source.size().width / 2) {
+                    leftSide = false; // finished with the left, move to the right
+                    column = source.size().width;
+                } else {
+                    column++;
+                }
+            } else {
+                // right side bar
+                if(column <= source.size().width / 2) {
+                    break;
+                } else {
+                    column++;
+                }
+            }
+            int row = 0;
+            double blankCount = 0;
+            for(row = 0; row < source.size().height; row++)
+            {
+                RGB & color = source.ptr<RGB>(column)[row];
+                if(color.r == 0 && color.g == 0 && color.b == 0) {
+                    blankCount += 1.0;
+                }
+            }
+            // if most of the column is blank, move the marker over
+            if((blankCount/source.size().height)*100 >= percentBlank) {
+                leftCol += 1;
+            }                        
+        }
+    }
+    
     static void saveImage(std::string pathName, cv::Mat image)
     {
         cv::imwrite(pathName, image);
     }
+    
+    
 };
-
-struct RGB {
-    uchar r;
-    uchar g;
-    uchar b;  
-};
-
 #endif
