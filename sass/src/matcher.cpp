@@ -108,12 +108,12 @@ int max_Trackbar = 5;
 
 void MatchingMethodCallBack(int, void*);
 
-void Matcher::templateMatchingWithoutCallBack(cv::Mat & templateImg, cv::Mat & sourceImg, int methodNum)
+void Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg, int methodNum)
 {
-    Mat resultt2;
+    UMat resultt2;
     namedWindow( image_window, WINDOW_AUTOSIZE );
     namedWindow( result_window, WINDOW_AUTOSIZE );
-    Mat img_display;
+    UMat img_display;
     sourceImg.copyTo( img_display );
     int result_cols =  abs(sourceImg.cols - templateImg.cols + 1);
     int result_rows = abs(sourceImg.rows - templateImg.rows + 1);
@@ -121,20 +121,39 @@ void Matcher::templateMatchingWithoutCallBack(cv::Mat & templateImg, cv::Mat & s
     //cout << "r rows: " << result_rows << endl;
     resultt2.create( result_rows, result_cols, CV_32FC1 );
     matchTemplate( sourceImg, templateImg, resultt2, methodNum );
-    normalize( resultt2, resultt2, 0, 1, NORM_MINMAX, -1, Mat() );
+    //normalize( resultt2, resultt2, 0, 1, NORM_MINMAX, -1, Mat() );
     
     double minVal, maxVal; 
     Point minLoc, maxLoc, matchLoc;
     
     minMaxLoc( resultt2, &minVal, &maxVal, &minLoc, &maxLoc, Mat() );
     
-    if( methodNum  == TM_SQDIFF || methodNum == TM_SQDIFF_NORMED )
-    { matchLoc = minLoc; }
-    else
-    { matchLoc = maxLoc; }
+    // view the max val and min val
+    // make a threshold
     
-    rectangle( img_display, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
-    rectangle( resultt2, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+    
+    if( methodNum  == TM_SQDIFF || methodNum == TM_SQDIFF_NORMED )
+    { 
+        matchLoc = minLoc; 
+        cout << "minLocation. min value: " << minVal << endl; 
+        // if(minVal >= 0) {
+            rectangle( img_display, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+            rectangle( resultt2, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+        //}
+    }
+    else
+    { 
+        matchLoc = maxLoc; 
+        cout << "maxLocation. max value: " << maxVal << endl;
+        double po = 100000000;
+        cout << 4.5 * po << endl;
+        if(maxVal >= 4.5 * po) { 
+            rectangle( img_display, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+            rectangle( resultt2, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+        }
+    }
+    
+    
     
     imshow( image_window, img_display );
     imshow( result_window, resultt2 );
