@@ -110,13 +110,14 @@ void MatchingMethodCallBack(int, void*);
 
 void Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg, int methodNum)
 {
+    //cout << "source type: " << sourceImg.type() << endl;
     UMat resultt2;
-    namedWindow( image_window, WINDOW_AUTOSIZE );
-    namedWindow( result_window, WINDOW_AUTOSIZE );
+    //namedWindow( image_window, WINDOW_AUTOSIZE );
+    //namedWindow( result_window, WINDOW_AUTOSIZE );
     UMat img_display;
     sourceImg.copyTo( img_display );
-    int result_cols =  abs(sourceImg.cols - templateImg.cols + 1);
-    int result_rows = abs(sourceImg.rows - templateImg.rows + 1);
+    int result_cols =  abs(sourceImg.cols - templateImg.cols + 1); //templateImg.cols;//
+    int result_rows = abs(sourceImg.rows - templateImg.rows + 1); //templateImg.rows;
     //cout << "r cols: " << result_cols << endl;
     //cout << "r rows: " << result_rows << endl;
     resultt2.create( result_rows, result_cols, CV_32FC1 );
