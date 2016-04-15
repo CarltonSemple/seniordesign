@@ -2,6 +2,7 @@
 #include <vector>
 #include "test.h"
 #include "backgroundSubtractor.h"
+#include "drone.h"
 #include "human.h"
 #include "persondetector.h"
 #include "matcher.h"
@@ -216,9 +217,27 @@ void testTemplateMatchingVideo()
     if (!cap.isOpened())
         return;
         
+    namedWindow("hog", WINDOW_AUTOSIZE);
+        
     UMat img;
     UMat templImgOriginal;
-    imread("template.jpg", CV_LOAD_IMAGE_COLOR).copyTo(templImgOriginal);
+    vector<cv::UMat> templateImages;
+    // load the template image set
+    
+    std::ostringstream imgname;
+    for(int i = 1; i <= 4; i++) {
+        UMat tttt;
+        imgname << "template" << i << ".jpg";
+        UMat n;
+        imread(imgname.str(), CV_LOAD_IMAGE_COLOR).copyTo(n);
+        tttt = n.clone();
+        imgname.clear();
+        imgname.str("");
+        templateImages.push_back(tttt);
+    }
+    //imread("template3.jpg", CV_LOAD_IMAGE_COLOR).copyTo(templImgOriginal);
+    //templateImages.push_back(templImgOriginal);
+    
     //UMat templImg;
     //templImgOriginal.copyTo(templImg);
     
@@ -232,7 +251,7 @@ void testTemplateMatchingVideo()
         //if (!img.data)
           //  continue;
             
-        namedWindow("hog", WINDOW_AUTOSIZE);
+        
         if(i == 2) {
             i = 0;
             //imshow("hog", img);
@@ -244,13 +263,19 @@ void testTemplateMatchingVideo()
         //img.copyTo(original);
         
         // do hog
-        hogg(std::ref(img));
-        
+        //hogg(std::ref(img));
+                       
         Matcher matcher;
-        matcher.templateMatchingWithoutCallBack(std::ref(templImgOriginal), std::ref(img), templatematchingmethod);
+        //for(int i = 0; i < 4; i++)
+        for(UMat temImg : templateImages) 
+        {
+            //UMat temImg = templateImages[i];
+            // change color of squares for visualization purposes
+            matcher.templateMatchingWithoutCallBack(std::ref(temImg), std::ref(img), templatematchingmethod);
+        }
         
         //////////hh.join();
-        //imshow("hog", img);
+        imshow("hog", img);
         waitKey(1);
     }
 }
