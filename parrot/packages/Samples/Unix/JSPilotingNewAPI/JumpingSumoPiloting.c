@@ -50,6 +50,8 @@
 
 #define ERROR_STR_LENGTH 2048
 
+#define BUF_SIZE 1024
+
 /*****************************************
  *
  *             implementation :
@@ -148,6 +150,12 @@ static int idToIndex(ARNETWORK_IOBufferParam_t* params, size_t num_params, int i
 int gIHMRun = 1;
 char gErrorStr[ERROR_STR_LENGTH];
 
+// These are global variables for the client socket
+int sockfd, mlen;
+char buffer[BUF_SIZE];
+struct sockaddr_in serv_addr;
+int addrsize = sizeof(struct sockaddr_in);
+
 int main (int argc, char *argv[])
 {
     /* local declarations */
@@ -156,6 +164,50 @@ int main (int argc, char *argv[])
     JS_MANAGER_t *jsManager = malloc(sizeof(JS_MANAGER_t));
 
     pid_t child = 0;
+    
+    //****************************************************************************************************
+	// Here we are setting up only a single client socket to be used later in the frame callback function.
+	
+	
+	// Set up client socket to connect to server
+	sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	if (sockfd < 0)
+	{
+		perror("ERROR opening socket");
+	}
+	serv_addr.sin_family = AF_INET;
+	serv_addr.sin_port = htons(12345);
+	unsigned int in_address = 192 << 24 | 168 << 16 | 0 << 8 | 106;//127 << 24 | 0 << 16 | 0 << 8 | 1;
+	serv_addr.sin_addr.s_addr = htonl (in_address);
+		
+	// Connect to the server socket 
+	if (connect (sockfd, (struct sockaddr *) &serv_addr, sizeof (struct sockaddr_in)) == -1)
+	{	
+		perror("Could not connect in JumpingSumoPiloting.c");
+		exit(-1);
+	} 
+	
+	// Send synchronization message to server socket
+	bzero(buffer,BUF_SIZE);
+	buffer[0] = '9';
+	printf("Sending synchronization message...\n");
+	int i = write(sockfd, buffer, strlen(buffer));
+	if (i<0)
+	{
+		perror("Could not send synchronization message");
+	}
+	printf("...Sent\n");
+	// Receive synchronization reply from server socket 
+	bzero(buffer,BUF_SIZE);
+	printf("Waiting...\n");
+	mlen = read(sockfd, buffer, 1);
+	if (mlen < 0)
+	{
+		perror("Could not receive synchronization reply");
+	}
+	printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+    
+    //**************************************************************************************
 
     ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "-- Jumping Sumo Receive Video Stream --");
     
@@ -633,6 +685,7 @@ uint8_t *frameCompleteCallback (eARSTREAM_READER_CAUSE cause, uint8_t *frame, ui
 {
     uint8_t *ret = NULL;
     JS_MANAGER_t *jsManager = (JS_MANAGER_t *)custom;
+    int i;
     
     switch(cause)
     {
@@ -650,10 +703,10 @@ uint8_t *frameCompleteCallback (eARSTREAM_READER_CAUSE cause, uint8_t *frame, ui
             if (DISPLAY_WITH_FFPLAY)
             {
                 // write img files
-                fwrite(frame, frameSize, 1, jsManager->video_out);
-                fflush (jsManager->video_out);
+                //fwrite(frame, frameSize, 1, jsManager->video_out);
+                //fflush (jsManager->video_out);
             }
-            else if (jsManager->writeImgs)
+            if (jsManager->writeImgs)
             {
                 
                 char filename[20];
@@ -661,28 +714,30 @@ uint8_t *frameCompleteCallback (eARSTREAM_READER_CAUSE cause, uint8_t *frame, ui
                 
                 jsManager->frameNb++;
                 FILE *img = fopen(filename, "w");
+				printf("About to write frame\n");
                 fwrite(frame, frameSize, 1, img);
                 fclose(img);
             }
-            
-            // Send frame through a socket
-            /*int sockfd, mlen;
-			struct sockaddr_in serv_addr;
-			int addrsize = sizeof(struct sockaddr_in);
-			sockfd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-			if (sockfd < 0) 
-				perror("ERROR opening socket");
-			serv_addr.sin_family = AF_INET;
-			serv_addr.sin_port = htons(32324);
-			unsigned int in_address = 127 << 24 | 0 << 16 | 0 << 8 | 1;
-			serv_addr.sin_addr.s_addr = htonl (in_address);
-
-			printf("Frame size = %i\n", frameSize);
-			 printf("Sending frame...\n");
-			 if (sendto(sockfd, frame, 500000, 0, (struct sockaddr *)&serv_addr, sizeof(struct sockaddr_in)) < 0)
-					perror("ERROR with sendto()");
-			 printf("...Sent\n");*/
 			 
+			int size = (int) frameSize;
+			char* string = malloc(6);
+			snprintf(string, 6, "%i", size);
+			printf("string=%s\n", string);
+			i = write(sockfd, string,  strlen(string));
+			if (i<0)
+			{
+				perror("Could not send frame size");
+			}
+			printf("...Sent %i bytes...\n", i);
+			
+			printf("Sending size of frame...\n");
+			i = write(sockfd, frame, frameSize);
+			if (i<0)
+			{
+				perror("Could not send frame size");
+			}
+			printf("...Sent\n");
+			printf("sent %i bytes\tframeSize=%i\n", i, frameSize);
             
             break;
         case ARSTREAM_READER_CAUSE_FRAME_TOO_SMALL:
@@ -989,14 +1044,14 @@ void onInputEvent (eIHM_INPUT_EVENT event, void *customData)
             if(jsManager != NULL)
             {
                 jsManager->dataPCMD.flag = 1;
-                jsManager->dataPCMD.turn = 25;//50;
+                jsManager->dataPCMD.turn = 20;//50;
             }
             break;
         case IHM_INPUT_EVENT_LEFT:
             if(jsManager != NULL)
             {
                 jsManager->dataPCMD.flag = 1;
-                jsManager->dataPCMD.turn = -25;//-50;
+                jsManager->dataPCMD.turn = -20;//-50;
             }
             break;
         case IHM_INPUT_EVENT_NONE:
