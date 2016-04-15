@@ -1,14 +1,14 @@
 /*******************************************************
- * Copyright (C) 2016-2017 Justin Villani, Carlton Semple, Jake S, Iba ba <{email}>
- * 
- * This file is part of SASS.
- * 
- * SASS can not be copied and/or distributed without the express
- * permission of Justin Villani, Carlton Semple, Jake S, Iba ba
- *******************************************************/
+* Copyright (C) 2016-2017 Justin Villani, Carlton Semple, Jake Soccorso, Iba ba <juvillan@syr.edu, jpsoccor@syr.edu, cosemple@syr.edu, ieba@syr.edu>
+* 
+* This file is part of SASS(Surveillance & Apprenhensive Security System).
+* 
+* SASS can not be copied and/or distributed without the express
+* permission of Justin Villani, Carlton Semple, Jake Soccorse, Iba ba
+*******************************************************/
  
- // How to compile
- // g++ -o tcp_server tcp_server.cpp -std=c++11 -pthread
+// How to compile
+// g++ -o tcp_server tcp_server.cpp -std=c++11 -pthread
 
 
 #include <stdio.h>
@@ -26,6 +26,7 @@
 /*Can be changed, just value we used*/
 #define BUF_SIZE 70000
 
+/*This is include for the conversion from c to c++*/
 using namespace std;
 
 /*Function that captures errors from error checking in code*/
@@ -35,20 +36,22 @@ void error(const char *msg)
     exit(0);
 }
 
-// Thread which starts the server socket to receive frames from both drones
+/*This the second server that is being multi-thread to capture the frames from both drones.*/
 void receiveFrames()
 {
-	FILE *video_in = fopen("./video_fifo","w+");
-	if(video_in == NULL)
-	{
+	/*This is opening a file descriptor to the video_fifo which is storing the data to open the video frames*/
+    FILE *video_in = fopen("./video_fifo","w+");
+    /*Making sure that the file descriptor was opened correctly*/
+    if(video_in == NULL)
+    {
 		perror("Not opening video fifo");
-	}
-	else
-	{
+    }
+    else
+    {
 		cout << "Successfully opened the video fifo" << endl;
-	}
-	cout << "Thread has started" << endl;
-	/*Server File and port number being used*/
+    }
+    cout << "Thread has started" << endl;
+    /*Server File and port number being used*/
     int parentfd, portno;
     /*Two Child processes for both unqiue Drones*/
     int drone_1_video, drone_2_video;
@@ -74,14 +77,15 @@ void receiveFrames()
     int quit_flag = 0;
     
     /*Assign Port Number*/
+    /*This port number is different to distinguish between which server is for command/control of drones and receving the video*/
     portno = 12345;
 
     /*Create server socket*/
-    parentfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    parentfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     /*Checking Socket Creation*/
     if (parentfd < 0)
     {	 
-	error("ERROR opening socket");
+		error("ERROR opening socket");
     }	
 	
     /* Building the Server's Internet Address*/ 
@@ -95,27 +99,28 @@ void receiveFrames()
     /*Bind: associate the parent socket with port*/
     if (bind(parentfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
     {
-	error("ERROR on binding");
+		error("ERROR on binding");
     }
 	printf("Binding was a success\n");
     /*Listen: make this socket ready to accept connection requests*/
     if(listen(parentfd,2) < 0)
     {
-	error("ERROR on listen");
+		error("ERROR on listen");
     }
     printf("Listening was a success\n");
     /*Getting the length of the client message*/
     clientlen = sizeof(client_addr_drone_1_video);
-	
+    
     /*************Setting up the Connections for Both Drones***********************/
-    /*Accepting Connection from Drone 1*/
+    /******************************************************************************/
+    /*Accepting Connection from Drone 1 for video*/
     drone_1_video = accept(parentfd, (struct sockaddr*) &client_addr_drone_1_video, &clientlen);
     if(drone_1_video < 0)
     {
-	error("ERROR on accept Drone 1");
+		error("ERROR on accept Drone 1");
     }
     printf("Drone 1 accepted for video socket\n");
-    /*Accepting Connection from Drone 2*/
+    /*Accepting Connection from Drone 2 for video*/
     //drone_2_video = accept(parentfd, (struct sockaddr*) &client_addr_drone_2_video, &clientlen);
     //if(drone_2_video < 0)
     //{
@@ -130,7 +135,7 @@ void receiveFrames()
     n_1 = read(drone_1_video, buffer, 1);
     if(n_1<0)
     {
-	error("ERROR reading from Drone 1");
+		error("ERROR reading from Drone 1");
     }
     /**************************/
 	printf("In thread received %s\n",buffer);
@@ -148,10 +153,11 @@ void receiveFrames()
     n_1=write(drone_1_video, buffer, strlen(buffer));
     if(n_1 < 0)
     {
-	error("ERROR writing to Drone 1");	
+		error("ERROR writing to Drone 1");	
     }
     /**************************/
     char * buffer2;
+    /*This is receiving the frames that we are sending over first and then receiving the data.*/
     while (1) 
     {
 		bzero(buffer,BUF_SIZE);
@@ -168,6 +174,7 @@ void receiveFrames()
 		buffer2 = new char(frameSize);
 		bzero(buffer2,BUF_SIZE);
 		int totalRead = 0;
+		/*We are making sure that att he frameSize and data have been received and once it has been, we then write the the video_fifo to be able to display the video*/
 		while (totalRead < frameSize)
 		{
 			n_1 = read(drone_1_video, &buffer2[totalRead], frameSize);
