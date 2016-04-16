@@ -110,13 +110,14 @@ void MatchingMethodCallBack(int, void*);
 
 void Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg, int methodNum)
 {
+    //cout << "source type: " << sourceImg.type() << endl;
     UMat resultt2;
-    namedWindow( image_window, WINDOW_AUTOSIZE );
-    namedWindow( result_window, WINDOW_AUTOSIZE );
+    //namedWindow( image_window, WINDOW_AUTOSIZE );
+    //namedWindow( result_window, WINDOW_AUTOSIZE );
     UMat img_display;
     sourceImg.copyTo( img_display );
-    int result_cols =  abs(sourceImg.cols - templateImg.cols + 1);
-    int result_rows = abs(sourceImg.rows - templateImg.rows + 1);
+    int result_cols =  abs(sourceImg.cols - templateImg.cols + 1); //templateImg.cols;//
+    int result_rows = abs(sourceImg.rows - templateImg.rows + 1); //templateImg.rows;
     //cout << "r cols: " << result_cols << endl;
     //cout << "r rows: " << result_rows << endl;
     resultt2.create( result_rows, result_cols, CV_32FC1 );
@@ -138,27 +139,27 @@ void Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat &
     { 
         matchLoc = minLoc; 
         cout << "minLocation. min value: " << minVal << endl; 
-        // if(minVal >= 0) {
-            rectangle( img_display, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+         if(minVal < 0.33) {
+            rectangle( sourceImg, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
             rectangle( resultt2, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
-        //}
+        }
     }
     else
     { 
         matchLoc = maxLoc; 
         cout << "maxLocation. max value: " << maxVal << endl;
         double po = 100000000;
-        cout << 4.5 * po << endl;
-        if(maxVal >= 4.5 * po) { 
-            rectangle( img_display, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
+        //cout << 4.5 * po << endl;
+        if(maxVal >= 1.3 * po) { 
+            rectangle( sourceImg, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
             rectangle( resultt2, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
         }
     }
     
     
     
-    imshow( image_window, img_display );
-    imshow( result_window, resultt2 );
+    //imshow( image_window, img_display );
+    //imshow( result_window, resultt2 );
     waitKey(1);
 }
 
