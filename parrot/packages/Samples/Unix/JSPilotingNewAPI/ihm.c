@@ -215,7 +215,7 @@ void *IHM_InputProcessing(void *data)
 		// Send synchronization message to server socket
 		bzero(buffer,BUF_SIZE);
 		buffer[0] = 't';
-		printf("Sending synchronization message...\n");
+		printf("Sending synchronization message...\r\n");
 		i = write(sockfd, buffer, strlen(buffer));
 		if (i<0)
 		{
@@ -230,7 +230,7 @@ void *IHM_InputProcessing(void *data)
 		{
 			perror("Could not receive synchronization reply");
 		}
-		printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+		printf("Received \"%s\" from server %s\r\n", buffer, inet_ntoa (serv_addr.sin_addr));
 			
 		/*
 		 * At this point, the server begins sending movement commands using the WASD movement scheme.
@@ -240,13 +240,13 @@ void *IHM_InputProcessing(void *data)
         {
 			 // Obtain command from server
 			 bzero(buffer,BUF_SIZE);
-			 printf("Waiting...\n");
+			 printf("Waiting...\r\n");
 			 mlen = read(sockfd, buffer, 1);
 			 if (mlen < 0)
 			 {
 				 perror("Could not receive commands");
 			 }
-			 printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+			 printf("Received \"%s\" from server %s\r\n", buffer, inet_ntoa (serv_addr.sin_addr));
 			 key = buffer[0]; // Command character is loaded into key
             
             // Perform an action depending on the command received
@@ -327,22 +327,22 @@ void IHM_PrintHeader(IHM_t *ihm, char *headerStr)
 
 void IHM_PrintInfo(IHM_t *ihm, char *infoStr)
 {
-    if (ihm != NULL)
+    /*if (ihm != NULL)
     {
         move(INFO_Y, 0);    // move to begining of line
         clrtoeol();         // clear line
         mvprintw(INFO_Y, INFO_X, infoStr);
-    }
+    }*/
 }
 
 void IHM_PrintBattery(IHM_t *ihm, uint8_t percent)
 {
-    if (ihm != NULL)
+    /*if (ihm != NULL)
     {
         move(BATTERY_Y, 0);     // move to begining of line
         clrtoeol();             // clear line
         mvprintw(BATTERY_Y, BATTERY_X, "Battery: %d", percent);
-    }
+    }*/
 }
 
 

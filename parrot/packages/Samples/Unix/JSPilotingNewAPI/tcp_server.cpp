@@ -40,16 +40,8 @@ void error(const char *msg)
 void receiveFrames()
 {
 	/*This is opening a file descriptor to the video_fifo which is storing the data to open the video frames*/
-    FILE *video_in = fopen("./video_fifo","w+");
-    /*Making sure that the file descriptor was opened correctly*/
-    if(video_in == NULL)
-    {
-		perror("Not opening video fifo");
-    }
-    else
-    {
-		cout << "Successfully opened the video fifo" << endl;
-    }
+    FILE *video_in = fopen("./ActiveDroneFeed","w+"); // This is for the active drone's frames
+
     cout << "Thread has started" << endl;
     /*Server File and port number being used*/
     int parentfd, portno;
@@ -81,7 +73,7 @@ void receiveFrames()
     portno = 12345;
 
     /*Create server socket*/
-    parentfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    parentfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     /*Checking Socket Creation*/
     if (parentfd < 0)
     {	 
@@ -117,89 +109,184 @@ void receiveFrames()
     drone_1_video = accept(parentfd, (struct sockaddr*) &client_addr_drone_1_video, &clientlen);
     if(drone_1_video < 0)
     {
-		error("ERROR on accept Drone 1");
+		perror("ERROR on accept Drone 1");
     }
     printf("Drone 1 accepted for video socket\n");
     /*Accepting Connection from Drone 2 for video*/
-    //drone_2_video = accept(parentfd, (struct sockaddr*) &client_addr_drone_2_video, &clientlen);
-    //if(drone_2_video < 0)
-    //{
-	//error("ERROR on accept Drone 2");
-    //}
-    ///***************************************************************************/
-    //printf("Drone 2 accepted\n");
-    //printf("\nBoth Drones connected to System\n");
+    drone_2_video = accept(parentfd, (struct sockaddr*) &client_addr_drone_2_video, &clientlen);
+    if(drone_2_video < 0)
+    {
+		perror("ERROR on accept Drone 2");
+    }
+    /***************************************************************************/
+    printf("Drone 2 accepted for video socket\n");
+    printf("\nBoth Drones connected to System\n");
     /****************Syncing the Drones sockets with server socket**************/
     /*Reading info from Drone 1*/		
     bzero(buffer,BUF_SIZE);
     n_1 = read(drone_1_video, buffer, 1);
     if(n_1<0)
     {
-		error("ERROR reading from Drone 1");
+		perror("ERROR reading from Drone 1");
     }
-    /**************************/
+
 	printf("In thread received %s\n",buffer);
     /*Reading info from Drone 2*/
-    //bzero(buffer,BUF_SIZE);
-    //n_2 = read(drone_2_video, buffer, 1);
-    //if(n_2 < 0)
-    //{
-	//error("ERROR reading from Drone 2");
-    //}
-    ///**************************/
+    bzero(buffer,BUF_SIZE);
+    n_2 = read(drone_2_video, buffer, 1);
+    if(n_2 < 0)
+    {
+		perror("ERROR reading from Drone 2");
+    }
+
     /*Just putting a NULL value in buffer so there is something in there*/
     buffer[0] = ' ';
     /* Sending sync info to Drone 1*/
+    //*******************************
     n_1=write(drone_1_video, buffer, strlen(buffer));
     if(n_1 < 0)
     {
-		error("ERROR writing to Drone 1");	
+		perror("ERROR writing to Drone 1");	
     }
-    /**************************/
-    char * buffer2;
+    /* Sending sync info to Drone 2*/
+    //*******************************
+    n_2=write(drone_2_video, buffer, strlen(buffer));
+    if(n_2 < 0)
+    {
+		perror("ERROR writing to Drone 2");	
+    }
+
+    int frameSizeSyncFlag = 0;
+    int frameSize;
+    int temp_n;
+    int activeDrone = 1; // Keeps track of which drone is active (1 or 2)
+    int counter = 0;
+    
     /*This is receiving the frames that we are sending over first and then receiving the data.*/
     while (1) 
     {
-		bzero(buffer,BUF_SIZE);
-		n_1 = read(drone_1_video, buffer, 6);
-		if(n_1<0)
+		frameSizeSyncFlag = 0;
+		counter++;
+		if(counter == 100)
 		{
-			error("ERROR reading from Drone 1 at getting frame size");
+			if(activeDrone == 1)
+			{
+				activeDrone=2;
+			}
+			else
+			{
+				activeDrone=1;
+			}
+			counter = 0;
 		}
-		/**************************/
-		printf("In thread received %s\n",buffer);
+		/*Checking to make sure we get the exact frame size from the client*/
+		while (!frameSizeSyncFlag)
+		{
+			bzero(buffer,BUF_SIZE);
+			if (activeDrone == 1)
+			{
+				n_1 = read(drone_1_video, buffer, 6);
+			}
+			else
+			{
+				n_1 = read(drone_2_video, buffer, 6);
+			}
+						
+			frameSize = atoi(buffer);
+			//printf("frameSize = %i\n", frameSize);
+			
+			// Send frame size back to validate
+			temp_n = 0;
+			if (activeDrone == 1)
+			{
+				temp_n = write(drone_1_video, buffer, 6);
+			}
+			else
+			{
+				temp_n = write(drone_2_video, buffer, 6);
+			}
+			
+			// Read back if valid or not (1 means valid, 0 means invalid)
+			bzero(buffer,BUF_SIZE);
+			if (activeDrone == 1)
+			{
+				n_1 = read(drone_1_video, buffer, 1);
+			}
+			else
+			{
+				n_1 = read(drone_2_video, buffer, 1);
+			}
+
+			// Correctly got frame size
+			if (buffer[0] == '1')
+			{
+				// jump out of loop
+				frameSizeSyncFlag = 1;
+			}
+			else
+			{
+				cout << "WRONG FRAME SIZE RECEIVED***********\n";
+				frameSizeSyncFlag = 0;
+			}
+		}
+		/*********************************************/
+		/*At this point we should have the frame size*/
+		/*********************************************/
 		
-		int frameSize = atoi(buffer);
-		printf("frameSize = %i\n", frameSize);
-		buffer2 = new char(frameSize);
-		bzero(buffer2,BUF_SIZE);
+		char* buffer2 = new char(frameSize);
 		int totalRead = 0;
-		/*We are making sure that att he frameSize and data have been received and once it has been, we then write the the video_fifo to be able to display the video*/
+		/*We are making sure that at the frameSize and data have been received and once it has been, we then write the the video_fifo to be able to display the video*/
 		while (totalRead < frameSize)
 		{
-			n_1 = read(drone_1_video, &buffer2[totalRead], frameSize);
-			if(n_1<0)
+			/*Check to see if your going to read onto the next frame size*/
+			if (totalRead + n_1 < frameSize)
 			{
-				error("ERROR reading from Drone 1 at getting frame");
+				if (activeDrone == 1)
+				{
+					n_1 = read(drone_1_video, &buffer2[totalRead], frameSize);
+				}
+				else
+				{
+					n_1 = read(drone_2_video, &buffer2[totalRead], frameSize);
+				}
 			}
-			printf("N_1=%i\ttotalRead=%i\tframeSize=%i\n", n_1, totalRead, frameSize);
+			else
+			{
+				if (activeDrone == 1)
+				{
+					n_1 = read(drone_1_video, &buffer2[totalRead], frameSize-totalRead);
+				}
+				else
+				{
+					n_1 = read(drone_2_video, &buffer2[totalRead], frameSize-totalRead);
+				}
+				if(n_1 < 0)
+				{
+					perror("Couldn't finish off frame read:");
+				}
+				//while (n_1+totalRead < frameSize)
+				//{
+					//cout << "n_1+totalRead = " << n_1+totalRead << ", frameSize = " << frameSize << endl;
+					//totalRead++;
+					//temp_n = read(drone_1_video, &buffer2[totalRead], 1);
+				//}
+			}
 			totalRead += n_1;
+			//cout <<"n_1:" << n_1 << "  totalRead:" << totalRead << "   frameSize:" << frameSize << endl;
+		}
+		if (activeDrone == 1)
+		{
+			temp_n = write(drone_1_video, "1", 1);
+		}
+		else
+		{
+			temp_n = write(drone_2_video, "1", 1);
 		}
 		///**************************/
-		//printf("In thread received %s\n",buffer2);
 		fwrite(buffer2,frameSize,1,video_in);
 		fflush(video_in);
-		//delete(buffer2);
 	}
-    /* Sending sync info to Drone 1*/
-    //n_2=write(drone_2_video, buffer, strlen(buffer));
-    //if(n_2 < 0)
-    //{
-	//error("ERROR writing to Drone 2");
-    //}
-    /**************************/
-    /**********************************************************************/
-	
+
 }
 
 // ******************************* MAIN *********************************
@@ -210,7 +297,7 @@ int main(int argc, char *argv[])
 	int child;
 	if ((child = fork()) == 0)
 	{
-		execlp("ffplay", "ffplay", "-i", "video_fifo", "-f", "mjpeg", NULL);
+		execlp("ffplay", "ffplay", "-i", "ActiveDroneFeed", "-f", "mjpeg", NULL);
 		//execlp("xterm", "xterm", "-e", "mplayer", "-demuxer", "lavf", "video_fifo", "-benchmark", "-really-quiet", NULL);
 	}
 	cout << "Entering the threaded function" << endl;
@@ -282,7 +369,7 @@ int main(int argc, char *argv[])
     {
 		error("ERROR on accept Drone 1");
     }
-    printf("Drone 1 accepted\n");
+    printf("Drone 1 accepted for commands socket\n");
     /*Accepting Connection from Drone 2*/
     drone_2 = accept(parentfd, (struct sockaddr*) &client_addr_drone_2, &clientlen);
     if(drone_2 < 0)
@@ -290,7 +377,7 @@ int main(int argc, char *argv[])
 		error("ERROR on accept Drone 2");
     }
     /***************************************************************************/
-    printf("Drone 2 accepted\n");
+    printf("Drone 2 accepted for commands socket\n");
     printf("\nBoth Drones connected to System\n");
     /****************Syncing the Drones sockets with server socket**************/
     /*Reading info from Drone 1*/		
@@ -448,5 +535,7 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
+
 
 
