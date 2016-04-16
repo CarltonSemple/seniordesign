@@ -8,6 +8,8 @@ using namespace std;
 using namespace cv;
 using namespace cv::xfeatures2d;
 
+int Matcher::templateMatchingMethod = 1;
+
 Matcher::Matcher()
 {
     ratio = 0.98f;
@@ -108,14 +110,19 @@ int max_Trackbar = 5;
 
 void MatchingMethodCallBack(int, void*);
 
-void Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg, int methodNum)
+Point Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg)
+{
+    return templateMatchingWithoutCallBack(templateImg, sourceImg, templateMatchingMethod);
+}
+
+Point Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg, int methodNum)
 {
     //cout << "source type: " << sourceImg.type() << endl;
     UMat resultt2;
     //namedWindow( image_window, WINDOW_AUTOSIZE );
     //namedWindow( result_window, WINDOW_AUTOSIZE );
-    UMat img_display;
-    sourceImg.copyTo( img_display );
+    //UMat img_display;
+    //sourceImg.copyTo( img_display );
     int result_cols =  abs(sourceImg.cols - templateImg.cols + 1); //templateImg.cols;//
     int result_rows = abs(sourceImg.rows - templateImg.rows + 1); //templateImg.rows;
     //cout << "r cols: " << result_cols << endl;
@@ -159,6 +166,7 @@ void Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat &
     //imshow( image_window, img_display );
     //imshow( result_window, resultt2 );
     waitKey(1);
+    return matchLoc;
 }
 
 void Matcher::templateMatching(cv::Mat & templateImg, cv::Mat & sourceImg)

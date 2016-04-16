@@ -15,7 +15,9 @@
 class Matcher 
 {
     float ratio;
-    public:
+public:
+    
+    static int templateMatchingMethod;
     
     Matcher();
     Matcher(float AccuracyRatio);
@@ -32,10 +34,10 @@ class Matcher
     //
     int surfCount(Human & scannedHuman, cv::Mat & potentialImage);
     
-    void templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg, int methodNum);
+    cv::Point templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg);
+    cv::Point templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat & sourceImg, int methodNum);
     void templateMatching(cv::Mat & templateImg, cv::Mat & sourceImg);
     
-    private:
 
 };
 
