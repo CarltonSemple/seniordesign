@@ -348,7 +348,7 @@ int main(int argc, char *argv[])
         cameraNumber = atoi(argv[1]);
         // meant for templatematching program - choose the method
         templatematchingmethod = atoi(argv[2]);
-        eyeinsky eye;
+        eyeinsky eye(templatematchingmethod);
     } else if(argc == 2) {
         cameraNumber = atoi(argv[1]);
         //fiii = argv[2];

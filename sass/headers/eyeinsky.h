@@ -7,7 +7,7 @@ class eyeinsky
 {
 	int a;
 public:
-	eyeinsky();
+	eyeinsky(int method);
 };
 
 #endif
