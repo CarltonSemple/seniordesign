@@ -11,7 +11,7 @@ struct CommunicationBox
     cv::Mat drone1Frame;
     cv::Mat drone2Frame;
     
-    // 
+    // format of command "[cmd] [dist]" ex. "w 3"
     std::string drone1Command;
     bool drone1Wait; // Wait to write to the drone1Command string
     

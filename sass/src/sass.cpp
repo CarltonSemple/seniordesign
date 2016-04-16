@@ -1,5 +1,6 @@
 #include "sass.h"
-
+#include "scanner.h"
+#include "eyeinsky.h"
 using namespace std;
 using namespace cv;
 
@@ -13,6 +14,8 @@ void analyzeVideoRunDrones();
 int determineNeedToSendCommands();
 void receiveFrames();
 void sendCommands();
+void runEyeinSky();
+void runScanner();
 
 Sass::Sass()
 {
@@ -43,8 +46,23 @@ void Sass::runSystem()
     
     // Start thread for processing drone & kinect video feeds
     thread videoThread(analyzeVideoRunDrones);
-}
 
+    // Start thread for kinect in sky
+    thread skyThread(runEyeinSky);
+
+    // Start thread for scanner kinect
+    thread scanThread(runScanner);
+
+}
+void runEyeinSky()
+{
+    eyeinsky eye(1);// or 4
+}
+void runScanner()
+{
+    Scanner s;
+    s.runIndependently();
+}
 void analyzeVideoRunDrones()
 {
     
@@ -86,7 +104,7 @@ void sendCommands()
     int desired_drone;
     //Quit boolean
     int quit_flag = 0;
-    
+    //number of commands to send
     //Assign Port Number
     portno = 32323;
 
@@ -196,10 +214,23 @@ void sendCommands()
                 // simply iterate through the command strings as they
                 // already have the correct format
                 case 1:
+                    //send to drone 1
+                    desired_drone = 1;
+                    //commBox.drone1Command.size();
+                    buffer[0] = commBox.drone1Command.at(0);
+                    desired_length = commBox.drone1Command.at(3);
                     break;  
                 case 2:
+                    //send to drone 2
+                    desired_drone = 2;
+                    buffer[0] = commBox.drone2Command.at(0);
+                    desired_length = commBox.drone2Command.at(3);
                     break;
                 case 3:
+                    //send to both drones
+                    desired_drone = 1;
+                    buffer[0] = commBox.drone1Command.at(0);
+                    desired_length = commBox.drone1Command.at(3);
                     break;
             }
 
@@ -211,8 +242,8 @@ void sendCommands()
             //
             //
             /*Get desired drone to pilot*/
-            printf("Enter which drone you wish to pilot (1 or 2, or 3 to Quit): ");
-            scanf("%i", &desired_drone);
+            //printf("Enter which drone you wish to pilot (1 or 2, or 3 for Quit): ");
+            //scanf("%i", &desired_drone);
             /*If 3 is received we are going to quit the connection to both drones*/
             if (desired_drone == 3)
             {
@@ -220,10 +251,10 @@ void sendCommands()
                 quit_flag = 1;
             }
             /*If no values are choose as shown above you will default and control drone 1*/
-            else if (desired_drone != 1 && desired_drone != 2)
-            {
-                desired_drone = 1;
-            }
+            //else if (desired_drone != 1 && desired_drone != 2)
+            //{
+            //    desired_drone = 1;
+            //}
             
             
             
@@ -234,8 +265,8 @@ void sendCommands()
             if (!quit_flag)
             {
                 /*Get desired drone movement/instruction*/
-                printf("Enter input for drone movement\n(A: Left, W: Forward, S: Backward, D: Right)\n");
-                scanf("%s", buffer);
+                //printf("Enter input for drone movement\n(A: Left, W: Forward, S: Backward, D: Right)\n");
+                //scanf("%s", buffer);
                 if (buffer[0] == 'a' || buffer[0] == 'd')
                 {
                     printf("Enter number of 40 degrees to turn\n");
@@ -245,7 +276,7 @@ void sendCommands()
                     printf("Enter number of inches to move\n");
                 }
                 /*This is scanning in how far you want to go from which instruction you chose from WASD*/
-                scanf("%i", &desired_length);
+                //scanf("%i", &desired_length);
                 
                 
                 /*Move drone by sending buffer desired_length times*/

@@ -33,7 +33,8 @@ public:
     Drone(int ID, CommunicationBox & communicationBox);
     void turnLeft(int angle);
     void turnRight(int angle);
-    
+    void moveForward(int dist);
+    void moveBackward(int dist);
     void decide();
     void setID(int idnum);
     

@@ -1,4 +1,5 @@
 #include "drone.h"
+#include <string>
 
 using namespace std;
 using namespace cv;
@@ -14,12 +15,55 @@ Drone::Drone(int ID, CommunicationBox & communicationBox)
 
 void Drone::turnLeft(int angle)
 {
-    
+    //type like w 3 if you want www
+    switch(idNum)
+    {
+    case 1: 
+        commBox.drone1Command = "a " + to_string(angle);
+        break;
+    case 2: 
+        commBox.drone2Command = "a "+ to_string(angle);
+        break;
+    }
 }
 
 void Drone::turnRight(int angle)
 {
-    
+    switch(idNum)
+    {
+    case 1: 
+        commBox.drone1Command = "d "+ to_string(angle);
+        break;
+    case 2: 
+        commBox.drone2Command = "d "+ to_string(angle);
+        break;
+    }
+}
+void Drone::moveForward(int dist)
+{
+    //type like w 3 if you want www
+    switch(idNum)
+    {
+    case 1: 
+        commBox.drone1Command = "w " + to_string(dist);
+        break;
+    case 2: 
+        commBox.drone2Command = "w "+ to_string(dist);
+        break;
+    }
+}
+
+void Drone::moveBackward(int dist)
+{
+    switch(idNum)
+    {
+    case 1: 
+        commBox.drone1Command = "s "+ to_string(dist);
+        break;
+    case 2: 
+        commBox.drone2Command = "s "+ to_string(dist);
+        break;
+    }
 }
 
 void Drone::decide()
