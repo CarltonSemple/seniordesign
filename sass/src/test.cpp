@@ -7,6 +7,7 @@
 #include "matcher.h"
 #include "scanner.h"
 #include "util.h"
+#include "eyeinsky.h"
 #include <opencv2/opencv.hpp>
 #include "opencv2/core.hpp"
 #include "opencv2/highgui.hpp"
@@ -198,7 +199,7 @@ void testCrop()
 void tmm(UMat & templImg, UMat & img)
 {
     Matcher matcher;
-    matcher.templateMatchingWithoutCallBack(templImg, img, 1);
+    //matcher.templateMatchingWithoutCallBack(templImg, img, 1);
 }
 
 void hogg(UMat & img)
@@ -314,6 +315,7 @@ int main(int argc, char *argv[])
 {
     cv::ocl::setUseOpenCL(true); // enable OpenCL in the processing of UMat
     string fiii;
+    Mat rgbmat;
     //if(argc == 3) {
     //  fiii = argv[2];
     //} else 
@@ -321,6 +323,7 @@ int main(int argc, char *argv[])
         cameraNumber = atoi(argv[1]);
         // meant for templatematching program - choose the method
         templatematchingmethod = atoi(argv[2]);
+        eyeinsky eye;
     } else if(argc == 2) {
         cameraNumber = atoi(argv[1]);
         //fiii = argv[2];
@@ -334,7 +337,7 @@ int main(int argc, char *argv[])
     //cameraApp(fiii);
     
     // Run Scanner
-    Scanner s;
+    //Scanner s;
     //s.runIndependently();
       
     //findAndSaveHumans(true, false);
@@ -355,7 +358,7 @@ int main(int argc, char *argv[])
     
     // Test matching in video with template matching
     // and HOG
-    testTemplateMatchingVideo();    
+    //testTemplateMatchingVideo();    
     
     // Test cropping of image
     //testCrop();

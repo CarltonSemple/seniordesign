@@ -120,6 +120,8 @@ void Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat &
     //cout << "r cols: " << result_cols << endl;
     //cout << "r rows: " << result_rows << endl;
     resultt2.create( result_rows, result_cols, CV_32FC1 );
+    cout << "Type: " << templateImg.type()<<endl;
+    //cout << "Size: " << templateImg.type()<<endl;
     matchTemplate( sourceImg, templateImg, resultt2, methodNum );
     //normalize( resultt2, resultt2, 0, 1, NORM_MINMAX, -1, Mat() );
     
