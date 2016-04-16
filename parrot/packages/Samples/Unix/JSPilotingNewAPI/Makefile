@@ -18,10 +18,11 @@ DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 _OBJ = JumpingSumoPiloting.o ihm.o
 OBJ = $(patsubst %,$(OBJDIR)/%,$(_OBJ))
 
-FIFO = video_fifo#.mjpg
+FIFO = ActiveDroneFeed
 
 all: $(EXEC_NAME)
 	@[ -p $(FIFO) ] || mkfifo $(FIFO)
+	@[ -p $(FIFO2) ] || mkfifo $(FIFO2)
 
 $(OBJDIR)/%.o: %.c $(DEPS)
 	@ [ -d $(OBJDIR) ] || mkdir $(OBJDIR)

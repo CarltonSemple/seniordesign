@@ -190,70 +190,36 @@ int main (int argc, char *argv[])
 	// Send synchronization message to server socket
 	bzero(buffer,BUF_SIZE);
 	buffer[0] = '9';
-	printf("Sending synchronization message...\n");
+	printf("Sending synchronization message...\r\n");
 	int i = write(sockfd, buffer, strlen(buffer));
 	if (i<0)
 	{
 		perror("Could not send synchronization message");
 	}
-	printf("...Sent\n");
+	printf("...Sent\r\n");
 	// Receive synchronization reply from server socket 
 	bzero(buffer,BUF_SIZE);
-	printf("Waiting...\n");
+	printf("Waiting...\r\n");
 	mlen = read(sockfd, buffer, 1);
 	if (mlen < 0)
 	{
 		perror("Could not receive synchronization reply");
 	}
-	printf("Received \"%s\" from server %s\n", buffer, inet_ntoa (serv_addr.sin_addr));
+	printf("Received \"%s\" from server %s\r\n", buffer, inet_ntoa (serv_addr.sin_addr));
     
     //**************************************************************************************
-
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "-- Jumping Sumo Receive Video Stream --");
-    
-    if (DISPLAY_WITH_FFPLAY)
-    {
-        // fork the process to launch ffplay
-        if ((child = fork()) == 0)
-        {
-            execlp("ffplay", "ffplay", "-i", "video_fifo", "-f", "mjpeg", NULL);
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Missing avplay, you will not see the video. Please install avplay.");
-            return -1;
-        }
-    }
-    else
-    {
-        // create the video folder to store video images
-        char answer = 'N';
-        ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "Do you want to write image files on your file system ? You should have at least 50Mb. Y or N");
-        scanf("%c", &answer);
-        if (answer == 'Y' || answer == 'y')
-        {
-            ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "You choose to write image files.");
-            writeImgs = 1;
-            mkdir("video", S_IRWXU);
-        }
-        else
-        {
-            ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "You did not choose to write image files.");
-        }
-    }
-    
-    ARSAL_PRINT (ARSAL_PRINT_INFO, TAG, "-- Starting --");
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "-- Jumping Sumo Piloting --");
 
     IHM_t *ihm = IHM_New (&onInputEvent);
 		if (ihm != NULL)
 		{
 			gErrorStr[0] = '\0';
-			ARSAL_Print_SetCallback (customPrintCallback); //use a custom callback to print, for not disturb ncurses IHM
+			//ARSAL_Print_SetCallback (customPrintCallback); //use a custom callback to print, for not disturb ncurses IHM
 			
-			IHM_PrintHeader(ihm, "-- Jumping Sumo Piloting --");
+			//IHM_PrintHeader(ihm, "-- Jumping Sumo Piloting --");
 			registerARCommandsCallbacks (ihm);
 		}
 		else
 		{
-			ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Creation of IHM failed.");
 			failed = 1;
 		}
 
@@ -273,10 +239,10 @@ int main (int argc, char *argv[])
         jsManager->arstreamFragSize = 65000; // Should be read from json
         jsManager->arstreamFragNb   = 4; // Should be read from json
         
-        if (DISPLAY_WITH_FFPLAY)
+        /*if (DISPLAY_WITH_FFPLAY)
         {
             jsManager->video_out = fopen("./video_fifo", "w");
-        }
+        }*/
         jsManager->frameNb = 0;
         jsManager->writeImgs = writeImgs;
 				
@@ -295,7 +261,6 @@ int main (int argc, char *argv[])
     else
     {
         failed = 1;
-        ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "jsManager alloc error !");
     }
 
     if (!failed)
@@ -320,7 +285,6 @@ int main (int argc, char *argv[])
 		// Create and start looper thread.
 		if (ARSAL_Thread_Create(&(jsManager->looperThread), looperRun, jsManager) != 0)
 		{
-			ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Creation of looper thread failed.");
 			failed = 1;
 		}
 	}
@@ -332,7 +296,6 @@ int main (int argc, char *argv[])
 		
 		if (jsManager->readerThreads == NULL)
 		{
-			ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Allocation of reader threads failed.");
 			failed = 1;
 		}
 	}
@@ -344,7 +307,6 @@ int main (int argc, char *argv[])
 		
 		if (jsManager->readerThreadsData == NULL)
 		{
-			ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Allocation of reader threads data failed.");
 			failed = 1;
 		}
 	}
@@ -361,7 +323,6 @@ int main (int argc, char *argv[])
 			
 			if (ARSAL_Thread_Create(&(jsManager->readerThreads[readerThreadIndex]), readerRun, &(jsManager->readerThreadsData[readerThreadIndex])) != 0)
 			{
-				ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Creation of reader thread failed.");
 				failed = 1;
 			}
 		}
@@ -382,14 +343,14 @@ int main (int argc, char *argv[])
 
 		if (!failed)
 		{
-			IHM_PrintInfo(ihm, "Running ... (Arrow keys to move ; Spacebar to jump ; 'q' to quit)");
+			//IHM_PrintInfo(ihm, "Running ... (Arrow keys to move ; Spacebar to jump ; 'q' to quit)");
 			
 			while (gIHMRun)
 			{
 				usleep(50);
 			}
 			
-			IHM_PrintInfo(ihm, "Disconnecting ...");
+			//IHM_PrintInfo(ihm, "Disconnecting ...");
 		}
     }
 
@@ -436,21 +397,7 @@ int main (int argc, char *argv[])
         stopVideo (jsManager);
         stopNetwork (jsManager);
 
-        if (DISPLAY_WITH_FFPLAY)
-        {
-            fclose (jsManager->video_out);
-        }
         free (jsManager);
-    }
-
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "-- END --");
-
-    if (DISPLAY_WITH_FFPLAY)
-    {
-        if (child > 0)
-        {
-            kill(child, SIGKILL);
-        }
     }
     
     system("reset");
@@ -462,14 +409,11 @@ int ardiscoveryConnect (JS_MANAGER_t *jsManager)
 {
     int failed = 0;
 
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "- ARDiscovery Connection");
-
     eARDISCOVERY_ERROR err = ARDISCOVERY_OK;
     ARDISCOVERY_Connection_ConnectionData_t *discoveryData = ARDISCOVERY_Connection_New (ARDISCOVERY_Connection_SendJsonCallback, ARDISCOVERY_Connection_ReceiveJsonCallback, jsManager, &err);
     if (discoveryData == NULL || err != ARDISCOVERY_OK)
     {
-        ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Error while creating discoveryData : %s", ARDISCOVERY_Error_ToString(err));
-        failed = 1;
+	        failed = 1;
     }
 
     if (!failed)
@@ -477,7 +421,6 @@ int ardiscoveryConnect (JS_MANAGER_t *jsManager)
         eARDISCOVERY_ERROR err = ARDISCOVERY_Connection_ControllerConnection(discoveryData, JS_DISCOVERY_PORT, JS_IP_ADDRESS);
         if (err != ARDISCOVERY_OK)
         {
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Error while opening discovery connection : %s", ARDISCOVERY_Error_ToString(err));
             failed = 1;
         }
     }
@@ -493,8 +436,6 @@ int startNetwork (JS_MANAGER_t *jsManager)
     eARNETWORK_ERROR netError = ARNETWORK_OK;
     eARNETWORKAL_ERROR netAlError = ARNETWORKAL_OK;
     int pingDelay = 0; // 0 means default, -1 means no ping
-
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "- Start ARNetwork");
 
     // Create the ARNetworkALManager
     jsManager->alManager = ARNETWORKAL_Manager_New(&netAlError);
@@ -528,28 +469,12 @@ int startNetwork (JS_MANAGER_t *jsManager)
         // Create and start Tx and Rx threads.
         if (ARSAL_Thread_Create(&(jsManager->rxThread), ARNETWORK_Manager_ReceivingThreadRun, jsManager->netManager) != 0)
         {
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Creation of Rx thread failed.");
             failed = 1;
         }
 
         if (ARSAL_Thread_Create(&(jsManager->txThread), ARNETWORK_Manager_SendingThreadRun, jsManager->netManager) != 0)
         {
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Creation of Tx thread failed.");
             failed = 1;
-        }
-    }
-
-    // Print net error
-    if (failed)
-    {
-        if (netAlError != ARNETWORKAL_OK)
-        {
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "ARNetWorkAL Error : %s", ARNETWORKAL_Error_ToString(netAlError));
-        }
-
-        if (netError != ARNETWORK_OK)
-        {
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "ARNetWork Error : %s", ARNETWORK_Error_ToString(netError));
         }
     }
 
@@ -562,8 +487,6 @@ void stopNetwork (JS_MANAGER_t *jsManager)
     eARNETWORK_ERROR netError = ARNETWORK_OK;
     eARNETWORKAL_ERROR netAlError = ARNETWORKAL_OK;
     int pingDelay = 0; // 0 means default, -1 means no ping
-
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "- Stop ARNetwork");
 
     // ARNetwork cleanup
     if (jsManager->netManager != NULL)
@@ -597,7 +520,6 @@ void stopNetwork (JS_MANAGER_t *jsManager)
 
 void onDisconnectNetwork (ARNETWORK_Manager_t *manager, ARNETWORKAL_Manager_t *alManager, void *customData)
 {
-    ARSAL_PRINT(ARSAL_PRINT_DEBUG, TAG, "onDisconnectNetwork ...");
     gIHMRun = 0; //stop IHM
 }
 
@@ -605,8 +527,6 @@ int startVideo(JS_MANAGER_t *jsManager)
 {
     int failed = 0;
     eARSTREAM_ERROR err = ARSTREAM_OK;
-
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "- Start ARStream");
 
     jsManager->videoFrameSize = jsManager->arstreamFragSize * jsManager->arstreamFragNb;
     jsManager->videoFrame = malloc (jsManager->videoFrameSize);
@@ -620,7 +540,6 @@ int startVideo(JS_MANAGER_t *jsManager)
         jsManager->streamReader = ARSTREAM_Reader_New (jsManager->netManager, JS_NET_DC_VIDEO_ID, JS_NET_CD_VIDEO_ACK_ID, frameCompleteCallback, jsManager->videoFrame, jsManager->videoFrameSize, jsManager->arstreamFragSize, jsManager->arstreamAckDelay, jsManager, &err);
         if (err != ARSTREAM_OK)
         {
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Error during ARStream creation : %s", ARSTREAM_Error_ToString(err));
             failed = 1;
         }
     }
@@ -630,13 +549,11 @@ int startVideo(JS_MANAGER_t *jsManager)
         // Create and start Tx and Rx threads.
         if (ARSAL_Thread_Create(&(jsManager->videoRxThread), ARSTREAM_Reader_RunDataThread, jsManager->streamReader) != 0)
         {
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Creation of video Rx thread failed.");
             failed = 1;
         }
 
         if (ARSAL_Thread_Create(&(jsManager->videoTxThread), ARSTREAM_Reader_RunAckThread, jsManager->streamReader) != 0)
         {
-            ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "Creation of video Tx thread failed.");
             failed = 1;
         }
     }
@@ -648,8 +565,6 @@ void stopVideo(JS_MANAGER_t *jsManager)
 {
     int failed = 0;
     eARSTREAM_ERROR err = ARSTREAM_OK;
-
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "- Stop ARStream");
 
     if (jsManager->streamReader)
     {
@@ -700,45 +615,66 @@ uint8_t *frameCompleteCallback (eARSTREAM_READER_CAUSE cause, uint8_t *frame, ui
             *newBufferCapacity = jsManager->videoFrameSize;
             
             /* Again, don't write files in this thread, that is just for the example :) */
-            if (DISPLAY_WITH_FFPLAY)
-            {
-                // write img files
-                //fwrite(frame, frameSize, 1, jsManager->video_out);
-                //fflush (jsManager->video_out);
-            }
             if (jsManager->writeImgs)
             {
-                
                 char filename[20];
                 snprintf(filename, sizeof(filename), "video/img_%d.jpg", jsManager->frameNb);
                 
                 jsManager->frameNb++;
                 FILE *img = fopen(filename, "w");
-				printf("About to write frame\n");
+				printf("About to write frame\r\n"); clrtoeol();
                 fwrite(frame, frameSize, 1, img);
                 fclose(img);
             }
-			 
+			
+			
+			// Send the frame size to the server
 			int size = (int) frameSize;
 			char* string = malloc(6);
 			snprintf(string, 6, "%i", size);
-			printf("string=%s\n", string);
 			i = write(sockfd, string,  strlen(string));
 			if (i<0)
-			{
-				perror("Could not send frame size");
-			}
-			printf("...Sent %i bytes...\n", i);
+				perror("Writing frame size");
 			
-			printf("Sending size of frame...\n");
+			// Validate if frame size is received correctly
+			int frameSizeSyncFlag = 0;
+			while (!frameSizeSyncFlag)
+			{
+				frameSizeSyncFlag = 0;
+				i = read(sockfd, string,  6);
+				int receivedFrameSize = atoi(string);
+								
+				// If frame size is received correctly
+				if (receivedFrameSize == (int)frameSize)
+				{
+					i = write(sockfd, "1",  strlen("1"));
+					frameSizeSyncFlag = 1;
+				}
+				else // If frame size is wrong
+				{
+					printf("WRONG frame size received...sending \"0\"\r\n"); clrtoeol();
+					i = write(sockfd, "0",  strlen("0"));
+					printf("...Sent \"0\"...\r\n");
+					
+					snprintf(string, 6, "%i", size);
+					printf("string=%s\r\n", string);
+					i = write(sockfd, string,  strlen(string));
+					if (i<0)
+						perror("Writing frame size again");
+					printf("...Sent %i bytes...\r\n", i);
+					frameSizeSyncFlag = 0;
+				}
+			}
+		
+			// Send raw frame data
 			i = write(sockfd, frame, frameSize);
 			if (i<0)
-			{
-				perror("Could not send frame size");
-			}
-			printf("...Sent\n");
-			printf("sent %i bytes\tframeSize=%i\n", i, frameSize);
-            
+				perror("Writing raw frame data");
+			printf("Sent %i bytes...frameSize=%i\r\n", i, frameSize);
+			
+			// Wait for server to confirm it has received all of the frame
+			i = read(sockfd, string,  1);
+
             break;
         case ARSTREAM_READER_CAUSE_FRAME_TOO_SMALL:
             /* This case should not happen, as we've allocated a frame pointer to the maximum possible size. */
@@ -765,9 +701,7 @@ int sendBeginStream(JS_MANAGER_t *jsManager)
     int32_t cmdSize = 0;
     eARCOMMANDS_GENERATOR_ERROR cmdError;
     eARNETWORK_ERROR netError = ARNETWORK_ERROR;
-    
-    ARSAL_PRINT(ARSAL_PRINT_INFO, TAG, "- Send Streaming Begin");
-    
+        
     // Send Streaming begin command
     cmdError = ARCOMMANDS_Generator_GenerateJumpingSumoMediaStreamingVideoEnable(cmdBuffer, sizeof(cmdBuffer), &cmdSize, 1);
     if (cmdError == ARCOMMANDS_GENERATOR_OK)
@@ -777,7 +711,6 @@ int sendBeginStream(JS_MANAGER_t *jsManager)
     
     if ((cmdError != ARCOMMANDS_GENERATOR_OK) || (netError != ARNETWORK_OK))
     {
-        ARSAL_PRINT(ARSAL_PRINT_WARNING, TAG, "Failed to send Streaming command. cmdError:%d netError:%s", cmdError, ARNETWORK_Error_ToString(netError));
         sentStatus = 0;
     }
     
@@ -857,10 +790,6 @@ void *readerRun (void* data)
             netError = ARNETWORK_Manager_ReadDataWithTimeout (jsManager->netManager, bufferId, readData, maxLength, &length, 1000);
             if (netError != ARNETWORK_OK)
             {
-                if (netError != ARNETWORK_ERROR_BUFFER_EMPTY)
-                {
-                    ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "ARNETWORK_Manager_ReadDataWithTimeout () failed : %s", ARNETWORK_Error_ToString(netError));
-                }
                 skip = 1;
             }
             
@@ -873,7 +802,6 @@ void *readerRun (void* data)
                 {
                     char msg[128];
                     ARCOMMANDS_Decoder_DescribeBuffer ((uint8_t *)readData, length, msg, sizeof(msg));
-                    ARSAL_PRINT(ARSAL_PRINT_ERROR, TAG, "ARCOMMANDS_Decoder_DecodeBuffer () failed : %d %s", cmdError, msg);
                 }
             }
         }
@@ -940,7 +868,6 @@ eARNETWORK_MANAGER_CALLBACK_RETURN arnetworkCmdCallback(int buffer_id, uint8_t *
 {
     eARNETWORK_MANAGER_CALLBACK_RETURN retval = ARNETWORK_MANAGER_CALLBACK_RETURN_DEFAULT;
 
-    ARSAL_PRINT(ARSAL_PRINT_DEBUG, TAG, "    - arnetworkCmdCallback %d, cause:%d ", buffer_id, cause);
 
     if (cause == ARNETWORK_MANAGER_CALLBACK_STATUS_TIMEOUT)
     {
@@ -982,8 +909,6 @@ eARDISCOVERY_ERROR ARDISCOVERY_Connection_ReceiveJsonCallback (uint8_t *dataRx, 
         json[dataRxSize] = '\0';
 
         //read c2dPort ...
-
-        ARSAL_PRINT(ARSAL_PRINT_DEBUG, TAG, "    - ReceiveJson:%s ", json);
 
         free(json);
     }
