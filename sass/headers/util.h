@@ -41,7 +41,7 @@ class Util
     ** For scanning, crop out the black sides of the image so that the image is just the person
     ** percentBlank: percentage of a column that can be blank and the column will still be considered a side bar
     **/
-    static cv::UMat removeSideBars(cv::Mat source, double percentBlank) 
+    static cv::Mat removeSideBars(cv::Mat source, double percentBlank) 
     {
         int leftCol = 0, rightCol = source.size().width;
         bool leftSide = true;
@@ -79,6 +79,7 @@ class Util
                 leftCol += 1;
             }                        
         }
+        return source;
     }
     
     static void saveImage(std::string pathName, cv::Mat image)
