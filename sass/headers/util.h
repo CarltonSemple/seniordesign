@@ -1,10 +1,13 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <iostream>
 #include <tuple>
 #include <cmath>
 #include <opencv2/opencv.hpp>
 #include "opencv2/core.hpp"
+
+using namespace std;
 
 struct RGB {
     uchar r;
@@ -62,7 +65,7 @@ class Util
                 if(column <= source.size().width / 2) {
                     break;
                 } else {
-                    column++;
+                    column--;
                 }
             }
             int row = 0;
@@ -76,17 +79,25 @@ class Util
             }
             // if most of the column is blank, move the marker over
             if((blankCount/source.size().height)*100 >= percentBlank) {
-                leftCol += 1;
+                if(leftSide) {
+                    leftCol += 1;
+                } else {
+                    rightCol -= 1;
+                }
             }                        
         }
-        return source;
+        //cout << "leftCol: " << leftCol << endl;
+        //cout << "rightCol: " << rightCol << endl;
+        cv::Rect rectti(leftCol, 0, rightCol - leftCol, source.size().height);
+        cv::Mat ree(source, rectti);
+        
+        return ree;
     }
     
     static void saveImage(std::string pathName, cv::Mat image)
     {
         cv::imwrite(pathName, image);
     }
-    
-    
+        
 };
 #endif
