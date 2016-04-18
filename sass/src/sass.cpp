@@ -120,7 +120,7 @@ void sendCommands()
     /*Checking Socket Creation*/
     if (parentfd < 0)
     {    
-        error("ERROR opening socket");
+        perror("ERROR opening socket");
     }   
     
     /* Building the Server's Internet Address*/ 
@@ -134,13 +134,13 @@ void sendCommands()
     /*Bind: associate the parent socket with port*/
     if (bind(parentfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
     {
-        error("ERROR on binding");
+        perror("ERROR on binding");
     }
      
     /*Listen: make this socket ready to accept connection requests*/
     if(listen(parentfd,2) < 0)
     {
-        error("ERROR on listen");
+        perror("ERROR on listen");
     }
     /*Getting the length of the client message*/
     clientlen = sizeof(client_addr_drone_1);
@@ -150,14 +150,14 @@ void sendCommands()
     drone_2 = accept(parentfd, (struct sockaddr*) &client_addr_drone_2, &clientlen);
     if(drone_2 < 0)
     {
-        error("ERROR on accept Drone 2");
+        perror("ERROR on accept Drone 2");
     }
     printf("Drone 1 accepted for commands socket\n");
     /*Accepting Connection from Drone 2*/
     drone_1 = accept(parentfd, (struct sockaddr*) &client_addr_drone_1, &clientlen);
     if(drone_1 < 0)
     {
-        error("ERROR on accept Drone 1");
+        perror("ERROR on accept Drone 1");
     }
     /***************************************************************************/
     printf("Drone 2 accepted for commands socket\n");
@@ -168,7 +168,7 @@ void sendCommands()
     n_1 = read(drone_1, buffer, 1);
     if(n_1<0)
     {
-        error("ERROR reading from Drone 1");
+        perror("ERROR reading from Drone 1");
     }
     /**************************/
     printf("In main function received %s\n",buffer);
@@ -177,7 +177,7 @@ void sendCommands()
     n_2 = read(drone_2, buffer, 1);
     if(n_2 < 0)
     {
-        error("ERROR reading from Drone 2");
+        perror("ERROR reading from Drone 2");
     }
     /**************************/
     /*Just putting a NULL value in buffer so there is something in there*/
@@ -186,7 +186,7 @@ void sendCommands()
     n_1=write(drone_1, buffer, strlen(buffer));
     if(n_1 < 0)
     {
-        error("ERROR writing to Drone 1");  
+        perror("ERROR writing to Drone 1");  
     }
     /**************************/
     
@@ -194,7 +194,7 @@ void sendCommands()
     n_2=write(drone_2, buffer, strlen(buffer));
     if(n_2 < 0)
     {
-        error("ERROR writing to Drone 2");
+        perror("ERROR writing to Drone 2");
     }
     /**************************/
     /**********************************************************************/
@@ -248,7 +248,7 @@ void sendCommands()
                     n_1=write(drone_1, buffer, strlen(buffer));
                     if(n_1 < 0)
                     {
-                        error("ERROR writing to Drone 1");  
+                        perror("ERROR writing to Drone 1");  
                     }
                     printf("...Sent\n");
                 }
@@ -257,7 +257,7 @@ void sendCommands()
                     n_2=write(drone_2, buffer, strlen(buffer));
                     if(n_2 < 0)
                     {
-                        error("ERROR writing to Drone 2");  
+                        perror("ERROR writing to Drone 2");  
                     }
                     printf("...Sent\n");
                 }
@@ -273,7 +273,7 @@ void sendCommands()
                 n_1=write(drone_1, buffer, strlen(buffer));
                 if(n_1 < 0)
                 {
-                    error("ERROR writing to Drone 1");  
+                    perror("ERROR writing to Drone 1");  
                 }
                 printf("...Sent\n");
             }
@@ -282,7 +282,7 @@ void sendCommands()
                 n_2=write(drone_2, buffer, strlen(buffer));
                 if(n_2 < 0)
                 {
-                    error("ERROR writing to Drone 2");  
+                    perror("ERROR writing to Drone 2");  
                 }
                 printf("...Sent\n");
             }
@@ -295,13 +295,13 @@ void sendCommands()
             n_1=write(drone_1, buffer, strlen(buffer));
             if(n_1 < 0)
             {
-                error("ERROR writing to Drone 1");  
+                perror("ERROR writing to Drone 1");  
             }
             printf("...Sent\n");
             n_2=write(drone_2, buffer, strlen(buffer));
             if(n_2 < 0)
             {
-                error("ERROR writing to Drone 2");  
+                perror("ERROR writing to Drone 2");  
             }
             printf("...Sent\n");
         }
@@ -358,7 +358,7 @@ void receiveFrames()
     /*Checking Socket Creation*/
     if (parentfd < 0)
     {    
-        error("ERROR opening socket");
+        perror("ERROR opening socket");
     }   
     
     /* Building the Server's Internet Address*/ 
@@ -372,13 +372,13 @@ void receiveFrames()
     /*Bind: associate the parent socket with port*/
     if (bind(parentfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
     {
-        error("ERROR on binding");
+        perror("ERROR on binding");
     }
     printf("Binding was a success\n");
     /*Listen: make this socket ready to accept connection requests*/
     if(listen(parentfd,2) < 0)
     {
-        error("ERROR on listen");
+        perror("ERROR on listen");
     }
     printf("Listening was a success\n");
     /*Getting the length of the client message*/
