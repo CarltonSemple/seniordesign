@@ -569,6 +569,7 @@ void receiveFrames()
             temp_n = write(drone_2_video, "1", 1);
         }
         ///**************************/
+        /*This is writing to the ActiveDroneFeed so we can call ffplay to display real-time video on the screen*/
         fwrite(buffer2,frameSize,1,video_in);
         fflush(video_in);
     }
