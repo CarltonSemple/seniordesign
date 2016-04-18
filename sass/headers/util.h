@@ -23,6 +23,14 @@ class Util
         double m = pow(p1.first - p2.first, 2) + pow(p1.second - p2.second, 2);
         double s = sqrt(m);
         return s;
+    } 
+
+    //enter distances in centimeters and will return in centimeters
+    static double disttodrone(int startPixelWidth,double knownDistance, double knownWidth,int newPixelWidth)
+    {
+        double fl = (startPixelWidth*knownDistance)/knownWidth;
+        double dist = (knownWidth*fl)/newPixelWidth;
+        return dist;
     }  
     
     static cv::Mat cropImage(cv::Mat source)
@@ -98,6 +106,8 @@ class Util
     {
         cv::imwrite(pathName, image);
     }
+
+    
         
 };
 #endif

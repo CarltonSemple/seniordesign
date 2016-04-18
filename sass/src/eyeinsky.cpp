@@ -4,7 +4,7 @@
 #include "eyeinsky.h"
 #include "backgroundSubtractor.h"
 #include "human.h"
-#include "persondetector.h"
+#include "objectdetector.h"
 #include "matcher.h"
 #include <libfreenect2/libfreenect2.hpp>
 #include <libfreenect2/frame_listener_impl.h>
@@ -19,6 +19,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/ocl.hpp> // opencl
 #include <functional>
+#include "communicationBox.h"
 using namespace cv;
 using namespace std; 
 
