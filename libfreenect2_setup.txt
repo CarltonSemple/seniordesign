@@ -1,0 +1,30 @@
+****************************Linux*******************************************
+
+*********************Download libfreenect2 source***************************
+git clone https://github.com/OpenKinect/libfreenect2.git
+cd libfreenect2
+
+******************Install the Dependecnies Needed***************************
+cd depends; ./download_debs_trusty.sh
+
+************************Install build tools*********************************
+sudo apt-get install build-essential cmake pkg-config
+
+****************************************************************************
+Note:This is done in the depends folder in libfreenect2
+
+Install libusb. The version must be >= 1.0.20.
+(Ubuntu 14.04 only) sudo dpkg -i debs/libusb*deb
+
+**********************************Build*************************************
+cd ..
+mkdir build && cd build
+sudo cmake ..
+sudo make
+sudo make install
+********************************End Build***********************************
+
+
+****************************************************************************
+Need to run: sudo ldconfig
+Can run this anywhere.

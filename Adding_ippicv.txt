@@ -1,0 +1,17 @@
+justin@justin-SMBIOS-Surface-Book:~/Documents/seniordesign/sass$ cd ..
+justin@justin-SMBIOS-Surface-Book:~/Documents/seniordesign$ cd ..
+justin@justin-SMBIOS-Surface-Book:~/Documents$ ls
+libfreenect  libfreenect2  opencv-3.1.0  opencv_contrib  Parrot  seniordesign  Wired_Connection_Setup_Script
+justin@justin-SMBIOS-Surface-Book:~/Documents$ cd opencv-3.1.0/
+justin@justin-SMBIOS-Surface-Book:~/Documents/opencv-3.1.0$ ls
+3rdparty  apps  build  cmake  CMakeLists.txt  CONTRIBUTING.md  data  doc  include  LICENSE  modules  platforms  README.md  samples
+justin@justin-SMBIOS-Surface-Book:~/Documents/opencv-3.1.0$ cd 3rdparty/
+justin@justin-SMBIOS-Surface-Book:~/Documents/opencv-3.1.0/3rdparty$ ls
+ffmpeg  include  ippicv  jinja2  libjasper  libjpeg  libpng  libtiff  libwebp  openexr  readme.txt  tbb  zlib
+justin@justin-SMBIOS-Surface-Book:~/Documents/opencv-3.1.0/3rdparty$ cd ..
+justin@justin-SMBIOS-Surface-Book:~/Documents/opencv-3.1.0$ ls
+3rdparty  apps  build  cmake  CMakeLists.txt  CONTRIBUTING.md  data  doc  include  LICENSE  modules  platforms  README.md  samples
+justin@justin-SMBIOS-Surface-Book:~/Documents/opencv-3.1.0$ sudo cp 3rdparty/ippicv/unpack/ippicv_lnx/lib/intel64/libippicv.a /usr/local/lib/
+[sudo] password for justin: 
+justin@justin-SMBIOS-Surface-Book:~/Documents/opencv-3.1.0$ 
+
