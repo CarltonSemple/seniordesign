@@ -161,6 +161,7 @@ void receiveFrames()
     int temp_n;
     int activeDrone = 1; // Keeps track of which drone is active (1 or 2)
     int counter = 0;
+    int totalRead = 0;
     
     /*This is receiving the frames that we are sending over first and then receiving the data.*/
     while (1) 
@@ -234,7 +235,7 @@ void receiveFrames()
 		/*********************************************/
 		
 		char* buffer2 = new char(frameSize);
-		int totalRead = 0;
+		totalRead = 0;
 		/*We are making sure that at the frameSize and data have been received and once it has been, we then write the the video_fifo to be able to display the video*/
 		while (totalRead < frameSize)
 		{
@@ -243,37 +244,45 @@ void receiveFrames()
 			{
 				if (activeDrone == 1)
 				{
+					printf("Read 1......\n");
 					n_1 = read(drone_1_video, &buffer2[totalRead], frameSize);
 				}
 				else
 				{
+					printf("Read 2......\n");
 					n_1 = read(drone_2_video, &buffer2[totalRead], frameSize);
 				}
+				if(n_1 < 0)
+				{
+					perror("Couldn't finish off frame read:");
+				}
 			}
-			else
+			else if (totalRead < frameSize)
 			{
 				if (activeDrone == 1)
 				{
+					printf("Read 3......\n");
 					n_1 = read(drone_1_video, &buffer2[totalRead], frameSize-totalRead);
 				}
 				else
 				{
+					printf("Read 4......\n");
 					n_1 = read(drone_2_video, &buffer2[totalRead], frameSize-totalRead);
 				}
 				if(n_1 < 0)
 				{
 					perror("Couldn't finish off frame read:");
 				}
-				//while (n_1+totalRead < frameSize)
-				//{
-					//cout << "n_1+totalRead = " << n_1+totalRead << ", frameSize = " << frameSize << endl;
-					//totalRead++;
-					//temp_n = read(drone_1_video, &buffer2[totalRead], 1);
-				//}
 			}
+			else
+			{
+				perror("This should not happen!!!!!\n");
+			}
+			
 			totalRead += n_1;
-			//cout <<"n_1:" << n_1 << "  totalRead:" << totalRead << "   frameSize:" << frameSize << endl;
+			cout << "n_1:" << n_1 << "   totalRead:" << totalRead << "   FrameSize:" << frameSize << endl;
 		}
+		
 		if (activeDrone == 1)
 		{
 			temp_n = write(drone_1_video, "1", 1);
@@ -298,12 +307,9 @@ int main(int argc, char *argv[])
 	if ((child = fork()) == 0)
 	{
 		execlp("ffplay", "ffplay", "-i", "ActiveDroneFeed", "-f", "mjpeg", NULL);
-		//execlp("xterm", "xterm", "-e", "mplayer", "-demuxer", "lavf", "video_fifo", "-benchmark", "-really-quiet", NULL);
 	}
-	cout << "Entering the threaded function" << endl;
 	// Start server which receives frames from drones
 	thread receiveFrameThread(receiveFrames);
-	cout << "Threading function started" << endl;
     //Server File and port number being used
     int parentfd, portno;
     //Two Child processes for both unqiue Drones
@@ -364,17 +370,17 @@ int main(int argc, char *argv[])
 	
     /*************Setting up the Connections for Both Drones***********************/
     /*Accepting Connection from Drone 1*/
-    drone_1 = accept(parentfd, (struct sockaddr*) &client_addr_drone_1, &clientlen);
-    if(drone_1 < 0)
-    {
-		error("ERROR on accept Drone 1");
-    }
-    printf("Drone 1 accepted for commands socket\n");
-    /*Accepting Connection from Drone 2*/
     drone_2 = accept(parentfd, (struct sockaddr*) &client_addr_drone_2, &clientlen);
     if(drone_2 < 0)
     {
 		error("ERROR on accept Drone 2");
+    }
+    printf("Drone 1 accepted for commands socket\n");
+    /*Accepting Connection from Drone 2*/
+    drone_1 = accept(parentfd, (struct sockaddr*) &client_addr_drone_1, &clientlen);
+    if(drone_1 < 0)
+    {
+		error("ERROR on accept Drone 1");
     }
     /***************************************************************************/
     printf("Drone 2 accepted for commands socket\n");
