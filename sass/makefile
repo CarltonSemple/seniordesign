@@ -4,5 +4,8 @@ LIBS = `pkg-config --cflags --libs opencv` -pthread
 INCLUDE = -I headers -I/usr/local/include/libfreenect -I/usr/local/include/libfreenect2
 FREE_LIBS = -L/usr/local/lib -lfreenect -lfreenect2
 
+FIFO = ActiveDroneFeed
+
 all:
-	g++ $(CFLAGS) -o main $(SOURCES) $(INCLUDE) $(LIBS) $(FREE_LIBS) 
+	g++ $(CFLAGS) -o main $(SOURCES) $(INCLUDE) $(LIBS) $(FREE_LIBS)
+	@[ -p $(FIFO) ] || mkfifo $(FIFO)

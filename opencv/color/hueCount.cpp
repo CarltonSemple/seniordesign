@@ -117,6 +117,8 @@ void setHueRangeCounts(Mat & imageHSV)
     // not as necessary
     //cvCreateTrackbar("LowV", "Control", &iLowV, 255); //Value (0 - 255)
     //cvCreateTrackbar("HighV", "Control", &iHighV, 255);
+    
+    namedWindow("Thresholded Image");
 
     while (true)
     {
