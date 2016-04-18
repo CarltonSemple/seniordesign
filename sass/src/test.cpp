@@ -18,7 +18,12 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <thread>
-
+#include <libfreenect2/libfreenect2.hpp>
+#include <libfreenect2/frame_listener_impl.h>
+#include <libfreenect2/registration.h>
+#include <libfreenect2/packet_pipeline.h>
+#include <libfreenect2/logger.h>
+#include <signal.h>
 using namespace std;
 using namespace cv;
 
@@ -27,6 +32,10 @@ using namespace cv;
 
 int cameraNumber = 0;
 int templatematchingmethod = 4; // 4 and 1 are best
+
+enum Processor { cl, gl, cpu };
+
+bool protonect_shutdown1 = false;
 
 test::test()
 {
@@ -39,7 +48,10 @@ void printHelp()
 }
 
 // this is a test of cloud 9
-
+void sigint_handler1(int s)
+{
+  protonect_shutdown1 = true;
+}
 int findAndSaveHumans(bool save, bool drawBoxes)
 {
     PersonDetector detector;
@@ -316,10 +328,88 @@ void publicImageLoop()
         waitKey(1);
     }
 }
+void kinectImageLoop()
+{
+    cout << "HERE" << endl;
+    libfreenect2::Freenect2 freenect2;
+    libfreenect2::Freenect2Device *dev = 0;
+    libfreenect2::PacketPipeline *pipeline = 0;
+    Mat rgbmat;
+    
+    namedWindow("preview", CV_WINDOW_NORMAL);
+    cv::resizeWindow("preview", 800, 800);
+    signal(SIGINT,sigint_handler1);
+    cout << "Before Pipline" << endl;
+    int depthProcessor = Processor::gl;
 
+    if(depthProcessor == Processor::cpu)
+    {
+        if(!pipeline)
+            //! [pipeline]
+            pipeline = new libfreenect2::CpuPacketPipeline();
+            //! [pipeline]
+    } else if (depthProcessor == Processor::gl) {
+#ifdef LIBFREENECT2_WITH_OPENGL_SUPPORT
+    if(!pipeline)
+        pipeline = new libfreenect2::OpenGLPacketPipeline();
+#else
+        cout << "OpenGL pipeline is not supported!" << endl;
+#endif
+    } else if (depthProcessor == Processor::cl) {
+#ifdef LIBFREENECT2_WITH_OPENCL_SUPPORT
+    if(!pipeline)
+            pipeline = new libfreenect2::OpenCLPacketPipeline();
+#else
+        cout << "OpenCL pipeline is not supported!" << endl;
+#endif
+    }
+    cout << "After Pipline" << endl;
+    if(freenect2.enumerateDevices() == 0)
+    {
+        cout << "no device connected!" << endl;
+        exit(0);
+    }
+    string serial = freenect2.getDefaultDeviceSerialNumber();
+    dev = freenect2.openDevice(serial, pipeline);
+    libfreenect2::SyncMultiFrameListener listener(libfreenect2::Frame::Color );
+    libfreenect2::FrameMap frames;
+    
+    dev->setColorFrameListener(&listener);
+
+    if (!dev->start()){
+        exit(0);
+    }
+    libfreenect2::Registration* registration = new libfreenect2::Registration(dev->getIrCameraParams(), dev->getColorCameraParams());
+    libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4), depth2rgb(1920, 1080 + 2, 4);
+    
+    while(!protonect_shutdown1)
+    {
+        listener.waitForNewFrame(frames);
+        libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
+        libfreenect2::Frame *depth = NULL;
+        cv::Mat(rgb->height, rgb->width, CV_8UC4, rgb->data).copyTo(rgbmat);  
+        registration->apply(rgb, depth, &undistorted, &registered, true, &depth2rgb); 
+
+        Size size(640,480);
+        publicImage = rgbmat;
+        //commBox.skyFrame = rgbmat;
+        //resize(rgbmat,dst1,size);
+        cv::imshow("preview", rgbmat);
+        
+        int key = cv::waitKey(1);
+        protonect_shutdown1 = protonect_shutdown1 || (key > 0 && ((key & 0xFF) == 27));
+        listener.release(frames);
+        
+    }
+
+    dev->stop();
+    dev->close();
+    
+    delete registration;
+}
 void cameraApp(string filename)
 {
-    thread pp(publicImageLoop);
+    thread pp(kinectImageLoop);
     cout << "Enter any character to take a picture" << endl;
     char c;
     cin >> c;
@@ -336,11 +426,13 @@ void cameraApp(string filename)
     run = false;
 }
 
+
 int main(int argc, char *argv[]) 
 {
-    cv::ocl::setUseOpenCL(true); // enable OpenCL in the processing of UMat
+    //cv::ocl::setUseOpenCL(true); // enable OpenCL in the processing of UMat
     string fiii;
     Mat rgbmat;
+    CommunicationBox commBox;
     //if(argc == 3) {
     //  fiii = argv[2];
     //} else 
@@ -348,10 +440,13 @@ int main(int argc, char *argv[])
         cameraNumber = atoi(argv[1]);
         // meant for templatematching program - choose the method
         templatematchingmethod = atoi(argv[2]);
-        eyeinsky eye(templatematchingmethod);
+        eyeinsky eye(templatematchingmethod,commBox);
     } else if(argc == 2) {
-        cameraNumber = atoi(argv[1]);
-        //fiii = argv[2];
+        //cameraNumber = atoi(argv[1]);
+        cout << "HERE0" << endl;
+        fiii = argv[1];
+        cout << "HERE1" << endl;
+        cameraApp(fiii);
     } else {
         printHelp();
         //cout << "Enter the filename of the picture as the second argument" << endl;
