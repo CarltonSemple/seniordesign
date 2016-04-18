@@ -9,7 +9,7 @@
 #include "communicationBox.h"
 #include "drone.h"
 #include "human.h"
-#include "persondetector.h"
+#include "objectdetector.h"
 #include "matcher.h"
 #include "scanner.h"
 #include "util.h"
