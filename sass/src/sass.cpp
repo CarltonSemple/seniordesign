@@ -56,7 +56,7 @@ void Sass::runSystem()
 }
 void runEyeinSky()
 {
-    eyeinsky eye(1);// or 4
+    eyeinsky eye(Matcher::templateMatchingMethod,commBox);// or 4
 }
 void runScanner()
 {
@@ -218,19 +218,19 @@ void sendCommands()
                     desired_drone = 1;
                     //commBox.drone1Command.size();
                     buffer[0] = commBox.drone1Command.at(0);
-                    desired_length = commBox.drone1Command.at(3);
+                    desired_length = (int)commBox.drone1Command.at(3);
                     break;  
                 case 2:
                     //send to drone 2
                     desired_drone = 2;
                     buffer[0] = commBox.drone2Command.at(0);
-                    desired_length = commBox.drone2Command.at(3);
+                    desired_length = (int)commBox.drone2Command.at(3);
                     break;
                 case 3:
                     //send to both drones
                     desired_drone = 1;
                     buffer[0] = commBox.drone1Command.at(0);
-                    desired_length = commBox.drone1Command.at(3);
+                    desired_length = (int)commBox.drone1Command.at(3);
                     break;
             }
 

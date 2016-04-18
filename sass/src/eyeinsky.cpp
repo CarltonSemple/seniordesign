@@ -96,15 +96,16 @@ void testBackgrndSubtractor(Mat rgbMat)
     
 }
 
-eyeinsky::eyeinsky(int method)
+eyeinsky::eyeinsky(int method,CommunicationBox & commBox)
 {
 	
 	Matcher matcher;
-   	UMat templImgOriginal,drone1,drone2;
+   	UMat templImgOriginal,drone1,drone2,grid;
    	Mat dst1;
     imread("template.jpg", CV_LOAD_IMAGE_COLOR).copyTo(templImgOriginal);
     imread("drone1.JPG", CV_LOAD_IMAGE_COLOR).copyTo(drone1);
     imread("drone2.JPG", CV_LOAD_IMAGE_COLOR).copyTo(drone2);
+    imread("grid.jpg", CV_LOAD_IMAGE_COLOR).copyTo(grid);
     cout << "Type: " << drone1.type()<<endl;
     cout << "hello world from the sky" << endl;
 	libfreenect2::Freenect2 freenect2;
@@ -182,12 +183,6 @@ eyeinsky::eyeinsky(int method)
 		//resize(rgbmat,dst,size);
 		//urgbmat = rgbmat.getUMat( ACCESS_RW );
 		
-		// do hog
-        //PersonDetector pd;
-    	//pd.detectHumans(urgbmat, true);
-        
-        //Matcher matcher;
-        //matcher.templateMatchingWithoutCallBack(std::ref(templImgOriginal), std::ref(urgbmat), 4);//0r 1
 		
 	    //cv::imshow("rgb", rgbmat);
 	    //cv::imshow("ir", irmat / 4096.0f); 
@@ -204,16 +199,26 @@ eyeinsky::eyeinsky(int method)
         //cv::imshow("undistorted", depthmatUndistorted / 4096.0f);
         //cv::imshow("registered", rgbd);
         //cv::imshow("depth2RGB", rgbd2 / 4096.0f);
+
         //cout << "Before Type: " << urgbmat.type()<<endl;
+        commBox.skyFrame = rgbmat;
         resize(rgbmat,dst1,size);
-		//urgbmat = rgbmat.getUMat( ACCESS_RW );
-		//cvtColor(urgbmat,dst2,CV_BGRA2BGR);
+        cv::imshow("rgb", dst1);
+		urgbmat = dst1.getUMat( ACCESS_RW );
+		cvtColor(urgbmat,dst2,CV_BGRA2BGR);
+		Point tempPoint;
 		//cout << "After Type: " << dst.type()<<endl;
 		//matcher.templateMatchingWithoutCallBack(std::ref(templImgOriginal), std::ref(dst2), 1);//0r 4
-		//matcher.templateMatchingWithoutCallBack(std::ref(drone1), std::ref(dst2), method);//0r 1
-		//cv::imshow("rgb", dst2);
+		tempPoint = matcher.templateMatchingWithoutCallBack(std::ref(drone1), std::ref(dst2), method);//0r 1
+		
+		//tempPoint = matcher.templateMatchingWithoutCallBack(std::ref(grid), std::ref(dst2), method);//0r 1
+
+		//commBox.drone1Loc()->bottomLeft = tempPoint;
+		cv::imshow("Drone Matching", dst2);
         //cout << "Type: " << rgbmat.type()<<endl;
-        testBackgrndSubtractor(rgbmat);
+		cout<<"x= "<<tempPoint.x<<" y= "<<tempPoint.y<<endl;
+		//Testing backgroundsubtraction	
+        //testBackgrndSubtractor(rgbmat);
 		int key = cv::waitKey(1);
 	    protonect_shutdown = protonect_shutdown || (key > 0 && ((key & 0xFF) == 27));
 		listener.release(frames);
