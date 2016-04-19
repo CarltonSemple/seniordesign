@@ -13,12 +13,17 @@
 using namespace cv;
 class eyeinsky
 {
-	int a;
+	int startPixel;
+	int newPixel;
+	double startWidth;
+	double startDist;
+	double newDist;
+	double focalLength;
 public:
 	eyeinsky(int method,CommunicationBox & commBox);
 
     
-    void getDronePixelWidth(UMat & img); 
+    int getDronePixelWidth(UMat & img); 
     
     // get pixel width of drones
     

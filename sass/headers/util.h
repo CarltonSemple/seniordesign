@@ -26,10 +26,10 @@ class Util
     } 
 
     //enter distances in centimeters and will return in centimeters
-    static double disttodrone(int startPixelWidth,double knownDistance, double knownWidth,int newPixelWidth)
+    static double disttodrone(long double startPixelWidth,long double knownDistance, long double knownWidth, long double newPixelWidth)
     {
-        double fl = (startPixelWidth*knownDistance)/knownWidth;
-        double dist = (knownWidth*fl)/newPixelWidth;
+        long double fl = (startPixelWidth*knownDistance)/knownWidth;
+        long double dist = (knownWidth*fl)/newPixelWidth;
         return dist;
     }  
     
