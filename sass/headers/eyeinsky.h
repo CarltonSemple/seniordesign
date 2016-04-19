@@ -23,7 +23,9 @@ public:
 	eyeinsky(int method,CommunicationBox & commBox);
 
     
-    int getDronePixelWidth(UMat & img); 
+    double getDronePixelWidth(UMat & img);
+
+	long double colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, int iHighV, Mat imgOriginal); 
     
     // get pixel width of drones
     
