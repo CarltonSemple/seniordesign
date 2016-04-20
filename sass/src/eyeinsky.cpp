@@ -36,12 +36,14 @@ void sigint_handler(int s)
 {
   protonect_shutdown = true;
 }
+
 void control(){
 	//if(done1){
 
 	//}
 }
-long double colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, 
+
+Position eyeinsky::colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, 
 															int iHighV, Mat imgOriginal)
 {
     
@@ -93,24 +95,44 @@ long double colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int i
     int lastofrow =0;
     int lastofcol=0;
     int midofrow=0;
+    
+    int startColumn = 0, endColumn = 0, largestStartCol = 0, largestEndCol;
+    int largestRow = 0;
+    bool prevWhite = false;
+    
     for(int r = 0; r < imgThresholded.size().height; r++) {
         currentWidth = 0;
+        // look through all of the columns in this row
         for(int c = 0; c < imgThresholded.size().width; c++) {
             RGB & color = imgThresholded.ptr<RGB>(r)[c];
             if((color.r > 200) && (color.g > 200 )&& (color.b > 200)) {
                 // white-ish
-                if(!objFound){
-                    objFound=true;
-                    tempRow = r;
-                    tempCol = c;
-
+                if(prevWhite == false) {
+                    if(c != 0) {
+                        startColumn = c-1;
+                    } // startColumn starts at 0
                 }
+                prevWhite = true;
                 currentWidth++;
+            } else {
+                // make sure that the spot is the largest...
+                if(prevWhite == true) {
+                    endColumn = c-1;
+                }
+                
+                avgWidth = (avgWidth+currentWidth)/2;
+                if(currentWidth > widest) {
+                    largestStartCol = startColumn;
+                    largestEndCol = endColumn;
+                    largestRow = r;
+                }
+                prevWhite = false;
+                currentWidth = 0;
             }                   
         }
-        objFound=false;
-        avgWidth = (avgWidth+currentWidth)/2;
-        if(currentWidth > widest) {
+        
+        //avgWidth = (avgWidth+currentWidth)/2;
+        /*if(currentWidth > widest) {
             widest = currentWidth;
             
             firstofrow = tempRow;
@@ -120,25 +142,28 @@ long double colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int i
         }
         //cout << "widest: " << widest << endl;
         //cout << "Average width: " <<avgWidth <<endl;
-        widthTotal += currentWidth;
+        widthTotal += currentWidth;*/
     }
     
-    //avgWidth = widthTotal / ((double)rowCount);
-    cout << "startRow pixel: " << firstofrow << endl;
+    /*cout << "startRow pixel: " << firstofrow << endl;
     cout << "middleRow pixel: " << midofrow << endl;
     cout << "endRow pixel: " << lastofrow << endl;
-    cout << "startCol pixel: " << firstofcol << endl;
+    cout << "startCol pixel: " << firstofcol << endl;*/
     dist = Util::disttodrone(20, 487.68, 10.16 ,avgWidth);
-    //avgDist = (avgDist+dist)/2;
-    //cout << "Distace: " << avgDist << endl;
-    //widthPair.first = startRowWidth;
-    //widthPair.second = endRowWidth;
-    //}
     
-    
-    return dist;
+    Position returnedPos;
+    returnedPos.y2d = largestRow;
+    returnedPos.x2d = (largestStartCol + largestEndCol) / 2;
+    returnedPos.radius2d = abs((largestEndCol - largestStartCol));
+    returnedPos.distanceDirect = dist;
+        
+    return returnedPos;
 }
-void getDronePostion(int droneid, Mat &img){
+
+Position getDronePostion(int droneId, Mat & img)
+{
+    Position dposition;
+    
 	int iLowH = 0;
     int iHighH = 179;
 
@@ -155,7 +180,7 @@ void getDronePostion(int droneid, Mat &img){
     	iHighH = 83;
     	iLowS = 50;
    		iLowV = 35;
-   		drone1dist = colorBlobDistanceCalibration(iLowH, iHighH, iLowS, iHighS, iLowV, iHighV, img);
+   		dposition = colorBlobDistanceCalibration(iLowH, iHighH, iLowS, iHighS, iLowV, iHighV, img);
 	}
 	else if(droneid == 2){
 		//Green Drone
@@ -163,9 +188,10 @@ void getDronePostion(int droneid, Mat &img){
     	iHighH = 126;
     	iLowS = 152;
    		iLowV = 71;
-   		drone2dist = colorBlobDistanceCalibration(iLowH, iHighH, iLowS, iHighS, iLowV, iHighV, img);
+   		dposition = colorBlobDistanceCalibration(iLowH, iHighH, iLowS, iHighS, iLowV, iHighV, img);
 	}
-
+    
+    return dposition;
 }
 
 

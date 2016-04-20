@@ -10,6 +10,8 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/ocl.hpp> // opencl
 #include "communicationBox.h"
+#include "util.h"
+
 using namespace cv;
 class eyeinsky
 {
@@ -20,16 +22,17 @@ class eyeinsky
 	double newDist;
 	double focalLength;
 public:
-	eyeinsky(int method,CommunicationBox & commBox);
+	eyeinsky(int method, CommunicationBox & commBox);
 
     
     double getDronePixelWidth(UMat & img);
 
-	long double colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, int iHighV, Mat imgOriginal); 
+	Position colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, int iHighV, Mat imgOriginal); 
     
     // get pixel width of drones
+    Position getDronePosition(int droneId, Mat & img);
     
-    
+    void drawDrone(Position dronePosition, Mat & img);
 };
 
 #endif
