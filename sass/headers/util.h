@@ -83,10 +83,11 @@ class Util
         }*/
         
         // crop left side
-        for(int x = 3; x < xSize; x++) {
+        for(int x = 0; x < xSize; x++) {
             float blankCount = 0.0;
             for(int y = 0; y < ySize; y++) {
                 RGB & color = source.ptr<RGB>(y)[x];
+                //cout << "r: " << color.r << " g: " << color.g << " b: " << color.b << endl;
                 if(color.r <5 && color.g < 5 && color.b < 5) {
                     blankCount+=1.0;
                 }
@@ -96,6 +97,7 @@ class Util
             if((blankCount/ySize)*100 < percentBlank) {
                 cout << "end left" << endl;
                 leftCol = x;
+                /*
                 for(int i = 0; i < x; i++) {
                     for(int y = 0; y < ySize; y++) {
                         RGB & color = source.ptr<RGB>(y)[i];
@@ -103,10 +105,12 @@ class Util
                         color.g = 0;
                         color.b = 0;
                     }
-                }
+                }*/
                 break; 
             }
         }
+        
+        rightCol = xSize - 1;
         
         // crop right side
         for(int x = xSize - 1; x >= 0; x--) {
@@ -121,6 +125,7 @@ class Util
             if((blankCount/ySize)*100 < percentBlank) {
                 cout << "end right" << endl;
                 rightCol = x;
+                /*
                 for(int i = xSize; i > x; i--) {
                     for(int y = 0; y < ySize; y++) {
                         RGB & color = source.ptr<RGB>(y)[i];
@@ -128,15 +133,12 @@ class Util
                         color.g = 0;
                         color.b = 255;
                     }
-                }
+                }*/
                 break; 
             }
         }
                 
 
-        //cout << "leftCol: " << leftCol << endl;
-        //cout << "rightCol: " << rightCol << endl;
-        cout << "after loop" << endl;
         cout << "leftCol: " << leftCol << endl;
         cout << "rightCol: " << rightCol << endl;
         cout << "source height: " << ySize << endl;
@@ -145,7 +147,9 @@ class Util
             return source;
         }
         //cv::Rect rectti(leftCol, 0, rightCol - leftCol, source.size().height);
-        cv::Rect rectti(leftCol, 0, rightCol, ySize);
+        //cv::Rect rectti(leftCol, 0, rightCol, ySize);
+        //cv::Rect rectti(leftCol, 0, xSize - leftCol, source.size().height);
+        cv::Rect rectti(leftCol, 0, rightCol - leftCol, source.size().height);
         cv::Mat ree(source, rectti);
         
         return ree;

@@ -112,8 +112,8 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 			
 			// show modified RGB image
             Mat cropped = Util::cropImage(rgbMat); 
-            
-			cropped = Util::removeSideBars(cropped, 98.0);
+            Util::removeSideBars(cropped, 60.0).copyTo(cropped);
+			//Mat cropped = Util::removeSideBars(rgbMat, 60.0);
             cv::imshow("rgb", cropped);
             
             // save to file
