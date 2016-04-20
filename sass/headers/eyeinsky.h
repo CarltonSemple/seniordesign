@@ -27,7 +27,7 @@ public:
     
     double getDronePixelWidth(UMat & img);
 
-	Position colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, int iHighV, Mat imgOriginal); 
+	Position colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, int iHighV, Mat imgOriginal,int droneId); 
     
     // get pixel width of drones
     Position getDronePosition(int droneId, Mat & img);

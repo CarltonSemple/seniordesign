@@ -3,6 +3,7 @@
 
 #include <string>
 #include "opencv2/core.hpp"
+#include "util.h"
 
 struct CommunicationBox
 {
@@ -14,10 +15,13 @@ struct CommunicationBox
     // format of command "[cmd] [dist]" ex. "w 3"
     std::string drone1Command;
     bool drone1Wait; // Wait to write to the drone1Command string
-    
+    Position drone1Pos;
     // 
     std::string drone2Command;
     bool drone2Wait; // Wait to write to the drone2Command string
+    Position drone2Pos;
+
+
 };
 
 #endif

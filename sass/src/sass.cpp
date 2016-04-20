@@ -18,7 +18,7 @@ void receiveFrames();
 void sendCommands();
 void runEyeinSky();
 void runScanner();
-
+void runTest();
 Sass::Sass()
 {
     commBox.drone1Command = "";
@@ -39,21 +39,25 @@ Sass::Sass(int matchingMethod)
 
 void Sass::runSystem()
 {
+    // Start test Thread
+    thread testThread(runTest);
     // Start server which receives frames from drones
     // and converts them to a cv::Mat
-	thread receiveFrameThread(receiveFrames);
+	//thread receiveFrameThread(receiveFrames);
     
     // Start server for sending commands
-    thread sendComThread(sendCommands);
+    //thread sendComThread(sendCommands);
     
     // Start thread for processing drone & kinect video feeds
-    thread videoThread(analyzeVideoRunDrones);
+    //thread videoThread(analyzeVideoRunDrones);
 
-    // Start thread for kinect in sky
-    thread skyThread(runEyeinSky);
+    
 
     // Start thread for scanner kinect
-    thread scanThread(runScanner);
+    //thread scanThread(runScanner);
+
+    // Start kinect in sky in main thread run last
+    runEyeinSky();
 
 }
 void runEyeinSky()
@@ -64,6 +68,23 @@ void runScanner()
 {
     Scanner s;
     s.runIndependently();
+}
+void runTest()
+{
+    Mat1f img(640,480);
+    commBox.skyFrame= img;
+
+
+
+    //namedWindow("Img in CommBox", CV_WINDOW_AUTOSIZE);
+    while(1){
+        //cout << "In test function" << endl;
+        //imshow("Img in CommBox", commBox.skyFrame);
+        //cout << "Drone 1 X axis pixel: " << commBox.drone1Pos.x2d << endl;
+        //cout << "Drone 1 Y axis pixel: " << commBox.drone1Pos.y2d << endl;
+        //cout << "Drone 1 distance: " << commBox.drone1Pos.distanceDirect << endl;
+        int key = cv::waitKey(1);
+    }
 }
 void analyzeVideoRunDrones()
 {
