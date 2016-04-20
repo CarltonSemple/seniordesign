@@ -24,7 +24,7 @@
 #include <arpa/inet.h>
 #include <thread>
 #include <iostream>
-#include "videoCodec.h"
+#include "objectdetector.h"
 #include <vector>
 
 #include <opencv2/opencv.hpp>
@@ -48,13 +48,18 @@ using namespace cv;
 /*Creating a Mat Object*/
 Mat frame_Mat;
 
+/*Object Detector */
+ObjectDetector OD1;
+
+/* UMat */
+UMat Frame_UMat;
+
 /*Function that captures errors from error checking in code*/
 void error(const char *msg)
 {
     perror(msg);
     exit(0);
 }
-
 
 // Thread function to perform OpenCV functions, such as imread and imshow
 // Being threaded from the receiveFrames() threaded function
@@ -69,9 +74,13 @@ void convert_file_to_mat()
 	cout << "frame_Mat Height:" << frame_Mat.size().height << endl;
 	cout << "frame_Mat Width:" << frame_Mat.size().width << endl;
 	cout << "frame_Mat Type:" << frame_Mat.type() << endl;
+	frame_Mat.copyTo(Frame_UMat);
+	
+	// Run HOG algorithm to detect people
+	OD1.detectHumans(Frame_UMat,true);
 	
 	// Show Mat in window
-	imshow("Mat Image",frame_Mat);
+	imshow("Mat Image",Frame_UMat);
 	waitKey(1);
 }
 
@@ -325,17 +334,13 @@ void receiveFrames()
 		fwrite(buffer2,frameSize,1,video_in);
 		fflush(video_in);
 		
-		// Reset file desciptor to beginning of file
 		lseek(img,0,SEEK_SET);
-		
-		// Write raw frame data to a jpeg file
 		n_1=write(img,buffer2,frameSize);
 		if(n_1 < 0)
 		{
 			perror("Couldnt write to jpeg:");
 		}	
 		
-		// Convert the jpeg file to a Mat
 		thread Convert_to_mat(convert_file_to_mat);
 		Convert_to_mat.join();
 	}
@@ -350,8 +355,8 @@ int main(int argc, char *argv[])
 	// Start server which receives frames from drones
 	thread receiveFrameThread(receiveFrames);
 	/*Name window for MAt Image*/
-	//namedWindow("Mat Image",WINDOW_AUTOSIZE);
-	//resizeWindow("Mat Image",800,800);
+	namedWindow("Mat Image",WINDOW_AUTOSIZE);
+	resizeWindow("Mat Image",800,800);
 	//This is opening up the video to display frames
 	int child;
 	if ((child = fork()) == 0)
@@ -477,6 +482,9 @@ int main(int argc, char *argv[])
     // Send to server
     while (buffer[0] != 'q') 
     {	
+			//imshow("Mat Image",frame_Mat);
+			//waitKey(1);
+			
 		if (buffer[0] != 'q') 
 		{
 			/*Setting the values in buffer to zero*/
@@ -591,7 +599,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-
-
-
-
