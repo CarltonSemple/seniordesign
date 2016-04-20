@@ -15,6 +15,16 @@ struct RGB {
     uchar b;  
 };
 
+struct Position {
+    int x2d;
+    int y2d;
+    double radius2d;
+    
+    long double distanceDirect; // calculated distance to drone
+    long double x3d; // distance to left or right of the middle of the station
+    long double z3d; // distance from base of station
+}
+
 class Util
 {
     public:
