@@ -23,7 +23,7 @@ struct Position {
     long double distanceDirect; // calculated distance to drone
     long double x3d; // distance to left or right of the middle of the station
     long double z3d; // distance from base of station
-}
+};
 
 class Util
 {
