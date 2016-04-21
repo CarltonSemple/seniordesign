@@ -5,13 +5,13 @@ Syracuse University Senior Design Project.
 SASS is designed to be a small-scale model of an autonomous mobile tracking system for security purposes. Using an Xbox 360 Kinect video camera, the system scans in a person to create a target object. After the scan is complete, two Parrot Jumping Sumo ground drones begin tracking the target with each drone assigned to a designated tracking area. An elevated Xbox One Kinect will provide assistance to the drones tracking their target. Only one drone will be actively tracking the target at a time while the other drone remains dormant, depending on if the person is currently located within each drone’s assigned area.
 
 # System Components
-SASS consists of both software and hardware. The following are the main components of the system:
-•	Xbox 360 & Xbox One Kinects
-•	Kinect adaptors
-•	2 Parrot Jumping Sumo ground drones
-•	Computer vision
-•	LG monitor
-•	Computers containing Linux OS
+SASS consists of both software and hardware. The following are the main components of the system:<br />
+•	Xbox 360 & Xbox One Kinects <br />
+•	Kinect adaptors <br />
+•	2 Parrot Jumping Sumo ground drones <br />
+•	Computer vision <br />
+•	LG monitor <br />
+•	Computers containing Linux OS <br />
 •	Custom Networking architecture
 
 # Future Applications
