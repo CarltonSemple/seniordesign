@@ -53,6 +53,14 @@ cv::Point Blob::getBottomRightPoint()
     return cv::Point(pa.first, pa.second);
 }
 
+double Blob::getCenterX()
+{
+    auto br = getBottomRightPoint();
+    auto bl = getBottomLeftPoint();
+    
+    return (br.x + bl.x) / 2.0;
+}
+
 void Blob::setTopLeft(std::pair<int,int> p)
 {
     x_left = p.first;
