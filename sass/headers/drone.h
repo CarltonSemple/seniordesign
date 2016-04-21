@@ -12,6 +12,7 @@
 #include <opencv2/calib3d/calib3d.hpp>
 
 #include "communicationBox.h"
+#include "objectdetector.h"
 #include "matcher.h"
 
 class Drone 
@@ -35,13 +36,14 @@ public:
     void turnRight(int angle);
     void moveForward(int dist);
     void moveBackward(int dist);
-    void decide();
+    void decide(cv::UMat & currentFrame);
     void setID(int idnum);
     
 
 private:
     void reactToTargetPosition(int x, int y);
-    cv::Point getTargetPositionAverage();
+    cv::Point getTemplateTargetPositionAverage();
+    cv::Point getHogTargetPositionAverage();
 };
 
 #endif

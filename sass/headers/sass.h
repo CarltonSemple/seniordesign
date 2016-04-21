@@ -2,7 +2,10 @@
 #define SASS_H
 
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string>
+#include <fcntl.h>
 #include <vector>
 #include "test.h"
 #include "backgroundSubtractor.h"
@@ -22,6 +25,7 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <thread>
+#include <functional>
 
 // following is specifically for server code
 #include <stdio.h>

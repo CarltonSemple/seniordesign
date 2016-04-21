@@ -9,19 +9,11 @@ struct CommunicationBox
 {
     cv::Mat skyFrame;
     cv::Mat lowFrame;
-    cv::Mat drone1Frame;
-    cv::Mat drone2Frame;
+    cv::Mat droneFrame;
     
-    // format of command "[cmd] [dist]" ex. "w 3"
-    std::string drone1Command;
-    bool drone1Wait; // Wait to write to the drone1Command string
-    Position drone1Pos;
-    // 
-    std::string drone2Command;
-    bool drone2Wait; // Wait to write to the drone2Command string
-    Position drone2Pos;
-
-
+    char droneMovement;
+    int droneMovementValue;
+    bool okayToDecide; // Wait to write to the drone2Command string
 };
 
 #endif

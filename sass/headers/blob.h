@@ -31,6 +31,7 @@ class Blob
     cv::Point getBottomLeftPoint();
     std::pair<int,int> getBottomRight(); // return bottom right coordinate
     cv::Point getBottomRightPoint();
+    double getCenterX();
         
     void setTopLeft(std::pair<int,int> p);
     void setBottomRight(std::pair<int,int> p);

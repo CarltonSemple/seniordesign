@@ -9,80 +9,81 @@ Drone::Drone(int ID, CommunicationBox & communicationBox)
 {
     windowWidth = 640;
     windowHeight = 480;
-    positionAcceptancePercentage = 0.3;
+    positionAcceptancePercentage = 0.47;
     
 }
 
 void Drone::turnLeft(int angle)
 {
-    //type like w 3 if you want www
-    switch(idNum)
-    {
-    case 1: 
-        commBox.drone1Command = "a " + to_string(angle);
-        break;
-    case 2: 
-        commBox.drone2Command = "a "+ to_string(angle);
-        break;
-    }
+    commBox.droneMovement = 'a';
+    commBox.droneMovementValue = angle;
+    commBox.okayToDecide = false;
 }
 
 void Drone::turnRight(int angle)
 {
-    switch(idNum)
-    {
-    case 1: 
-        commBox.drone1Command = "d "+ to_string(angle);
-        break;
-    case 2: 
-        commBox.drone2Command = "d "+ to_string(angle);
-        break;
-    }
+    commBox.droneMovement = 'd';
+    commBox.droneMovementValue = angle;
+    commBox.okayToDecide = false;
 }
 void Drone::moveForward(int dist)
 {
-    //type like w 3 if you want www
-    switch(idNum)
-    {
-    case 1: 
-        commBox.drone1Command = "w " + to_string(dist);
-        break;
-    case 2: 
-        commBox.drone2Command = "w "+ to_string(dist);
-        break;
-    }
+    commBox.droneMovement = 'w';
+    commBox.droneMovementValue = dist;
+    commBox.okayToDecide = false;
 }
 
 void Drone::moveBackward(int dist)
 {
-    switch(idNum)
-    {
-    case 1: 
-        commBox.drone1Command = "s "+ to_string(dist);
-        break;
-    case 2: 
-        commBox.drone2Command = "s "+ to_string(dist);
-        break;
-    }
+    commBox.droneMovement = 's';
+    commBox.droneMovementValue = dist;
+    commBox.okayToDecide = false;
 }
 
-void Drone::decide()
+
+
+void Drone::decide(UMat & currentFrame)
 {
-    switch(idNum)
-    {
-    case 1: commBox.drone1Frame.copyTo(frame);
-        break;
-    case 2: commBox.drone2Frame.copyTo(frame);
-        break;
-    }
+    //commBox.droneFrame.copyTo(frame);
+    frame = currentFrame;
     
     // Get the average target position, in terms of x & y for now
-    Point position = getTargetPositionAverage();
-        
-    reactToTargetPosition(position.x, position.y);    
+    Point position = getHogTargetPositionAverage();//getTemplateTargetPositionAverage();
+    if(position.x == 0 && position.y == 0) {
+        return;
+    }
+    reactToTargetPosition(position.x, position.y);  
+    
+    // show images after processing them
+    //if(display) {
+        //imshow("Active Drone Feed", frame);
+    //}  
 }
 
-Point Drone::getTargetPositionAverage()
+Point Drone::getHogTargetPositionAverage()
+{
+    ObjectDetector og;
+    auto humanVector = og.detectHumans(frame, true);
+    
+    Point ret(0,0);
+       
+    // Assuming there is only one human
+    if(humanVector.size() > 0) {
+        // look at x position of first human
+        Human & human = humanVector[0];
+        double xCenter = human.getCenterX();
+        ret.x = xCenter;
+        cout << "center of person: " << ret.x << endl;
+        ret.y = human.getBottomRightPoint().y;
+        moveForward(1);
+    }
+    else {
+        moveBackward(2);
+    }
+    return ret;
+}
+
+Point Drone::getTemplateTargetPositionAverage()
 {
     double xSum = 0, ySum = 0;
     
@@ -101,19 +102,29 @@ Point Drone::getTargetPositionAverage()
 // turn in small increments, or move forward until the target is in the center range
 void Drone::reactToTargetPosition(int x, int y)
 {
-    double centerLeft, centerRight;
+    double centerLeft, centerRight, centerBottom, centerTop;
     centerLeft = windowWidth * positionAcceptancePercentage;
-    centerRight = (windowWidth * positionAcceptancePercentage) - windowWidth;
+    centerRight = windowWidth - (windowWidth * positionAcceptancePercentage);
+    centerBottom = windowHeight * 0.5;
+    centerTop = windowHeight * 0.6;
     
     int incAmount = 1;
     
     // target is left of center range
     if(x < centerLeft) 
     {
-        turnRight(incAmount);
+        turnLeft(incAmount);
     }
     else if (x > centerRight) 
     {
-        turnLeft(incAmount);
+        turnRight(incAmount);
     }
+    
+   /* if(y < centerBottom) {
+        moveBackward(1);
+    } 
+    else if(y > centerTop) 
+    {
+        moveForward(1);
+    }*/
 }

@@ -146,10 +146,10 @@ Point Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat 
     { 
         matchLoc = minLoc; 
         cout << "minLocation. min value: " << minVal << endl; 
-         if(minVal < 0.33) {
+         //if(minVal < 0.33) {
             rectangle( sourceImg, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
             rectangle( resultt2, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
-        }
+        //}
     }
     else
     { 
@@ -157,10 +157,10 @@ Point Matcher::templateMatchingWithoutCallBack(cv::UMat & templateImg, cv::UMat 
         cout << "maxLocation. max value: " << maxVal << endl;
         double po = 100000000;
         //cout << 4.5 * po << endl;
-        if(maxVal >= 1.3 * po) { 
+//        if(maxVal >= 1.3 * po) { 
             rectangle( sourceImg, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
             rectangle( resultt2, matchLoc, Point( matchLoc.x + templateImg.cols , matchLoc.y + templateImg.rows ), Scalar::all(0), 2, 8, 0 );
-        }
+//        }
     }
     
     
