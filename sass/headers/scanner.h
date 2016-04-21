@@ -17,7 +17,7 @@ private:
     void displayMenuOptions();
     void startScan();
     void stopScan();
-    char menu();
+    void menu();
     //void runCamera();
     void createSliderWindow();
 public:
