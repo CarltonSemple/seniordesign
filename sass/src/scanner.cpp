@@ -112,14 +112,18 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 			
 			// show modified RGB image
             Mat cropped = Util::cropImage(rgbMat); 
-			cv::imshow("rgb", cropped);
+            Util::removeSideBars(cropped, 60.0).copyTo(cropped);
+			//Mat cropped = Util::removeSideBars(rgbMat, 60.0);
+            cv::imshow("rgb", cropped);
             
             // save to file
             std::ostringstream imgname;
             if(camera_saving == true && img_frame < std::numeric_limits<int>::max())
             {
+                
                 imgname << mediaFolder << "img_set_" << set_number << "_" << img_frame++ << ".jpg";
                 imwrite(imgname.str(), cropped); // A JPG FILE IS BEING SAVED
+                
             }
 			
 			//std::cout << "rows: " << depthMat.rows << " cols: " << depthMat.cols << std::endl;

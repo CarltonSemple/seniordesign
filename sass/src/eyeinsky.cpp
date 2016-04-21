@@ -30,7 +30,14 @@ bool protonect_shutdown = false; ///< Whether the running application should shu
 
 UMat dst2;
 
+int iLowH=0;
+int iHighH=179;
 
+int iLowS=0; 
+int iHighS=255;
+
+int iLowV=0;
+int iHighV=255;
 
 void sigint_handler(int s)
 {
@@ -43,14 +50,13 @@ void control(){
 	//}
 }
 
-Position eyeinsky::colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, 
-															int iHighV, Mat imgOriginal)
+Position eyeinsky::colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS, int iHighS, int iLowV, int iHighV, Mat imgOriginal, int droneId)
 {
     
     long double avgWidth = 0.0;
     long double widest = 0.0;
     long double avgDist = 0;
-    long double dist;
+    long double dist = 0;
 
 
     Mat imgHSV;
@@ -68,9 +74,13 @@ Position eyeinsky::colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS
     //morphological closing (fill small holes in the foreground)
     dilate( imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) ); 
     erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
-   
-    imshow("Thresholded Image", imgThresholded); //show the thresholded image
-    imshow("Original", imgOriginal); //show the original image
+   	if(droneId == 1){
+    	//imshow("Thresholded Image1", imgThresholded); //show the thresholded image
+    }
+    if(droneId == 2){
+    	//imshow("Thresholded Image2", imgThresholded); //show the thresholded image
+    }
+    //imshow("Original", imgOriginal); //show the original image
 
     
     //else if (key == 32) // space key is pressed 
@@ -96,20 +106,20 @@ Position eyeinsky::colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS
     int lastofcol=0;
     int midofrow=0;
     
-    int startColumn = 0, endColumn = 0, largestStartCol = 0, largestEndCol;
+    int startColumn = 0, endColumn = 0, largestStartCol = 0, largestEndCol = 0;
     int largestRow = 0;
     bool prevWhite = false;
     
-    for(int r = 0; r < imgThresholded.size().height; r++) {
+    for(int r = 0; r < imgThresholded.size().height-1; r++) {
         currentWidth = 0;
         // look through all of the columns in this row
-        for(int c = 0; c < imgThresholded.size().width; c++) {
+        for(int c = 0; c < imgThresholded.size().width-1; c++) {
             RGB & color = imgThresholded.ptr<RGB>(r)[c];
             if((color.r > 200) && (color.g > 200 )&& (color.b > 200)) {
                 // white-ish
                 if(prevWhite == false) {
                     if(c != 0) {
-                        startColumn = c-1;
+                        startColumn = c;
                     } // startColumn starts at 0
                 }
                 prevWhite = true;
@@ -122,6 +132,7 @@ Position eyeinsky::colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS
                 
                 avgWidth = (avgWidth+currentWidth)/2;
                 if(currentWidth > widest) {
+                	widest = currentWidth;
                     largestStartCol = startColumn;
                     largestEndCol = endColumn;
                     largestRow = r;
@@ -149,60 +160,104 @@ Position eyeinsky::colorBlobDistanceCalibration(int iLowH, int iHighH, int iLowS
     cout << "middleRow pixel: " << midofrow << endl;
     cout << "endRow pixel: " << lastofrow << endl;
     cout << "startCol pixel: " << firstofcol << endl;*/
-    dist = Util::disttodrone(20, 487.68, 10.16 ,avgWidth);
+    //dist = Util::disttodrone(20, 487.68, 10.16 ,avgWidth);
     
     Position returnedPos;
     returnedPos.y2d = largestRow;
-    returnedPos.x2d = (largestStartCol + largestEndCol) / 2;
+    returnedPos.x2d = imgThresholded.size().width - ((largestStartCol + largestEndCol) / 2);
     returnedPos.radius2d = abs((largestEndCol - largestStartCol));
     returnedPos.distanceDirect = dist;
-        
+    //Mat tempdis = Util::drawRectangle(imgOriginal,Point(returnedPos.x2d,returnedPos.y2d),20);
+    if(droneId == 1){
+	    cout << "Drone 1 X axis pixel: " << returnedPos.x2d << endl;
+	    cout << "Drone 1 Y axis pixel: " << returnedPos.y2d << endl;
+	    //cout << "Drone 1 distance: " << returnedPos.distanceDirect << endl;
+	    //imshow("drone squares1",tempdis);
+	    if(returnedPos.y2d > 960){
+	    	cout << "Drone 1 is in control"<<endl;
+
+	    }
+	    else{
+	    	cout << "Drone 2 take control"<<endl;
+	    }
+    }
+    if(droneId == 2){
+    	cout << "Drone 2 X axis pixel: " << returnedPos.x2d << endl;
+	    cout << "Drone 2 Y axis pixel: " << returnedPos.y2d << endl;
+	    if(returnedPos.y2d < 960){
+	    	cout << "Drone 2 is in control"<<endl;
+
+	    }
+	    else{
+	    	cout << "Drone 1 take control"<<endl;
+	    }
+    }
+	
+	
     return returnedPos;
 }
 
-Position getDronePostion(int droneId, Mat & img)
+Position eyeinsky::getDronePosition(int droneId, Mat & img)
 {
     Position dposition;
     
-	int iLowH = 0;
-    int iHighH = 179;
+	/*iLowH = 0;
+    iHighH = 179;
 
-    int iLowS = 0; 
-    int iHighS = 255;
+    iLowS = 0; 
+    iHighS = 255;
 
-    int iLowV = 0;
-    int iHighV = 255;
+    iLowV = 0;
+    iHighV = 255;*/
     long double drone1dist;
     long double drone2dist;
-	if(droneid == 1){
+	if(droneId == 1){
 		//Blue Drone
+		iLowH = 60;
+    	iHighH = 178;
+    	iLowS = 128;
+    	iHighS = 255;
+   		iLowV = 106;
+   		iHighV = 255;
+   		
+	}
+	else if(droneId == 2){
+		//Green Drone
 		iLowH = 38;
     	iHighH = 83;
     	iLowS = 50;
-   		iLowV = 35;
-   		dposition = colorBlobDistanceCalibration(iLowH, iHighH, iLowS, iHighS, iLowV, iHighV, img);
+    	iHighS = 255;
+   		iLowV = 114;
+   		iHighV = 255;
+   		
 	}
-	else if(droneid == 2){
-		//Green Drone
-		iLowH = 103;
-    	iHighH = 126;
-    	iLowS = 152;
-   		iLowV = 71;
-   		dposition = colorBlobDistanceCalibration(iLowH, iHighH, iLowS, iHighS, iLowV, iHighV, img);
-	}
-    
+    dposition = colorBlobDistanceCalibration(iLowH, iHighH, iLowS, iHighS, iLowV, iHighV, img,droneId);
+
     return dposition;
 }
+
 
 
 eyeinsky::eyeinsky(int method,CommunicationBox & commBox)
 {
 	
 	Matcher matcher;
+	ObjectDetector od;
    	UMat templImgOriginal,drone1,drone2,grid;
-   	Mat dst1;
+   	Mat dst1,flippeddst,tempdis,tempdis2,tempdis3;
    	bool initalWidth = false;
-    
+    Position bludposition;
+    Position grndposition;
+    bool testColor = true;
+    int count =0;
+    iLowH = 0;
+	iHighH = 179;
+
+	iLowS = 0; 
+	iHighS = 255;
+
+	iLowV = 0;
+	iHighV = 255;
    	imread("template.jpg", CV_LOAD_IMAGE_COLOR).copyTo(templImgOriginal);
     imread("drone1.JPG", CV_LOAD_IMAGE_COLOR).copyTo(drone1);
     imread("drone2.JPG", CV_LOAD_IMAGE_COLOR).copyTo(drone2);
@@ -245,6 +300,21 @@ eyeinsky::eyeinsky(int method,CommunicationBox & commBox)
 		cout << "no device connected!" << endl;
 		exit(0);
 	}
+	/*
+	namedWindow("Control", CV_WINDOW_AUTOSIZE); //create a window called "Control"
+
+    
+
+    //Create trackbars in "Control" window
+    createTrackbar("LowH", "Control", &iLowH, 179); //Hue (0 - 179)
+    createTrackbar("HighH", "Control", &iHighH, 179);
+
+    createTrackbar("LowS", "Control", &iLowS, 255); //Saturation (0 - 255)
+    createTrackbar("HighS", "Control", &iHighS, 255);
+
+    createTrackbar("LowV", "Control", &iLowV, 255); //Value (0 - 255)
+    createTrackbar("HighV", "Control", &iHighV, 255);*/
+
 	string serial = freenect2.getDefaultDeviceSerialNumber();
 	dev = freenect2.openDevice(serial, pipeline);
 	//libfreenect2::SyncMultiFrameListener listener(libfreenect2::Frame::Color | libfreenect2::Frame::Ir | libfreenect2::Frame::Depth);
@@ -300,12 +370,23 @@ eyeinsky::eyeinsky(int method,CommunicationBox & commBox)
         //cv::imshow("undistorted", depthmatUndistorted / 4096.0f);
         //cv::imshow("registered", rgbd);
         //cv::imshow("depth2RGB", rgbd2 / 4096.0f);
-
+		resize(rgbmat,dst1,size);
         //cout << "Before Type: " << urgbmat.type()<<endl;
-        commBox.skyFrame = rgbmat;
-        resize(rgbmat,dst1,size);
-        cv::imshow("rgb", dst1);
-		urgbmat = dst1.getUMat( ACCESS_RW );
+        flip(rgbmat, flippeddst, 1);
+        commBox.skyFrame = flippeddst;
+        bludposition = getDronePosition(1,flippeddst);
+        grndposition = getDronePosition(2,flippeddst);
+        tempdis = Util::drawRectangleAroundDrone(flippeddst,Point(bludposition.x2d,bludposition.y2d),20,1);
+        tempdis2 = Util::drawRectangleAroundDrone(tempdis,Point(grndposition.x2d,grndposition.y2d),20,2);
+        tempdis3 = Util::drawLineAtBarrier(tempdis2,Point(960,960));
+        commBox.drone1Pos = bludposition;
+		commBox.drone2Pos = grndposition;
+        imshow("Both squares",tempdis3);
+        
+        //cv::imshow("rgb", flippeddst);
+		urgbmat = flippeddst.getUMat( ACCESS_RW );
+		cvtColor(urgbmat,dst2,CV_BGRA2BGR);
+    	//od.detectHumans(dst2, false, true);
 		if(!initalWidth){
 			//wait for inital width picture
 			//eyeinsky::startPixel = getDronePixelWidth(urgbmat);
@@ -313,20 +394,22 @@ eyeinsky::eyeinsky(int method,CommunicationBox & commBox)
 		}
 		else{
 			//get distance to drone
-			cout << "Have Width" << endl;
+			//cout << "Have Width" << endl;
 			//eyeinsky::newPixel = getDronePixelWidth(urgbmat);
-			eyeinsky::newDist = Util::disttodrone(eyeinsky::startPixel,eyeinsky::startDist, eyeinsky::startWidth ,eyeinsky::newPixel);
+			//eyeinsky::newDist = Util::disttodrone(eyeinsky::startPixel,eyeinsky::startDist, eyeinsky::startWidth ,eyeinsky::newPixel);
 		}
-		cvtColor(urgbmat,dst2,CV_BGRA2BGR);
+		
+
 		Point tempPoint;
+		
 		//cout << "After Type: " << dst.type()<<endl;
 		//matcher.templateMatchingWithoutCallBack(std::ref(templImgOriginal), std::ref(dst2), 1);//0r 4
-		tempPoint = matcher.templateMatchingWithoutCallBack(std::ref(drone1), std::ref(dst2), method);//0r 1
+		//tempPoint = matcher.templateMatchingWithoutCallBack(std::ref(drone1), std::ref(dst2), method);//0r 1
 		
 		//tempPoint = matcher.templateMatchingWithoutCallBack(std::ref(grid), std::ref(dst2), method);//0r 1
 
 		//commBox.drone1Loc()->bottomLeft = tempPoint;
-		//cv::imshow("Drone Matching", dst2);
+		cv::imshow("Img in CommBox", urgbmat);
         //cout << "Type: " << rgbmat.type()<<endl;
 		//cout<<"x= "<<tempPoint.x<<" y= "<<tempPoint.y<<endl;
 		//Testing backgroundsubtraction	

@@ -32,7 +32,7 @@ class ObjectDetector
             
     // Create humans from the locations of detected humans, 
     // and optionally draw generic black boxes around the humans
-    std::vector<Human> detectHumans(cv::UMat sourceImg, bool drawBoxes);
+    std::vector<Human> detectHumans(cv::UMat sourceImg, bool drawBoxes, bool drawLine);
     
     /* Match new humans with the current stored humans */
     void keepSimilarHumans(std::vector<Human> & collection, std::vector<Human> & newHumans);
