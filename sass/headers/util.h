@@ -6,9 +6,14 @@
 #include <cmath>
 #include <opencv2/opencv.hpp>
 #include "opencv2/core.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/imgproc/imgproc_c.h"
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/ocl.hpp> // opencl
 
 using namespace std;
-
+using namespace cv;
 struct RGB {
     uchar r;
     uchar g;
@@ -56,6 +61,26 @@ class Util
         cv::Rect rectti(startX, startY, endX, endY); //10, 10, 310, 100);
         cv::Mat ree(source, rectti);
         return ree;
+    }
+    static cv::Mat drawRectangleAroundDrone(cv::Mat & sourceImg, Point center,long double width, int droneId)
+    {
+
+        Point topLeft = Point((center.x-(width/2)),(center.y+(width/2)));
+        Point botRight = Point((center.x+(width/2)),(center.y-(width/2)));
+        if(droneId == 1){
+            rectangle( sourceImg, topLeft, botRight, Scalar(255,0,0), 2, 8, 0 );
+        }
+        else if (droneId == 2){
+            rectangle( sourceImg, topLeft, botRight, Scalar(0,255,0), 2, 8, 0 );
+        }
+        return sourceImg;
+    }
+    static cv::Mat drawLineAtBarrier(cv::Mat & sourceImg, Point mark)
+    {
+        
+        line( sourceImg, Point(0,mark.y), Point(1920,mark.y), Scalar(0,0,255), 2, 8, 0 );
+        
+        return sourceImg;
     }
     
     /**
