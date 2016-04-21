@@ -64,48 +64,91 @@ class Util
     **/
     static cv::Mat removeSideBars(cv::Mat source, double percentBlank) 
     {
-        int leftCol = 0, rightCol = source.size().width;
+        double ySize = source.size().height;
+        double xSize = source.size().width;
+        int leftCol = 0, rightCol = xSize;
         bool leftSide = true;
         int column = 0;
         //for(column = 0; column < source.size().width / 2; column++)
-        while(true)
+        
+        /*
+        for(int x = 0; x < xSize; x++)
         {
-            // go from the left to the middle, and then from the right to the middle
-            if(leftSide) {
-                if(column >= source.size().width / 2) {
-                    leftSide = false; // finished with the left, move to the right
-                    column = source.size().width;
-                } else {
-                    column++;
-                }
-            } else {
-                // right side bar
-                if(column <= source.size().width / 2) {
-                    break;
-                } else {
-                    column--;
+            for(int y = 0; y < ySize; y++) {
+                RGB & color = source.ptr<RGB>(y)[x];
+                color.r = 255;
+                color.g = 0;
+                color.b = 0;
+            }
+        }*/
+        
+        // crop left side
+        for(int x = 0; x < xSize; x++) {
+            float blankCount = 0.0;
+            for(int y = 0; y < ySize; y++) {
+                RGB & color = source.ptr<RGB>(y)[x];
+                //cout << "r: " << color.r << " g: " << color.g << " b: " << color.b << endl;
+                if(color.r <5 && color.g < 5 && color.b < 5) {
+                    blankCount+=1.0;
                 }
             }
-            int row = 0;
-            double blankCount = 0;
-            for(row = 0; row < source.size().height; row++)
-            {
-                RGB & color = source.ptr<RGB>(column)[row];
-                if(color.r == 0 && color.g == 0 && color.b == 0) {
-                    blankCount += 1.0;
-                }
+            // if most of the column is not blank
+            // move on to right side
+            if((blankCount/ySize)*100 < percentBlank) {
+                cout << "end left" << endl;
+                leftCol = x;
+                /*
+                for(int i = 0; i < x; i++) {
+                    for(int y = 0; y < ySize; y++) {
+                        RGB & color = source.ptr<RGB>(y)[i];
+                        color.r = 255;
+                        color.g = 0;
+                        color.b = 0;
+                    }
+                }*/
+                break; 
             }
-            // if most of the column is blank, move the marker over
-            if((blankCount/source.size().height)*100 >= percentBlank) {
-                if(leftSide) {
-                    leftCol += 1;
-                } else {
-                    rightCol -= 1;
-                }
-            }                        
         }
-        //cout << "leftCol: " << leftCol << endl;
-        //cout << "rightCol: " << rightCol << endl;
+        
+        rightCol = xSize - 1;
+        
+        // crop right side
+        for(int x = xSize - 1; x >= 0; x--) {
+            float blankCount = 0.0;
+            for(int y = 0; y < ySize; y++) {
+                RGB & color = source.ptr<RGB>(y)[x];
+                if(color.r < 5 && color.g < 5 && color.b < 5) {
+                    blankCount+=1.0;
+                }
+            }
+            // if not enough of the column is blank, finish
+            if((blankCount/ySize)*100 < percentBlank) {
+                cout << "end right" << endl;
+                rightCol = x;
+                /*
+                for(int i = xSize; i > x; i--) {
+                    for(int y = 0; y < ySize; y++) {
+                        RGB & color = source.ptr<RGB>(y)[i];
+                        color.r = 0;
+                        color.g = 0;
+                        color.b = 255;
+                    }
+                }*/
+                break; 
+            }
+        }
+                
+
+        cout << "leftCol: " << leftCol << endl;
+        cout << "rightCol: " << rightCol << endl;
+        cout << "source height: " << ySize << endl;
+        cout << "source width: " << xSize << endl;
+        if(rightCol <= leftCol) {
+            return source;
+        }
+        //cv::Rect rectti(leftCol, 0, rightCol - leftCol, source.size().height);
+        //cv::Rect rectti(leftCol, 0, rightCol, ySize);
+        //cv::Rect rectti(leftCol, 0, xSize - leftCol, source.size().height);
         cv::Rect rectti(leftCol, 0, rightCol - leftCol, source.size().height);
         cv::Mat ree(source, rectti);
         
