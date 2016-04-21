@@ -31,6 +31,8 @@ bool camera_saving = false;
 int img_frame = 0;
 int set_number = 0;
 
+Mat cropped;
+
 // filenames
 string mediaFolder = "media/scans/";
 string setCountFileName = "setnumber";
@@ -111,9 +113,8 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 			//std::cout << "end" << std::endl;
 			
 			// show modified RGB image
-            Mat cropped = Util::cropImage(rgbMat); 
+            cropped = Util::cropImage(rgbMat); 
             Util::removeSideBars(cropped, 60.0).copyTo(cropped);
-			//Mat cropped = Util::removeSideBars(rgbMat, 60.0);
             cv::imshow("rgb", cropped);
             
             // save to file
@@ -196,6 +197,20 @@ int Scanner::getNextSetNumber()
     return num;
 }
 
+int getNextSetNumberOutsideScanner() 
+{
+    int num = 0;
+    ifstream in;
+    in.open(mediaFolder + setCountFileName);
+    in >> num;
+    num++;
+    in.close();
+    ofstream out;
+    out.open(mediaFolder + setCountFileName);
+    out << num;
+    return num;
+}
+
 void Scanner::displayMinMax() {
     cout << "minimum distance: " << minDistance << endl;
     cout << "maximum distance: " << maxDistance << endl;
@@ -203,10 +218,12 @@ void Scanner::displayMinMax() {
 
 void Scanner::displayMenuOptions() {
     cout << "Scanner Application" << endl << endl;
+    /*
     cout << "S: Start scan" << endl;
     cout << "D: Display Scan" << endl;
-    cout << "E: End scan" << endl;
-    cout << "q: Quit" << endl;
+    cout << "E: End scan" << endl;*/
+    cout << "Space: Take Picture" << endl;
+    cout << "ESC: Quit" << endl;
     cout << ": ";
 }
 
@@ -215,15 +232,17 @@ void Scanner::startScan() {
     set_number = getNextSetNumber();
     cout << "recording set "<< set_number << endl << endl;
     camera_saving = true;
-    img_frame = 0;
+    //img_frame = 0;
 }
 
 void Scanner::stopScan() {
     camera_saving = false;
 }
 
-char Scanner::menu() {
+void Scanner::menu() {
     displayMenuOptions();
+    
+    /*
     char c = 'z';
     cin >> c;
     switch(c)
@@ -246,7 +265,7 @@ char Scanner::menu() {
         case 'q':
         case 'Q': quit = true; break;
     }
-    return c;
+    return c;*/
 }
 
 Human & Scanner::loadScannedHuman(int setNum)
@@ -285,6 +304,8 @@ void runCamera()
 	std::string filename("snapshot");
 	std::string suffix(".png");
     int i_snap(0), iter(0);
+    
+    img_frame = 0;
 	
     Mat depthMat(Size(640,480),CV_16UC1);
 	Mat depthf (Size(640,480),CV_8UC1);
@@ -298,16 +319,37 @@ void runCamera()
 	namedWindow("depth",CV_WINDOW_AUTOSIZE);
 	device.startVideo();
 	device.startDepth();
+   
 	while (!quit) {
 		device.getVideo(rgbMat);
-        
-        
-                
 		device.getDepth(depthMat);
 		//cv::imshow("rgb", rgbMat);
 		depthMat.convertTo(depthf, CV_8UC1, 255.0/2048.0);
 		cv::imshow("depth",depthf);
-		char k = cvWaitKey(5);
+		char k = waitKey(5);
+        switch(k) 
+        {
+            case 32: // space bar. take picture
+            {
+                int set_number = getNextSetNumberOutsideScanner();
+                cout << "recording set "<< set_number << endl << endl;
+                // save to file
+                std::ostringstream imgname;
+                if(img_frame < std::numeric_limits<int>::max())
+                {
+                    imgname << mediaFolder << "img_set_" << set_number << "_" << img_frame++ << ".jpg";
+                    imwrite(imgname.str(), cropped); // A JPG FILE IS BEING SAVED
+                }
+                break;
+            }
+            case 27: // escape key. quit.
+            {
+                    device.stopVideo();
+                    device.stopDepth();
+                    quit = true;
+                break;
+            }
+        }
         
         
         
@@ -328,11 +370,16 @@ void runCamera()
 		//iter++;
 	}
     
+    cout << "stopping video" << endl;
+    /*
+    device.stopVideo();
+	device.stopDepth();*/
+    
+    /*
     cvDestroyWindow("rgb");
 	cvDestroyWindow("depth");
 	
-	device.stopVideo();
-	device.stopDepth();
+	*/
 }
 
 void Scanner::createSliderWindow() 
@@ -346,12 +393,16 @@ void Scanner::runIndependently()
 {
     createSliderWindow();
     thread camthread(&runCamera);
-    
+    menu();
     while (true)
     {
-        menu();
-        if(quit)
+        if(quit == true) {
+            cout << "closing windows" << endl;
+            cvDestroyWindow("Control");
+            cvDestroyWindow("rgb");
+            cvDestroyWindow("depth");
             break;
+        }
     }
 	
     camthread.join();
