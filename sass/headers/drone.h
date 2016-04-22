@@ -22,7 +22,7 @@ class Drone
     int windowHeight;
     int windowWidth;
     int idNum;
-    
+        
     // percentage of distance from the window's sides that is acceptable
     // used to decide if the target is heading out of the frame
     double positionAcceptancePercentage; 
