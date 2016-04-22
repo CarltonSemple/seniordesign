@@ -65,10 +65,13 @@ void Sass::runSystem()
     
     // Start thread for processing drone & kinect video feeds
     thread videoThread(analyzeVideoRunDrones);
- 
+    
+    // Create thread for displaying scans
+    thread displayScanThread;
+     
     // Start thread for displaying scans
     if(displayTemplateMatching) {
-        thread displayScanThread(displayScanLoop);
+        displayScanThread = std::thread(displayScanLoop);
     }
  
     // Start thread for kinect in sky
