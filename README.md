@@ -1,5 +1,5 @@
 # Surveillance & Apprehensive Security System (SASS)
-# (Linux Ubuntu 15.10 LTS) 
+# (Linux Ubuntu 15.10) 
 Syracuse University Senior Design Project 2016.
 
 # System Description
