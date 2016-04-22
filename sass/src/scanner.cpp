@@ -299,6 +299,8 @@ Human & Scanner::loadScannedHuman(int setNum)
     return *h;
 }
 
+int set_number = -1;
+
 void runCamera()
 {
 	std::string filename("snapshot");
@@ -331,7 +333,9 @@ void runCamera()
         {
             case 32: // space bar. take picture
             {
-                int set_number = getNextSetNumberOutsideScanner();
+                if(set_number == -1) {
+                    set_number = getNextSetNumberOutsideScanner();
+                }
                 cout << "recording set "<< set_number << endl << endl;
                 // save to file
                 std::ostringstream imgname;
