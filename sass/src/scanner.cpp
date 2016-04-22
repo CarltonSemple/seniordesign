@@ -232,7 +232,7 @@ void Scanner::startScan() {
     set_number = getNextSetNumber();
     cout << "recording set "<< set_number << endl << endl;
     camera_saving = true;
-    //img_frame = 0;
+    img_frame = 0;
 }
 
 void Scanner::stopScan() {
