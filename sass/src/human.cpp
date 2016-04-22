@@ -75,7 +75,7 @@ void Human::displayImages(bool loop)
 {
     cv::namedWindow(name, CV_WINDOW_NORMAL); //CV_WINDOW_AUTOSIZE);
     cv::resizeWindow(name, 800, 800);
-    displayImages(name, loop);
+    displayImages("Potential Target", loop);
 }
 
 void Human::displayImages(std::string windowName, bool loop)
