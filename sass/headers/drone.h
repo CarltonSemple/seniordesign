@@ -19,6 +19,7 @@ class Drone
 {
     cv::UMat frame;
     std::vector<cv::UMat> templateImages;
+    bool displayTemplateMatching;
     int windowHeight;
     int windowWidth;
     int idNum;
@@ -38,6 +39,8 @@ public:
     void moveBackward(int dist);
     void decide(cv::UMat & currentFrame);
     void setID(int idnum);
+    void setTemplateImages(Human & targetHuman);
+    void setDisplayTemplateMatching(bool display);
     
 
 private:
