@@ -413,7 +413,8 @@ eyeinsky::eyeinsky(int method,CommunicationBox & commBox)
 		//matcher.templateMatchingWithoutCallBack(std::ref(j2), std::ref(dst2), 1);//0r 1
 		//matcher.templateMatchingWithoutCallBack(std::ref(j3), std::ref(dst2), 1);//0r 1
 		//matcher.templateMatchingWithoutCallBack(std::ref(j4), std::ref(dst2), 1);//0r 1
-        commBox.skyFrame = dst2.getMat(ACCESS_RW);
+        commBox.skyFrame = dst1;
+		//commBox.skyFrame = dst2.getMat(ACCESS_RW);
         //imshow("Both squares and Barrier Line",dst2);
         
         //cv::imshow("rgb", flippeddst);
