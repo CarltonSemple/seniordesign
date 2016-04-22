@@ -63,7 +63,7 @@ void Drone::decide(UMat & currentFrame)
 Point Drone::getHogTargetPositionAverage()
 {
     ObjectDetector og;
-    auto humanVector = og.detectHumans(frame, true);
+    auto humanVector = og.detectHumans(frame, true, false, commBox);
     
     Point ret(0,0);
        
@@ -78,7 +78,7 @@ Point Drone::getHogTargetPositionAverage()
         moveForward(1);
     }
     else {
-        moveBackward(2);
+        moveBackward(1);
     }
     return ret;
 }

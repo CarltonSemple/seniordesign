@@ -42,8 +42,12 @@ Sass::Sass(int matchingMethod)
 
 void Sass::runSystem()
 {
+    //Set known distance
+    commBox.bMark.x2d = 0;
+    commBox.bMark.y2d = 740;
+    
     // Start test Thread
-    //thread testThread(runTest);
+    thread testThread(runTest);
     
     // Start server for sending commands
     thread sendComThread(sendCommands);
@@ -60,12 +64,14 @@ void Sass::runSystem()
     // Start thread for scanner kinect
 	// thread scanThread(runScanner);
    
+    // Start kinect in sky in main thread run last
+    runEyeinSky();
 	receiveFrameThread.join();
 	sendComThread.join();
 	videoThread.join();
+    testThread.join();
 
-    // Start kinect in sky in main thread run last
-    //runEyeinSky();
+    
 }
 void runEyeinSky()
 {
@@ -81,12 +87,10 @@ void runTest()
     Mat1f img(640,480);
     commBox.skyFrame= img;
 
-
-
     //namedWindow("Img in CommBox", CV_WINDOW_AUTOSIZE);
     while(1){
         //cout << "In test function" << endl;
-        //imshow("Img in CommBox", commBox.skyFrame);
+        imshow("Img in CommBox", commBox.skyFrame);
         //cout << "Drone 1 X axis pixel: " << commBox.drone1Pos.x2d << endl;
         //cout << "Drone 1 Y axis pixel: " << commBox.drone1Pos.y2d << endl;
         //cout << "Drone 1 distance: " << commBox.drone1Pos.distanceDirect << endl;
@@ -106,8 +110,6 @@ void analyzeVideoRunDrones()
 			continue;
 		}		
 		
-		
-		
 		if(commBox.okayToDecide == true) {
 			commBox.droneFrame.copyTo(current);
         	dactive.decide(current);
@@ -117,8 +119,6 @@ void analyzeVideoRunDrones()
 		
 		waitKey(1);
 
-		
-		
     }   
 }
 
@@ -198,14 +198,14 @@ void sendCommands()
 	
     /*************Setting up the Connections for Both Drones***********************/
     /*Accepting Connection from Drone 1*/
-    drone_1 = accept(parentfd, (struct sockaddr*) &client_addr_drone_2, &clientlen);
+    drone_1 = accept(parentfd, (struct sockaddr*) &client_addr_drone_1, &clientlen);
     if(drone_1 < 0)
     {
 		perror("ERROR on accept Drone 2");
     }
     printf("Drone 1 accepted for commands socket\n");
     /*Accepting Connection from Drone 2*/
-    drone_2 = accept(parentfd, (struct sockaddr*) &client_addr_drone_1, &clientlen);
+    drone_2 = accept(parentfd, (struct sockaddr*) &client_addr_drone_2, &clientlen);
     if(drone_2 < 0)
     {
 		perror("ERROR on accept Drone 1");
@@ -270,7 +270,7 @@ void sendCommands()
 			current_drone = 1;
 		}
 		
-		cout << "current_drone iss: " << current_drone << endl;
+		cout << "current_drone is: " << current_drone << endl;
 
 		/*Get desired drone movement/instruction*/
 		/*This is scanning in how far you want to go from which instruction you chose from WASD*/
@@ -462,7 +462,6 @@ void receiveFrames()
 	
 	int img;
 	img = open("tmp.jpg",O_RDWR);
-    
     /*This is receiving the frames that we are sending over first and then receiving the data.*/
     while (1) 
     {
