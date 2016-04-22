@@ -9,7 +9,7 @@ Drone::Drone(int ID, CommunicationBox & communicationBox)
 {
     windowWidth = 640;
     windowHeight = 480;
-    positionAcceptancePercentage = 0.47;
+    positionAcceptancePercentage = 0.475;
     
 }
 
@@ -31,6 +31,7 @@ void Drone::moveForward(int dist)
     commBox.droneMovement = 'w';
     commBox.droneMovementValue = dist;
     commBox.okayToDecide = false;
+    cout << "In moveForward...\n";
 }
 
 void Drone::moveBackward(int dist)
@@ -48,12 +49,13 @@ void Drone::decide(UMat & currentFrame)
     frame = currentFrame;
     
     // Get the average target position, in terms of x & y for now
-    Point position = getHogTargetPositionAverage();//getTemplateTargetPositionAverage();
+    Point position = getHogTargetPositionAverage();//
+    
     if(position.x == 0 && position.y == 0) {
         return;
     }
     reactToTargetPosition(position.x, position.y);  
-    
+   
     // show images after processing them
     //if(display) {
         //imshow("Active Drone Feed", frame);
@@ -75,7 +77,7 @@ Point Drone::getHogTargetPositionAverage()
         ret.x = xCenter;
         cout << "center of person: " << ret.x << endl;
         ret.y = human.getBottomRightPoint().y;
-        moveForward(1);
+        moveForward(3);
     }
     else {
         moveBackward(1);
@@ -87,15 +89,32 @@ Point Drone::getTemplateTargetPositionAverage()
 {
     double xSum = 0, ySum = 0;
     
+    std::ostringstream imgname;
+    for(int i = 1; i <= 2; i++) {
+        UMat tttt;
+        imgname << "template" << i << ".jpg";
+        UMat n;
+        imread(imgname.str(), CV_LOAD_IMAGE_COLOR).copyTo(n);
+        tttt = n.clone();
+        imgname.clear();
+        imgname.str("");
+        templateImages.push_back(tttt);
+    }
+    
     Matcher matcher;
     for(UMat temImg : templateImages)
     {
+
+        Size sss(temImg.size().width/2.0, temImg.size().height/2.0);
+        resize(temImg,temImg,sss);
+
         int sW = temImg.size().width / 2.0;
         int sH = temImg.size().height / 2.0;
         Size smaller(sW, sH);
         resize(temImg, temImg, smaller);
         cout << "temImg width: " << temImg.size().width << endl;
         cout << "temImg height: " << temImg.size().height << endl;
+
         Point p = matcher.templateMatchingWithoutCallBack(std::ref(temImg), std::ref(frame));
         xSum += p.x;
         ySum += p.y;
