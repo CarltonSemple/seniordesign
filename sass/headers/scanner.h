@@ -11,7 +11,6 @@
 class Scanner 
 {
 private:
-    int getLatestSetNumber();
     int getNextSetNumber();
     void displayMinMax();
     void displayMenuOptions();
@@ -21,6 +20,7 @@ private:
     //void runCamera();
     void createSliderWindow();
 public:
+    int getLatestSetNumber();
     void runIndependently();
     Human & loadScannedHuman(int setNum);
     
