@@ -66,6 +66,11 @@ void Sass::runSystem()
     // Start thread for processing drone & kinect video feeds
     thread videoThread(analyzeVideoRunDrones);
  
+    // Start thread for displaying scans
+    if(displayTemplateMatching) {
+        thread displayScanThread(displayScanLoop);
+    }
+ 
     // Start thread for kinect in sky
     //thread skyThread(runEyeinSky);
 
@@ -77,6 +82,9 @@ void Sass::runSystem()
 	receiveFrameThread.join();
 	sendComThread.join();
 	videoThread.join();
+    if(displayTemplateMatching) {
+        displayScanThread.join();
+    }
     //testThread.join();
 
     
@@ -694,8 +702,6 @@ int main(int argc, char *argv[])
             dactive.setTemplateImages(scannedHuman);
         }
         dactive.setDisplayTemplateMatching(displayTemplateMatching);
-        
-        
         //cameraNumbaaaaaa = atoi(argv[1]);
     }
     
