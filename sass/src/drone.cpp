@@ -90,6 +90,12 @@ Point Drone::getTemplateTargetPositionAverage()
     Matcher matcher;
     for(UMat temImg : templateImages)
     {
+        int sW = temImg.size().width / 2.0;
+        int sH = temImg.size().height / 2.0;
+        Size smaller(sW, sH);
+        resize(temImg, temImg, smaller);
+        cout << "temImg width: " << temImg.size().width << endl;
+        cout << "temImg height: " << temImg.size().height << endl;
         Point p = matcher.templateMatchingWithoutCallBack(std::ref(temImg), std::ref(frame));
         xSum += p.x;
         ySum += p.y;
