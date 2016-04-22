@@ -29,7 +29,7 @@ int maxDistance = DEFAULT_MAX_DISTANCE;
 bool quit = false;
 bool camera_saving = false;
 int img_frame = 0;
-int set_number = 0;
+int set_number = -1;
 
 Mat cropped;
 
@@ -298,8 +298,6 @@ Human & Scanner::loadScannedHuman(int setNum)
     }
     return *h;
 }
-
-int set_number = -1;
 
 void runCamera()
 {
