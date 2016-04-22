@@ -106,9 +106,9 @@ std::vector<Human> ObjectDetector::detectHumans(cv::UMat sourceImg, bool drawBox
             pair<int,int> topleft = make_pair(r.tl().x, r.tl().y);
             pair<int,int> bottomRight = make_pair(r.br().x, r.br().y);
             UMat humImg(sourceImg, r);
-            //Human nh(std::to_string(Human::idNumber), topleft, bottomRight, humImg);
-            //Human::idNumber++;
-            //humans.push_back(nh);
+            Human nh(std::to_string(Human::idNumber), topleft, bottomRight, humImg);
+            Human::idNumber++;
+            humans.push_back(nh);
         }
     }
     /*
