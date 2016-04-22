@@ -23,11 +23,18 @@ Drone dactive(1, commBox);//, db(2, commBox);
 //Desired drone to pilot
 int desired_drone = 1;
 
+// Options for loading scanned humans
+bool displayTemplateMatching = false;
+int chosenScanSet = 0;
+Human scannedHuman;
+int Human::idNumber = 0;
+
 void analyzeVideoRunDrones();
 int determineNeedToSendCommands();
 void receiveFrames();
 void sendCommands();
 void runEyeinSky();
+void displayScanLoop();
 void simpleVideoCamera();
 void runScanner();
 void runTest();
@@ -74,15 +81,23 @@ void Sass::runSystem()
 
     
 }
+
 void runEyeinSky()
 {
     eyeinsky eye(Matcher::templateMatchingMethod,commBox);// or 4
 }
+
+void displayScanLoop()
+{
+    scannedHuman.displayImages(true);
+}
+
 void runScanner()
 {
     Scanner s;
     s.runIndependently();
 }
+
 void runTest()
 {
     //Mat1f img(640,480);
@@ -657,10 +672,31 @@ void receiveFrames()
 
 }
 
+void askToLoadImages() 
+{
+    Scanner s;
+    cout << "Template Matching is enabled" << endl;
+    cout << "The latest scan set number is " << s.getLatestSetNumber() << endl;
+    cout << "Enter the desired scan set: " << endl;
+}
+
 int main(int argc, char *argv[]) 
 {
     if(argc == 2) {
-        cameraNumbaaaaaa = atoi(argv[1]);
+        // Choose whether to display template matching or not
+        if(atoi(argv[1]) == 1) {
+            displayTemplateMatching = true;
+            // if true, load images
+            askToLoadImages();
+            cin >> chosenScanSet;
+            Scanner ssccs;
+            scannedHuman = ssccs.loadScannedHuman(chosenScanSet);
+            dactive.setTemplateImages(scannedHuman);
+        }
+        dactive.setDisplayTemplateMatching(displayTemplateMatching);
+        
+        
+        //cameraNumbaaaaaa = atoi(argv[1]);
     }
     
     
