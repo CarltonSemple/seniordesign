@@ -704,11 +704,10 @@ int main(int argc, char *argv[])
             scannedHuman = ssccs.loadScannedHuman(chosenScanSet);
             dactive.setTemplateImages(scannedHuman);
         }
-        dactive.setDisplayTemplateMatching(displayTemplateMatching);
         //cameraNumbaaaaaa = atoi(argv[1]);
     }
     
-    
+    dactive.setDisplayTemplateMatching(displayTemplateMatching);
     
 	cout << "In main" << endl;
     Sass sassy;
