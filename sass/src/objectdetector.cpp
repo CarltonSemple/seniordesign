@@ -3,7 +3,7 @@
 #include <opencv2/core/utility.hpp>
 #include <opencv2/core/ocl.hpp>
 #include "objectdetector.h"
- 
+#include "communicationBox.h"
 using namespace std;
 using namespace cv;
 
@@ -12,7 +12,7 @@ ObjectDetector::ObjectDetector()
     
 }
 
-std::vector<Human> ObjectDetector::detectHumans(cv::UMat sourceImg, bool drawBoxes) 
+std::vector<Human> ObjectDetector::detectHumans(cv::UMat sourceImg, bool drawBoxes, bool drawLine, CommunicationBox & commBox) 
 {
     vector<Human> humans;
     
@@ -23,7 +23,8 @@ std::vector<Human> ObjectDetector::detectHumans(cv::UMat sourceImg, bool drawBox
     Size sSize(320, 240);
     resize(sourceImg, scaledDown, sSize);
     
-    double scale = sourceImg.size().height / scaledDown.size().height;
+    double hscale = sourceImg.size().height / scaledDown.size().height;
+    double wscale = sourceImg.size().height / scaledDown.size().height;
     //cout << "scale: " << scale << endl;
    
     int win_width = 24;//48;
@@ -81,23 +82,33 @@ std::vector<Human> ObjectDetector::detectHumans(cv::UMat sourceImg, bool drawBox
         if (j == found.size())
         {
             // Make human
+            
             r.x += cvRound(r.width*0.1);
-            r.x *= 2;
+            r.x *= wscale;
             r.width = cvRound(r.width*0.8);
-            r.width *= 2;
+            r.width *= wscale;
             r.y += cvRound(r.height*0.06);
-            r.y *= 2;
+            r.y *= hscale;
+            
             r.height = cvRound(r.height*0.9);
-            r.height *= 2;
+            r.height *= hscale;
             if(drawBoxes) {
                 rectangle(sourceImg, r.tl(), r.br(), cv::Scalar(0,255,0), 3);//cv::Scalar(0,0,0), 2);
+            }
+            if(drawLine){
+                //update location of human
+                commBox.hMark.x2d = r.br().x - (r.width/2);
+                commBox.hMark.y2d = r.br().y;
+                //Draw line at humans feet
+                line( sourceImg, Point(0,r.br().y), Point(1920,r.br().y), Scalar(0,0,255), 2, 8, 0 );//draw red line at bottom of rectangle
+            
             }
             pair<int,int> topleft = make_pair(r.tl().x, r.tl().y);
             pair<int,int> bottomRight = make_pair(r.br().x, r.br().y);
             UMat humImg(sourceImg, r);
-            Human nh(std::to_string(Human::idNumber), topleft, bottomRight, humImg);
-            Human::idNumber++;
-            humans.push_back(nh);
+            //Human nh(std::to_string(Human::idNumber), topleft, bottomRight, humImg);
+            //Human::idNumber++;
+            //humans.push_back(nh);
         }
     }
     /*
@@ -190,15 +201,15 @@ void ObjectDetector::blobDetect(cv::UMat & img)
 	params.minThreshold = 0;
 	params.maxThreshold = 255;
 	params.filterByArea = true;
-	params.minArea = 100;
+	params.minArea = 0;
 	params.filterByCircularity = false;
 	//params.minCircularity = 0.1;
-	params.filterByConvexity = true;
+	params.filterByConvexity = false;
 	params.minConvexity = 0.5;
 	params.filterByInertia = true;
 	params.minInertiaRatio = 0.0;
-	params.maxInertiaRatio = 0.3;
-    params.minDistBetweenBlobs = 300;
+	params.maxInertiaRatio = 1.0;
+    params.minDistBetweenBlobs = 000;
     
     // detect blobs
     Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
@@ -206,6 +217,7 @@ void ObjectDetector::blobDetect(cv::UMat & img)
     detector->detect(img, keypoints);
     
     drawKeypoints(img, keypoints, img, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+
 }
 
 // Finds the number of pixels of a certain color.
@@ -248,14 +260,14 @@ std::pair<double, double> ObjectDetector::colorBlobDistanceCalibration(int video
     
     cout << "Press the space bar to calculate vertical px distance of single object" << endl;
     cout << "Press esc to finalize" << endl;
-    double avgWidth = 0.0;
-    double widest = 0.0;
-    
+    long double avgWidth = 0.0;
+    long double widest = 0.0;
+    long double avgDist = 0;
     iLowH = 38;
     iHighH = 83;
     iLowS = 50;
     iLowV = 35;
-    
+    double dist;
     
     while (true)
     {
@@ -285,7 +297,9 @@ std::pair<double, double> ObjectDetector::colorBlobDistanceCalibration(int video
         //morphological closing (fill small holes in the foreground)
         dilate( imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) ); 
         erode(imgThresholded, imgThresholded, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)) );
-
+        UMat tempThreshold;
+        //tempThreshold = imgThresholded.getUMat(ACCESS_RW);
+        //blobDetect(tempThreshold);
         imshow("Thresholded Image", imgThresholded); //show the thresholded image
         imshow("Original", imgOriginal); //show the original image
 
@@ -310,15 +324,29 @@ std::pair<double, double> ObjectDetector::colorBlobDistanceCalibration(int video
             int widthTotal = 0;
             bool objFound = false;
             int currentWidth = 0;
+            int tempRow =0;
+            int tempCol =0;
+            int firstofrow =0;
+            int firstofcol =0;
+            int lastofrow =0;
+            int lastofcol=0;
+            int midofrow=0;
             for(int r = 0; r < imgThresholded.size().height; r++) {
                 currentWidth = 0;
                 for(int c = 0; c < imgThresholded.size().width; c++) {
                     RGB & color = imgThresholded.ptr<RGB>(r)[c];
                     if((color.r > 200) && (color.g > 200 )&& (color.b > 200)) {
                         // white-ish
+                        if(!objFound){
+                            objFound=true;
+                            tempRow = r;
+                            tempCol = c;
+
+                        }
                         currentWidth++;
                     }                   
                 }
+                objFound=false;
                 /*
                 if(currentWidth > 5) {
                     //rowCount++;
@@ -332,16 +360,25 @@ std::pair<double, double> ObjectDetector::colorBlobDistanceCalibration(int video
                 }*/
                 if(currentWidth > widest) {
                     widest = currentWidth;
-                    
+                    avgWidth = (avgWidth+widest)/2;
+                    firstofrow = tempRow;
+                    firstofcol = tempCol;
+                    lastofrow = firstofrow + widest;
+                    midofrow = firstofrow + (widest/2);
                 }
-                cout << "widest: " << widest << endl;
+                //cout << "widest: " << widest << endl;
+                //cout << "Average width: " <<avgWidth <<endl;
                 widthTotal += currentWidth;
             }
             
-            avgWidth = widthTotal / ((double)rowCount);
-            cout << "startRow width: " << startRowWidth << endl;
-            cout << "endRow width: " << endRowWidth << endl;
-            //cout << "widest: " << widest << endl;
+            //avgWidth = widthTotal / ((double)rowCount);
+            cout << "startRow pixel: " << firstofrow << endl;
+            cout << "middleRow pixel: " << midofrow << endl;
+            cout << "endRow pixel: " << lastofrow << endl;
+            cout << "startCol pixel: " << firstofcol << endl;
+            dist = Util::disttodrone(20,487.68, 10.16 ,avgWidth);
+            avgDist = (avgDist+dist)/2;
+            cout << "Distace: " << avgDist << endl;
             widthPair.first = startRowWidth;
             widthPair.second = endRowWidth;
         //}

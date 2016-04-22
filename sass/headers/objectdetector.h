@@ -20,7 +20,7 @@
 #include <highgui.h>
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/ocl.hpp>
-
+#include "communicationBox.h"
 #include <tuple>
 
 class ObjectDetector
@@ -32,7 +32,7 @@ class ObjectDetector
             
     // Create humans from the locations of detected humans, 
     // and optionally draw generic black boxes around the humans
-    std::vector<Human> detectHumans(cv::UMat sourceImg, bool drawBoxes, bool drawLine);
+    std::vector<Human> detectHumans(cv::UMat sourceImg, bool drawBoxes, bool drawLine, CommunicationBox & commBox);
     
     /* Match new humans with the current stored humans */
     void keepSimilarHumans(std::vector<Human> & collection, std::vector<Human> & newHumans);
