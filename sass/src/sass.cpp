@@ -28,6 +28,7 @@ int determineNeedToSendCommands();
 void receiveFrames();
 void sendCommands();
 void runEyeinSky();
+void simpleVideoCamera();
 void runScanner();
 void runTest();
 Sass::Sass()
@@ -47,7 +48,7 @@ void Sass::runSystem()
     commBox.bMark.y2d = 740;
     
     // Start test Thread
-    thread testThread(runTest);
+    //thread testThread(runTest);
     
     // Start server for sending commands
     thread sendComThread(sendCommands);
@@ -57,7 +58,7 @@ void Sass::runSystem()
     
     // Start thread for processing drone & kinect video feeds
     thread videoThread(analyzeVideoRunDrones);
-
+ 
     // Start thread for kinect in sky
     //thread skyThread(runEyeinSky);
 
@@ -69,7 +70,7 @@ void Sass::runSystem()
 	receiveFrameThread.join();
 	sendComThread.join();
 	videoThread.join();
-    testThread.join();
+    //testThread.join();
 
     
 }
@@ -84,19 +85,48 @@ void runScanner()
 }
 void runTest()
 {
-    Mat1f img(640,480);
-    commBox.skyFrame= img;
+    //Mat1f img(640,480);
+    //commBox.skyFrame= img;
+    //simpleVideoCamera();
+
 
     //namedWindow("Img in CommBox", CV_WINDOW_AUTOSIZE);
     while(1){
         //cout << "In test function" << endl;
-        imshow("Img in CommBox", commBox.skyFrame);
-        //cout << "Drone 1 X axis pixel: " << commBox.drone1Pos.x2d << endl;
-        //cout << "Drone 1 Y axis pixel: " << commBox.drone1Pos.y2d << endl;
+        //imshow("Img in CommBox", commBox.skyFrame);
+       // cout << "Drone 1 X axis pixel: " << commBox.d1Mark.x2d << endl;
+        cout << "Drone 1 Y axis pixel: " << commBox.d1Mark.y2d << endl;
         //cout << "Drone 1 distance: " << commBox.drone1Pos.distanceDirect << endl;
-        int key = cv::waitKey(1);
+        //int key = cv::waitKey(1);
+        //sleep(.2);
+        
     }
 }
+
+int cameraNumbaaaaaa = 0;
+void simpleVideoCamera() 
+{
+    VideoCapture cap(cameraNumbaaaaaa);//CV_CAP_ANY);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, 1280);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, 720);    
+    if (!cap.isOpened())
+        return;
+    
+    namedWindow("preview", CV_WINDOW_NORMAL);
+    cv::resizeWindow("preview", 1280, 720);
+    
+    while(true)
+    {
+        Mat s;
+        cap >> s;
+        if(!s.data)
+            continue;
+        //imshow("preview", s);
+        waitKey(1);
+    }
+}
+
+//Shows the video stream of the drone as well as send the correct commands autonomously
 void analyzeVideoRunDrones()
 {
 	UMat current;
@@ -121,7 +151,7 @@ void analyzeVideoRunDrones()
 
     }   
 }
-
+//This function is converting JPEG to the Mat
 void convert_file_to_mat()
 {
 	imread("tmp.jpg",CV_LOAD_IMAGE_COLOR).copyTo(frame_Mat);
@@ -155,7 +185,7 @@ void sendCommands()
     //Desired distance to move or turn
     int desired_length;
 	
-	int current_drone = desired_drone;
+	int current_drone = commBox.desired_drone;
     
     //Quit boolean
     int quit_flag = 0;
@@ -254,12 +284,58 @@ void sendCommands()
     // Send to server
     while (true) 
     {	
+		
+		// If there are no new command, do nothing
 		if(commBox.okayToDecide == true) {
 			continue;
 		}
 		
-		if (current_drone != desired_drone)
-			current_drone = desired_drone;
+		if (current_drone != commBox.desired_drone)
+		{
+			
+            // Move the newly dormant drone backwards
+            // If the newly dormant drone is drone 1, send 32 backwards commands to drone 1
+            if (current_drone == 1) {
+				// Send backwards commands
+                for (int i=0; i<32; i++) {
+                    n_1=write(drone_1, "s", strlen("s"));
+                    if(n_1 < 0)
+                    {
+                        perror("ERROR writing backwards to Drone 1");	
+                    }
+                    printf("...Sent\n");
+                }
+                // Send 'x' to stop drone movement
+                n_1=write(drone_1, "x", strlen("x"));
+                if(n_1 < 0)
+                {
+                    perror("ERROR writing 'x' to Drone 1");	
+                }
+                printf("...Sent\n");
+            }
+            // If the newly dormant drone is drone 2, send 32 backwards commands to drone 2
+            else{
+				// Send backwards commands
+                for (int i=0; i<32; i++) {
+                    n_1=write(drone_2, "s", strlen("s"));
+                    if(n_1 < 0)
+                    {
+                        perror("ERROR writing backwards to Drone 2");	
+                    }
+                    printf("...Sent\n");
+                }
+                // Send 'x' to stop drone movement
+                n_1=write(drone_2, "x", strlen("x"));
+                if(n_1 < 0)
+                {
+                    perror("ERROR writing 'x' to Drone 2");	
+                }
+                printf("...Sent\n");
+            }
+            
+            // Change the current drone to the newly active drone
+			current_drone = commBox.desired_drone;
+        }
 		
 		/*Setting the values in buffer to zero*/
 		bzero(buffer, BUF_SIZE);
@@ -362,7 +438,7 @@ void receiveFrames()
 	/*Used for eliminating Binding ERROR*/
 	int optval = 1;
 	
-	int current_drone = desired_drone;
+	int current_drone = commBox.desired_drone;
     
     /*Assign Port Number*/
     /*This port number is different to distinguish between which server is for command/control of drones and receving the video*/
@@ -467,8 +543,8 @@ void receiveFrames()
     {
 		frameSizeSyncFlag = 0;
 		
-		if (current_drone != desired_drone)
-			current_drone = desired_drone;
+		if (current_drone != commBox.desired_drone)
+			current_drone = commBox.desired_drone;
 		
 		/*Checking to make sure we get the exact frame size from the client*/
 		while (!frameSizeSyncFlag)
@@ -583,6 +659,12 @@ void receiveFrames()
 
 int main(int argc, char *argv[]) 
 {
+    if(argc == 2) {
+        cameraNumbaaaaaa = atoi(argv[1]);
+    }
+    
+    
+    
 	cout << "In main" << endl;
     Sass sassy;
     sassy.runSystem();
